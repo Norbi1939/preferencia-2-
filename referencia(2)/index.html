@@ -3187,7 +3187,7 @@
       .chat-launcher {
         position: fixed;
         right: 24px;
-        bottom: 22px;
+        bottom: calc(22px + var(--chat-footer-offset, 0px));
         z-index: 850;
         width: 88px;
         height: 88px;
@@ -3199,7 +3199,7 @@
         place-items: center;
         box-shadow: 6px 6px 0 var(--red), 0 14px 30px rgba(0,0,0,.28);
         transform: rotate(-5deg);
-        transition: transform .42s var(--ease), box-shadow .42s var(--ease), background .42s var(--ease);
+        transition: bottom .45s var(--ease), transform .42s var(--ease), box-shadow .42s var(--ease), background .42s var(--ease);
       }
       .chat-launcher:hover {
         transform: translateY(-4px) rotate(4deg) scale(1.04);
@@ -3433,7 +3433,7 @@
       @keyframes chatDot { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-4px);opacity:.8} }
 
       @media (max-width: 600px) {
-        .chat-launcher { right: 16px; bottom: 16px; width: 76px; height: 76px; }
+        .chat-launcher { right: 16px; bottom: calc(16px + var(--chat-footer-offset, 0px)); width: 76px; height: 76px; }
         .chat-launcher svg { width: 39px; height: 39px; }
         .chat-launcher::after { display:none; }
         .chat-shell {
@@ -3447,8 +3447,2565 @@
         }
       }
 
+
+
+      /* ===== Gyors jelölések – helyreállított design ===== */
+      .menu-help {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+        margin: 26px 0 0;
+        padding: 18px 22px;
+        border: 1px solid rgba(207,224,109,.42);
+        border-radius: 24px 34px 22px 30px;
+        background:
+          radial-gradient(circle at 85% 30%, rgba(207,224,109,.08), transparent 28%),
+          rgba(31,33,28,.86);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 16px 36px rgba(0,0,0,.12);
+        color: var(--cream);
+      }
+
+      .menu-help > strong {
+        flex: 0 0 auto;
+        color: rgba(243,238,223,.92);
+        font-size: .78rem;
+        font-weight: 900;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+
+      .menu-help-tags {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .menu-help-tag {
+        appearance: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 9px 14px;
+        border: 1px solid rgba(243,238,223,.32);
+        border-radius: 999px;
+        background: rgba(243,238,223,.035);
+        color: rgba(243,238,223,.90);
+        font: inherit;
+        font-size: .72rem;
+        font-weight: 850;
+        line-height: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        transition:
+          transform .25s var(--ease),
+          background .25s ease,
+          color .25s ease,
+          border-color .25s ease,
+          box-shadow .25s ease;
+      }
+
+      .menu-help-tag:hover {
+        transform: translateY(-2px);
+        border-color: rgba(207,224,109,.78);
+        background: rgba(207,224,109,.09);
+      }
+
+      .menu-help-tag[aria-pressed="true"] {
+        background: var(--yellow);
+        color: var(--ink);
+        border-color: var(--yellow);
+        box-shadow: 4px 4px 0 rgba(226,103,72,.82);
+        transform: translate(-1px,-2px);
+      }
+
+
+      /* ===== Élő, animált gyors jelölések ===== */
+      .menu-help {
+        position: relative;
+        overflow: visible;
+        min-height: 106px;
+        padding: 24px 28px;
+        border-color: rgba(207,224,109,.30);
+        border-radius: 28px 40px 26px 34px;
+        background:
+          radial-gradient(circle at 82% 20%, rgba(207,224,109,.055), transparent 32%),
+          linear-gradient(145deg, rgba(255,255,255,.018), rgba(255,255,255,0) 46%),
+          rgba(31,33,28,.90);
+      }
+
+      .menu-help-title {
+        position: relative;
+        flex: 0 0 auto;
+        min-width: 190px;
+        padding-bottom: 10px;
+      }
+
+      .menu-help-title strong {
+        display: block;
+        color: var(--cream);
+        font-size: .86rem;
+        font-weight: 950;
+        letter-spacing: .01em;
+        text-transform: none;
+      }
+
+      .menu-help-scribble {
+        position: absolute;
+        left: 14px;
+        bottom: -2px;
+        width: 118px;
+        height: 13px;
+        border-top: 4px solid var(--yellow);
+        border-radius: 50%;
+        transform: rotate(-6deg) skewX(-18deg);
+        opacity: .92;
+      }
+
+      .menu-help-scribble::after {
+        content: "";
+        position: absolute;
+        left: 30px;
+        top: 2px;
+        width: 78px;
+        border-top: 3px solid var(--yellow);
+        transform: rotate(-7deg);
+      }
+
+      .menu-help-tag {
+        position: relative;
+        isolation: isolate;
+        overflow: visible;
+        min-height: 48px;
+        padding: 11px 18px;
+        gap: 8px;
+        border: 1px solid rgba(243,238,223,.25);
+        background: rgba(255,255,255,.018);
+        color: rgba(243,238,223,.93);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+        transition:
+          transform .32s var(--ease),
+          background .32s ease,
+          color .32s ease,
+          border-color .32s ease,
+          box-shadow .32s ease,
+          filter .32s ease;
+      }
+
+      .menu-help-tag .tag-label,
+      .menu-help-tag .tag-icon {
+        position: relative;
+        z-index: 3;
+      }
+
+      .menu-help-tag .tag-icon {
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      .menu-help-tag:hover {
+        transform: translateY(-3px);
+      }
+
+      .menu-help-tag[data-tag="all"][aria-pressed="true"] {
+        background: var(--yellow);
+        color: var(--ink);
+        border-color: var(--yellow);
+        box-shadow: 4px 4px 0 rgba(226,103,72,.82);
+      }
+
+      /* Csípős */
+      .menu-help-tag[data-tag="spicy"]:hover,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] {
+        color: #ff9a6a;
+        border-color: #ff8650;
+        background: rgba(255,106,61,.08);
+        box-shadow:
+          0 0 0 1px rgba(255,105,58,.18),
+          0 0 18px rgba(255,95,31,.25),
+          0 0 42px rgba(255,95,31,.10);
+      }
+
+      .flame-fx {
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        bottom: calc(100% - 4px);
+        height: 72px;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(12px) scale(.76);
+        transition: opacity .25s ease, transform .35s var(--ease);
+      }
+
+      .flame-fx i {
+        position: absolute;
+        bottom: 0;
+        width: 20px;
+        height: 34px;
+        border-radius: 60% 40% 60% 40%;
+        background:
+          radial-gradient(circle at 48% 68%, #ffd34f 0 20%, transparent 21%),
+          linear-gradient(155deg, #ffb229 0 45%, #ff5d2b 46% 100%);
+        filter: drop-shadow(0 0 8px rgba(255,92,34,.70));
+        transform-origin: 50% 100%;
+        animation: flameDance .82s ease-in-out infinite alternate;
+      }
+
+      .flame-fx i:nth-child(1) { left: 5%;  height: 25px; animation-delay: -.25s; }
+      .flame-fx i:nth-child(2) { left: 25%; height: 48px; animation-delay: -.55s; }
+      .flame-fx i:nth-child(3) { left: 47%; height: 62px; width: 25px; animation-delay: -.1s; }
+      .flame-fx i:nth-child(4) { left: 70%; height: 43px; animation-delay: -.42s; }
+      .flame-fx i:nth-child(5) { left: 88%; height: 27px; animation-delay: -.68s; }
+
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      @keyframes flameDance {
+        0%   { transform: rotate(-5deg) scaleY(.88) translateY(2px); }
+        55%  { transform: rotate(4deg) scaleY(1.08) translateY(-2px); }
+        100% { transform: rotate(-2deg) scaleY(.96) translateY(-4px); }
+      }
+
+      /* Vega */
+      .menu-help-tag[data-tag="vega"]:hover,
+      .menu-help-tag[data-tag="vega"][aria-pressed="true"] {
+        color: #b9f06b;
+        border-color: #91dd38;
+        background: rgba(128,201,50,.07);
+        box-shadow:
+          0 0 0 1px rgba(145,221,56,.16),
+          0 0 18px rgba(108,202,30,.26),
+          0 0 40px rgba(108,202,30,.10);
+      }
+
+      .leaf-fx {
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        bottom: calc(100% - 2px);
+        height: 66px;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(22px) scaleY(.1);
+        transform-origin: 50% 100%;
+        transition: opacity .25s ease, transform .5s cubic-bezier(.2,.9,.18,1.25);
+      }
+
+      .leaf-fx::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 3px;
+        height: 48px;
+        border-radius: 99px;
+        background: linear-gradient(#8bd82e,#3f8b22);
+        transform: translateX(-50%);
+      }
+
+      .leaf {
+        position: absolute;
+        width: 24px;
+        height: 14px;
+        border-radius: 100% 0 100% 0;
+        background: linear-gradient(135deg,#a9e94e,#4e9b22);
+        box-shadow: 0 0 10px rgba(106,201,43,.22);
+        animation: leafSway 1.45s ease-in-out infinite alternate;
+      }
+
+      .leaf-1 { left: 36%; bottom: 31px; transform: rotate(25deg); }
+      .leaf-2 { left: 52%; bottom: 39px; transform: scaleX(-1) rotate(20deg); animation-delay: -.4s; }
+      .leaf-3 { left: 26%; bottom: 12px; transform: rotate(12deg) scale(.8); animation-delay: -.75s; }
+      .leaf-4 { left: 62%; bottom: 16px; transform: scaleX(-1) rotate(8deg) scale(.82); animation-delay: -.2s; }
+      .leaf-5 { left: 46%; bottom: 50px; transform: rotate(-18deg) scale(.72); animation-delay: -.55s; }
+
+      .menu-help-tag[data-tag="vega"]:hover .leaf-fx,
+      .menu-help-tag[data-tag="vega"][aria-pressed="true"] .leaf-fx {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+      }
+
+      @keyframes leafSway {
+        from { translate: 0 0; rotate: -3deg; }
+        to   { translate: 2px -3px; rotate: 5deg; }
+      }
+
+      /* Közönségkedvenc */
+      .menu-help-tag[data-tag="popular"]:hover,
+      .menu-help-tag[data-tag="popular"][aria-pressed="true"] {
+        color: #ffd35e;
+        border-color: #ffc24b;
+        background: rgba(255,192,55,.065);
+        box-shadow:
+          0 0 0 1px rgba(255,194,75,.15),
+          0 0 18px rgba(255,188,42,.22),
+          0 0 40px rgba(255,188,42,.09);
+      }
+
+      .people-fx {
+        position: absolute;
+        left: 18%;
+        right: 18%;
+        bottom: calc(100% - 3px);
+        height: 62px;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(20px) scale(.8);
+        transition: opacity .22s ease, transform .42s cubic-bezier(.2,.9,.18,1.2);
+      }
+
+      .person {
+        position: absolute;
+        bottom: 2px;
+        width: 22px;
+        height: 34px;
+        border-radius: 10px 10px 7px 7px;
+        background: var(--cream);
+        box-shadow: 0 0 0 2px rgba(31,33,28,.7);
+        animation: cheerBounce .72s ease-in-out infinite alternate;
+      }
+
+      .person::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: -15px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #ffd276;
+        border: 2px solid #24261f;
+        transform: translateX(-50%);
+      }
+
+      .person::after {
+        content: "";
+        position: absolute;
+        left: -9px;
+        top: 5px;
+        width: 38px;
+        height: 4px;
+        border-radius: 8px;
+        background: var(--cream);
+        transform: rotate(-14deg);
+        box-shadow: 0 0 0 1px rgba(31,33,28,.55);
+      }
+
+      .person-1 { left: 12%; transform: scale(.82); animation-delay: -.25s; }
+      .person-2 { left: 43%; transform: scale(1); animation-delay: -.52s; }
+      .person-3 { right: 10%; transform: scale(.82); animation-delay: -.08s; }
+
+      .cheer {
+        position: absolute;
+        width: 4px;
+        height: 13px;
+        border-radius: 4px;
+        background: #ffc84d;
+        opacity: .9;
+        animation: cheerRay .8s ease-in-out infinite alternate;
+      }
+
+      .cheer-1 { left: 2%; top: 6px; transform: rotate(-40deg); }
+      .cheer-2 { left: 49%; top: -3px; }
+      .cheer-3 { right: 1%; top: 5px; transform: rotate(40deg); }
+
+      .menu-help-tag[data-tag="popular"]:hover .people-fx,
+      .menu-help-tag[data-tag="popular"][aria-pressed="true"] .people-fx {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      @keyframes cheerBounce {
+        from { translate: 0 0; }
+        to   { translate: 0 -5px; }
+      }
+
+      @keyframes cheerRay {
+        from { opacity: .35; transform: scaleY(.65); }
+        to   { opacity: 1; transform: scaleY(1.15); }
+      }
+
+      /* Extrázható */
+      .menu-help-tag[data-tag="extra"]:hover,
+      .menu-help-tag[data-tag="extra"][aria-pressed="true"] {
+        color: #d9f46e;
+        border-color: #cce95c;
+        background: rgba(201,231,85,.06);
+        box-shadow:
+          0 0 0 1px rgba(204,233,92,.15),
+          0 0 18px rgba(196,232,59,.22),
+          0 0 40px rgba(196,232,59,.09);
+      }
+
+      .plus-fx {
+        position: absolute;
+        inset: -38px -16px auto -16px;
+        height: 58px;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(12px) scale(.82);
+        transition: opacity .22s ease, transform .4s cubic-bezier(.2,.9,.18,1.25);
+      }
+
+      .plus-fx i {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        color: var(--yellow);
+        font-style: normal;
+        font-weight: 1000;
+        line-height: 1;
+        text-shadow: 0 0 10px rgba(207,224,109,.45);
+        animation: plusFloat 1.4s ease-in-out infinite alternate;
+      }
+
+      .plus-fx i:nth-child(1) { left: 8%; top: 21px; font-size: 22px; animation-delay: -.2s; }
+      .plus-fx i:nth-child(2) { left: 28%; top: 3px; font-size: 34px; animation-delay: -.75s; }
+      .plus-fx i:nth-child(3) { left: 54%; top: 17px; font-size: 20px; animation-delay: -.42s; }
+      .plus-fx i:nth-child(4) { left: 73%; top: -3px; font-size: 28px; animation-delay: -.95s; }
+      .plus-fx i:nth-child(5) { right: 2%; top: 22px; font-size: 18px; animation-delay: -.58s; }
+
+      .menu-help-tag[data-tag="extra"]:hover .plus-fx,
+      .menu-help-tag[data-tag="extra"][aria-pressed="true"] .plus-fx {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      @keyframes plusFloat {
+        from { transform: translateY(2px) rotate(-7deg) scale(.92); opacity: .62; }
+        to   { transform: translateY(-7px) rotate(7deg) scale(1.12); opacity: 1; }
+      }
+
+      /* A kattintás után az aktív állapot folyamatosan él, hoverre csak ideiglenesen jön elő. */
+      .menu-help-tag[aria-pressed="true"]:not([data-tag="all"]) {
+        transform: translateY(-3px);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .flame-fx i,
+        .leaf,
+        .person,
+        .cheer,
+        .plus-fx i {
+          animation: none !important;
+        }
+        .flame-fx,
+        .leaf-fx,
+        .people-fx,
+        .plus-fx,
+        .menu-help-tag {
+          transition-duration: .01ms !important;
+        }
+      }
+
+
+      /* ===== Csípős – élesebb, valódi lángnyelvek ===== */
+      .flame-fx {
+        height: 78px;
+        left: 18%;
+        right: 18%;
+        bottom: calc(100% - 7px);
+        filter: drop-shadow(0 0 7px rgba(255,91,24,.42));
+      }
+
+      .flame-fx i {
+        bottom: 0;
+        width: 17px;
+        height: 42px;
+        border-radius: 80% 0 62% 38% / 82% 0 100% 28%;
+        background:
+          radial-gradient(ellipse at 48% 74%, #ffe067 0 13%, #ffb52d 14% 31%, transparent 32%),
+          linear-gradient(145deg, #ffb02d 0 32%, #ff692f 48%, #e83d20 100%);
+        clip-path: polygon(
+          50% 0%,
+          68% 25%,
+          91% 47%,
+          82% 75%,
+          65% 100%,
+          28% 100%,
+          8% 76%,
+          18% 47%,
+          35% 29%
+        );
+        transform-origin: 50% 100%;
+        animation: sharpFlame 0.62s ease-in-out infinite alternate;
+      }
+
+      .flame-fx i:nth-child(1) {
+        left: 3%;
+        width: 13px;
+        height: 29px;
+        animation-delay: -.18s;
+      }
+      .flame-fx i:nth-child(2) {
+        left: 24%;
+        width: 18px;
+        height: 52px;
+        animation-delay: -.43s;
+      }
+      .flame-fx i:nth-child(3) {
+        left: 47%;
+        width: 24px;
+        height: 72px;
+        animation-delay: -.07s;
+      }
+      .flame-fx i:nth-child(4) {
+        left: 70%;
+        width: 18px;
+        height: 49px;
+        animation-delay: -.34s;
+      }
+      .flame-fx i:nth-child(5) {
+        left: 91%;
+        width: 12px;
+        height: 31px;
+        animation-delay: -.55s;
+      }
+
+      @keyframes sharpFlame {
+        0% {
+          transform: skewX(-5deg) rotate(-4deg) scaleX(.86) scaleY(.90);
+          translate: 0 3px;
+          filter: brightness(.94);
+        }
+        45% {
+          transform: skewX(4deg) rotate(3deg) scaleX(1.04) scaleY(1.08);
+          translate: 1px -3px;
+          filter: brightness(1.08);
+        }
+        100% {
+          transform: skewX(-2deg) rotate(-2deg) scaleX(.92) scaleY(1.16);
+          translate: -1px -5px;
+          filter: brightness(1.16);
+        }
+      }
+
+      /* Apró szikrák – kevésbé "felhős", inkább tüzes hatás */
+      .menu-help-tag[data-tag="spicy"]::before,
+      .menu-help-tag[data-tag="spicy"]::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        pointer-events: none;
+        width: 5px;
+        height: 10px;
+        border-radius: 70% 20% 70% 30%;
+        background: #ff7a32;
+        box-shadow: 0 0 7px rgba(255,105,37,.7);
+        opacity: 0;
+        transition: opacity .2s ease;
+      }
+
+      .menu-help-tag[data-tag="spicy"]::before {
+        left: 34%;
+        top: -34px;
+        transform: rotate(18deg);
+        animation: spicySparkA .9s ease-in-out infinite;
+      }
+
+      .menu-help-tag[data-tag="spicy"]::after {
+        right: 29%;
+        top: -22px;
+        width: 4px;
+        height: 8px;
+        transform: rotate(-20deg);
+        animation: spicySparkB .72s ease-in-out infinite;
+      }
+
+      .menu-help-tag[data-tag="spicy"]:hover::before,
+      .menu-help-tag[data-tag="spicy"]:hover::after,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]::before,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]::after {
+        opacity: 1;
+      }
+
+      @keyframes spicySparkA {
+        0%   { translate: 0 8px; opacity: 0; }
+        35%  { opacity: 1; }
+        100% { translate: -4px -16px; opacity: 0; }
+      }
+
+      @keyframes spicySparkB {
+        0%   { translate: 0 7px; opacity: 0; }
+        30%  { opacity: .95; }
+        100% { translate: 5px -13px; opacity: 0; }
+      }
+
+
+      /* ===== Csípős – lassabb, nyugodtabb, referencia-szerű láng ===== */
+      .flame-fx {
+        height: 70px;
+        left: 20%;
+        right: 20%;
+        bottom: calc(100% - 5px);
+        filter: drop-shadow(0 0 8px rgba(255,91,24,.34));
+      }
+
+      .flame-fx i {
+        bottom: 0;
+        width: 15px;
+        height: 38px;
+        border-radius: 72% 20% 62% 38% / 88% 18% 100% 32%;
+        background:
+          radial-gradient(ellipse at 50% 74%, #ffd45b 0 14%, #ff9e2c 15% 31%, transparent 32%),
+          linear-gradient(155deg, #ffad2c 0 34%, #ff6a31 50%, #df4024 100%);
+        clip-path: polygon(
+          50% 0%,
+          64% 24%,
+          80% 45%,
+          90% 67%,
+          73% 100%,
+          28% 100%,
+          10% 74%,
+          18% 50%,
+          35% 29%
+        );
+        transform-origin: 50% 100%;
+        animation: calmFlame 1.55s ease-in-out infinite alternate;
+      }
+
+      .flame-fx i:nth-child(1) {
+        left: 7%;
+        width: 11px;
+        height: 23px;
+        animation-delay: -.30s;
+      }
+
+      .flame-fx i:nth-child(2) {
+        left: 28%;
+        width: 16px;
+        height: 42px;
+        animation-delay: -.85s;
+      }
+
+      .flame-fx i:nth-child(3) {
+        left: 48%;
+        width: 22px;
+        height: 61px;
+        animation-delay: -.15s;
+      }
+
+      .flame-fx i:nth-child(4) {
+        left: 70%;
+        width: 15px;
+        height: 39px;
+        animation-delay: -.62s;
+      }
+
+      .flame-fx i:nth-child(5) {
+        left: 89%;
+        width: 10px;
+        height: 24px;
+        animation-delay: -1.05s;
+      }
+
+      @keyframes calmFlame {
+        0% {
+          transform: translateY(2px) rotate(-2deg) scaleX(.94) scaleY(.96);
+          filter: brightness(.98);
+        }
+        45% {
+          transform: translateY(-1px) rotate(1.5deg) scaleX(1.01) scaleY(1.045);
+          filter: brightness(1.035);
+        }
+        100% {
+          transform: translateY(-3px) rotate(-1deg) scaleX(.97) scaleY(1.07);
+          filter: brightness(1.07);
+        }
+      }
+
+      /* Lassabb, ritkább szikrák */
+      .menu-help-tag[data-tag="spicy"]::before {
+        animation: spicySparkA 2.15s ease-in-out infinite;
+      }
+
+      .menu-help-tag[data-tag="spicy"]::after {
+        animation: spicySparkB 1.85s ease-in-out infinite;
+      }
+
+      @keyframes spicySparkA {
+        0%, 18% {
+          translate: 0 7px;
+          opacity: 0;
+        }
+        38% {
+          opacity: .85;
+        }
+        72% {
+          opacity: .5;
+        }
+        100% {
+          translate: -3px -15px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes spicySparkB {
+        0%, 28% {
+          translate: 0 6px;
+          opacity: 0;
+        }
+        48% {
+          opacity: .8;
+        }
+        100% {
+          translate: 4px -12px;
+          opacity: 0;
+        }
+      }
+
+      /* Kicsit finomabb glow, hogy ne legyen túl vibráló */
+      .menu-help-tag[data-tag="spicy"]:hover,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] {
+        box-shadow:
+          0 0 0 1px rgba(255,105,58,.14),
+          0 0 14px rgba(255,95,31,.20),
+          0 0 28px rgba(255,95,31,.08);
+      }
+
+
+      /* ===== Csípős v2 — CHILI BURST mikroanimáció ===== */
+      .menu-help-tag[data-tag="spicy"] {
+        --hot-1: #ffd45b;
+        --hot-2: #ff8a34;
+        --hot-3: #e94d2d;
+        transform-origin: 50% 70%;
+      }
+
+      /* Alapállapot: nincs folyamatos nagy láng. */
+      .menu-help-tag[data-tag="spicy"] .flame-fx {
+        left: 12%;
+        right: 12%;
+        bottom: calc(100% - 8px);
+        height: 64px;
+        opacity: 0;
+        transform: translateY(15px) scale(.62, .48);
+        filter: drop-shadow(0 0 8px rgba(255, 91, 24, .28));
+        transition: opacity .16s ease, transform .22s var(--ease);
+      }
+
+      .menu-help-tag[data-tag="spicy"] .flame-fx i {
+        bottom: 0;
+        width: 14px;
+        height: 34px;
+        opacity: 0;
+        border-radius: 72% 28% 64% 36% / 88% 22% 78% 32%;
+        clip-path: polygon(50% 0, 68% 27%, 91% 54%, 77% 100%, 24% 100%, 8% 57%, 31% 31%);
+        background:
+          radial-gradient(ellipse at 50% 73%, #fff0a5 0 8%, var(--hot-1) 9% 24%, transparent 25%),
+          linear-gradient(155deg, var(--hot-1) 0 28%, var(--hot-2) 47%, var(--hot-3) 100%);
+        transform-origin: 50% 100%;
+        animation: none;
+      }
+
+      .menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(1) { left: 5%;  width: 9px;  height: 22px; }
+      .menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(2) { left: 25%; width: 14px; height: 39px; }
+      .menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(3) { left: 46%; width: 20px; height: 57px; }
+      .menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(4) { left: 69%; width: 13px; height: 37px; }
+      .menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(5) { left: 88%; width: 9px;  height: 24px; }
+
+      /* Hover: rövid felcsapás, nem végtelen lobogás. */
+      .menu-help-tag[data-tag="spicy"]:hover {
+        transform: translateY(-4px) rotate(-.6deg);
+        border-color: rgba(255, 126, 68, .88);
+        background: linear-gradient(180deg, rgba(255,132,61,.12), rgba(255,76,34,.055));
+        box-shadow:
+          0 6px 0 rgba(160, 55, 34, .20),
+          0 0 0 1px rgba(255, 117, 58, .14),
+          0 0 22px rgba(255, 86, 31, .22);
+        animation: spicyButtonKick .52s cubic-bezier(.2,.9,.2,1);
+      }
+
+      .menu-help-tag[data-tag="spicy"]:hover .tag-icon {
+        animation: spicyIconPop .58s cubic-bezier(.2,1.35,.25,1) both;
+        filter: drop-shadow(0 3px 8px rgba(255, 90, 25, .38));
+      }
+
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i {
+        animation: chiliBurst .72s cubic-bezier(.16,.84,.28,1) both;
+      }
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i:nth-child(1) { animation-delay: .03s; }
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i:nth-child(2) { animation-delay: 0s; }
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i:nth-child(3) { animation-delay: .05s; }
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i:nth-child(4) { animation-delay: .015s; }
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i:nth-child(5) { animation-delay: .07s; }
+
+      /* A két pseudo elem most gyors, egyszeri szikra-csík. */
+      .menu-help-tag[data-tag="spicy"]::before,
+      .menu-help-tag[data-tag="spicy"]::after {
+        content: "";
+        position: absolute;
+        z-index: 4;
+        pointer-events: none;
+        width: 5px;
+        height: 12px;
+        top: -5px;
+        opacity: 0;
+        border-radius: 80% 20% 70% 30%;
+        background: var(--hot-1);
+        box-shadow: 0 0 8px rgba(255, 117, 42, .7);
+        animation: none;
+      }
+
+      .menu-help-tag[data-tag="spicy"]::before { left: 31%; transform: rotate(-22deg); }
+      .menu-help-tag[data-tag="spicy"]::after  { right: 27%; transform: rotate(24deg) scale(.8); }
+
+      .menu-help-tag[data-tag="spicy"]:hover::before {
+        animation: chiliSparkLeft .68s .08s ease-out both;
+      }
+      .menu-help-tag[data-tag="spicy"]:hover::after {
+        animation: chiliSparkRight .62s .14s ease-out both;
+      }
+
+      /* Aktív filter: nyugodt parázs, nem folyamatos tűzoszlop. */
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] {
+        color: #ff9a6a;
+        border-color: #ff8650;
+        background: linear-gradient(180deg, rgba(255,118,57,.14), rgba(255,81,36,.07));
+        box-shadow:
+          inset 0 -2px 0 rgba(255, 108, 47, .08),
+          0 0 0 1px rgba(255,105,58,.13),
+          0 0 15px rgba(255,95,31,.16);
+      }
+
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .tag-icon {
+        animation: spicyEmber 2.4s ease-in-out infinite;
+      }
+
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx {
+        opacity: .32;
+        transform: translateY(9px) scale(.78, .52);
+        filter: blur(.15px) drop-shadow(0 0 5px rgba(255, 91, 24, .24));
+      }
+
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx i {
+        opacity: .5;
+        animation: emberTongue 2.2s ease-in-out infinite alternate;
+      }
+
+      /* Ha az aktív gombra ráhoverelsz, újra lefut a burst. */
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx i {
+        animation: chiliBurst .72s cubic-bezier(.16,.84,.28,1) both;
+      }
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .tag-icon {
+        animation: spicyIconPop .58s cubic-bezier(.2,1.35,.25,1) both;
+      }
+
+      @keyframes spicyButtonKick {
+        0%   { transform: translateY(-3px) rotate(0) scale(1); }
+        36%  { transform: translateY(-5px) rotate(-1.4deg) scale(1.035, .97); }
+        68%  { transform: translateY(-4px) rotate(.9deg) scale(.992, 1.018); }
+        100% { transform: translateY(-4px) rotate(-.6deg) scale(1); }
+      }
+
+      @keyframes spicyIconPop {
+        0%   { transform: translateY(0) rotate(0) scale(1); }
+        28%  { transform: translateY(2px) rotate(-8deg) scale(.82, .78); }
+        58%  { transform: translateY(-7px) rotate(8deg) scale(1.30, 1.34); }
+        78%  { transform: translateY(-2px) rotate(-4deg) scale(.98); }
+        100% { transform: translateY(0) rotate(0) scale(1.08); }
+      }
+
+      @keyframes chiliBurst {
+        0%   { opacity: 0; transform: translateY(12px) rotate(-5deg) scale(.45, .30); filter: brightness(.9); }
+        22%  { opacity: 1; }
+        52%  { opacity: 1; transform: translateY(-6px) rotate(4deg) scale(1.08, 1.24); filter: brightness(1.12); }
+        76%  { opacity: .82; transform: translateY(-10px) rotate(-3deg) scale(.90, 1.10); }
+        100% { opacity: 0; transform: translateY(-17px) rotate(2deg) scale(.58, .72); filter: brightness(1.18); }
+      }
+
+      @keyframes chiliSparkLeft {
+        0%   { opacity: 0; translate: 8px 10px; scale: .5; }
+        30%  { opacity: 1; }
+        100% { opacity: 0; translate: -13px -32px; scale: .2; rotate: -22deg; }
+      }
+
+      @keyframes chiliSparkRight {
+        0%   { opacity: 0; translate: -6px 10px; scale: .45; }
+        28%  { opacity: .95; }
+        100% { opacity: 0; translate: 15px -28px; scale: .18; rotate: 28deg; }
+      }
+
+      @keyframes spicyEmber {
+        0%, 100% { transform: translateY(0) scale(1.04); filter: drop-shadow(0 0 3px rgba(255,111,42,.28)); }
+        50%      { transform: translateY(-1px) scale(1.10); filter: drop-shadow(0 0 8px rgba(255,96,26,.55)); }
+      }
+
+      @keyframes emberTongue {
+        from { transform: translateY(2px) scale(.88,.72); opacity: .30; }
+        to   { transform: translateY(-2px) scale(.96,.86); opacity: .52; }
+      }
+
+      /* ===== Csípős v3 — tartós, élő láng ===== */
+      /* Hover és aktív állapot alatt a láng nem tűnik el a burst után,
+         hanem folyamatosan, organikusan lobog — a mellette lévő tagekhez hasonlóan. */
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx {
+        opacity: .94;
+        transform: translateY(2px) scale(.94, .86);
+        filter: drop-shadow(0 0 7px rgba(255, 91, 24, .34));
+      }
+
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx i,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx i {
+        opacity: .88;
+        animation: spicyLivingFlame 2.8s ease-in-out infinite alternate;
+      }
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i:nth-child(1),
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx i:nth-child(1) { animation-duration: 2.45s; animation-delay: -1.45s; }
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i:nth-child(2),
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx i:nth-child(2) { animation-duration: 3.05s; animation-delay: -.65s; }
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i:nth-child(3),
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx i:nth-child(3) { animation-duration: 2.65s; animation-delay: -1.95s; }
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i:nth-child(4),
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx i:nth-child(4) { animation-duration: 3.3s; animation-delay: -1.0s; }
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx i:nth-child(5),
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx i:nth-child(5) { animation-duration: 2.75s; animation-delay: -.35s; }
+
+      /* A tűz ikon is finoman "lélegzik", de nem ugrál folyamatosan. */
+      .menu-help-tag[data-tag="spicy"]:hover .tag-icon,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"] .tag-icon,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .tag-icon {
+        animation: spicyHeatPulse 3.1s ease-in-out infinite;
+      }
+
+      /* Ritka, visszatérő szikrák teszik élővé az effektet. */
+      .menu-help-tag[data-tag="spicy"]:hover::before,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]::before {
+        animation: spicySparkLoopLeft 3.8s ease-out infinite;
+      }
+      .menu-help-tag[data-tag="spicy"]:hover::after,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]::after {
+        animation: spicySparkLoopRight 4.4s .9s ease-out infinite;
+      }
+
+      @keyframes spicyLivingFlame {
+        0%   { transform: translateY(3px) rotate(-4deg) scale(.82,.76); opacity: .62; filter: brightness(.98); }
+        35%  { transform: translateY(-2px) rotate(3deg) scale(.98,1.08); opacity: .92; filter: brightness(1.08); }
+        68%  { transform: translateY(-5px) rotate(-2deg) scale(.88,1.18); opacity: .78; filter: brightness(1.14); }
+        100% { transform: translateY(-1px) rotate(4deg) scale(1.02,.94); opacity: .96; filter: brightness(1.04); }
+      }
+
+      @keyframes spicyHeatPulse {
+        0%,100% { transform: translateY(0) rotate(-2deg) scale(1.04); filter: drop-shadow(0 0 3px rgba(255,111,42,.28)); }
+        50%     { transform: translateY(-2px) rotate(3deg) scale(1.13); filter: drop-shadow(0 0 9px rgba(255,96,26,.58)); }
+      }
+
+      @keyframes spicySparkLoopLeft {
+        0%, 58% { opacity: 0; translate: 7px 9px; scale: .45; }
+        66%     { opacity: .95; }
+        82%     { opacity: .65; }
+        100%    { opacity: 0; translate: -14px -31px; scale: .15; rotate: -25deg; }
+      }
+
+      @keyframes spicySparkLoopRight {
+        0%, 62% { opacity: 0; translate: -5px 8px; scale: .42; }
+        70%     { opacity: .9; }
+        84%     { opacity: .55; }
+        100%    { opacity: 0; translate: 16px -27px; scale: .12; rotate: 28deg; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .menu-help-tag[data-tag="spicy"],
+        .menu-help-tag[data-tag="spicy"] .tag-icon,
+        .menu-help-tag[data-tag="spicy"] .flame-fx i,
+        .menu-help-tag[data-tag="spicy"]::before,
+        .menu-help-tag[data-tag="spicy"]::after {
+          animation: none !important;
+        }
+      }
+
+
+      /* ===== Csípős – a gomb körüli fény/árnyék egyezzen a többi gyors jelöléssel ===== */
+      .menu-help-tag[data-tag="spicy"]:hover:not([aria-pressed="true"]) {
+        box-shadow: none;
+      }
+
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"],
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover {
+        box-shadow: 4px 4px 0 rgba(226,103,72,.82);
+      }
+
+
+      /* ===== Csípős – az animáció csak hover alatt látszik, majd finoman eltűnik ===== */
+      .menu-help-tag[data-tag="spicy"] .flame-fx {
+        opacity: 0;
+        transform: translateY(12px) scale(.76);
+        transition: opacity .25s ease, transform .35s var(--ease);
+      }
+
+      .menu-help-tag[data-tag="spicy"]:not(:hover) .flame-fx,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .flame-fx {
+        opacity: 0;
+        transform: translateY(12px) scale(.76);
+      }
+
+      .menu-help-tag[data-tag="spicy"]:not(:hover) .flame-fx i,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .flame-fx i,
+      .menu-help-tag[data-tag="spicy"]:not(:hover) .tag-icon,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .tag-icon,
+      .menu-help-tag[data-tag="spicy"]:not(:hover)::before,
+      .menu-help-tag[data-tag="spicy"]:not(:hover)::after {
+        animation: none !important;
+      }
+
+      .menu-help-tag[data-tag="spicy"]:not(:hover)::before,
+      .menu-help-tag[data-tag="spicy"]:not(:hover)::after {
+        opacity: 0 !important;
+      }
+
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+
+      /* ===== Csípős – gördülékeny lecsengés =====
+         Hover végén a lángnyelvek nem tűnnek el azonnal: a teljes lángréteg
+         lassan visszahúzódik és kifakul, miközben a belső lángok láthatók maradnak. */
+      .menu-help-tag[data-tag="spicy"] .flame-fx {
+        opacity: 0;
+        transform: translateY(14px) scale(.78, .64);
+        transition:
+          opacity .72s cubic-bezier(.22,.61,.36,1),
+          transform .82s cubic-bezier(.22,.61,.36,1),
+          filter .72s ease;
+        filter: drop-shadow(0 0 0 rgba(255,91,24,0));
+      }
+
+      /* Fontos: hover elhagyásakor az animation:none ne nullázza le rögtön
+         az egyes lángnyelvek opacity-jét; a szülő fade-outja végzi az eltűnést. */
+      .menu-help-tag[data-tag="spicy"]:not(:hover) .flame-fx i,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .flame-fx i {
+        animation: none !important;
+        opacity: .82;
+        transform: translateY(3px) scale(.88,.82);
+        filter: brightness(1);
+      }
+
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx {
+        opacity: .96;
+        transform: translateY(2px) scale(.94,.86);
+        filter: drop-shadow(0 0 7px rgba(255,91,24,.34));
+        transition-duration: .28s, .38s, .28s;
+      }
+
+      /* A szikrák is finomabban halkulnak el. */
+      .menu-help-tag[data-tag="spicy"]::before,
+      .menu-help-tag[data-tag="spicy"]::after {
+        transition: opacity .46s ease;
+      }
+
+      .menu-help-tag[data-tag="spicy"]:not(:hover)::before,
+      .menu-help-tag[data-tag="spicy"]:not(:hover)::after {
+        animation: none !important;
+        opacity: 0 !important;
+      }
+
+
+
+      /* ===== Csípős – megjelenés/eltűnés a többi gyors jelöléssel azonos érzetben =====
+         Csak az átmenet viselkedése változik; a tűz kinézete, mérete, színei és
+         a folyamatos lobogás sebessége változatlan marad. */
+      .menu-help-tag[data-tag="spicy"] .flame-fx {
+        transition:
+          opacity .22s ease,
+          transform .42s cubic-bezier(.2,.9,.18,1.2),
+          filter .22s ease;
+      }
+
+      /* A lángnyelvek nem állnak le a hover megszűnésének pillanatában.
+         A szülő flame-fx réteg halványul ki, ugyanúgy, mint a szomszédos effekteknél. */
+      .menu-help-tag[data-tag="spicy"] .flame-fx i {
+        animation: spicyLivingFlame 2.8s ease-in-out infinite alternate !important;
+      }
+      .menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(1) { animation-duration: 2.45s !important; animation-delay: -1.45s !important; }
+      .menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(2) { animation-duration: 3.05s !important; animation-delay: -.65s !important; }
+      .menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(3) { animation-duration: 2.65s !important; animation-delay: -1.95s !important; }
+      .menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(4) { animation-duration: 3.3s !important; animation-delay: -1s !important; }
+      .menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(5) { animation-duration: 2.75s !important; animation-delay: -.35s !important; }
+
+      /* A hover alatti végállapothoz nem nyúlunk. */
+      .menu-help-tag[data-tag="spicy"]:hover .flame-fx,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx {
+        opacity: .96;
+        transform: translateY(2px) scale(.94,.86);
+        filter: drop-shadow(0 0 7px rgba(255,91,24,.34));
+      }
+
+      /* Kilépéskor ugyanaz a transition-logika fut visszafelé, nem vágjuk el
+         animation:none-nal a lángot. */
+      .menu-help-tag[data-tag="spicy"]:not(:hover) .flame-fx,
+      .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .flame-fx {
+        opacity: 0;
+        transform: translateY(14px) scale(.78,.64);
+        filter: drop-shadow(0 0 0 rgba(255,91,24,0));
+      }
+
+      /* Az ikon visszaállása is ugyanazon rövid, puha átmenetet kapja. */
+      .menu-help-tag[data-tag="spicy"] .tag-icon {
+        transition: transform .42s cubic-bezier(.2,.9,.18,1.2), filter .22s ease;
+      }
+
+
+      /* ===== Csípős – apró külön szikra/láng eltávolítva =====
+         Csak a két pici pseudo-elem kerül ki; a fő flame-fx változatlan. */
+      .menu-help-tag[data-tag="spicy"]::before,
+      .menu-help-tag[data-tag="spicy"]::after {
+        content: none !important;
+        display: none !important;
+        animation: none !important;
+      }
+
+
+
+      /* Közönségkedvenc — absztrakt reakció / közönség-hullám
+         Csak a felső animáció grafikája változik; a gomb maga érintetlen. */
+      .people-fx {
+        left: 17%;
+        right: 17%;
+        bottom: calc(100% - 3px);
+        height: 58px;
+        opacity: 0;
+        transform: translateY(15px) scale(.88);
+        transition: opacity .22s ease, transform .42s cubic-bezier(.2,.9,.18,1.2);
+      }
+
+      .people-fx .person {
+        bottom: 10px;
+        width: 18px;
+        height: 18px;
+        border-radius: 48% 52% 45% 55% / 55% 44% 56% 45%;
+        background: #ffd276;
+        box-shadow:
+          0 0 0 2px rgba(36,38,31,.88),
+          0 5px 14px rgba(255,194,75,.16);
+        transform-origin: 50% 100%;
+        animation: crowdPop 1.45s cubic-bezier(.45,.05,.35,1) infinite;
+      }
+
+      .people-fx .person::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 6px;
+        height: 6px;
+        border: 0;
+        border-radius: 50%;
+        background: var(--cream);
+        transform: translate(-50%,-50%);
+        opacity: .92;
+      }
+
+      .people-fx .person::after { display: none; }
+
+      .people-fx .person-1 {
+        left: 16%;
+        transform: none;
+        animation-delay: -.96s;
+      }
+      .people-fx .person-2 {
+        left: calc(50% - 9px);
+        width: 21px;
+        height: 21px;
+        transform: none;
+        animation-delay: -.48s;
+      }
+      .people-fx .person-3 {
+        left: auto;
+        right: 16%;
+        transform: none;
+        animation-delay: 0s;
+      }
+
+      .people-fx .cheer {
+        top: auto;
+        bottom: 4px;
+        left: 8%;
+        right: 8%;
+        width: auto;
+        height: 24px;
+        border: 2px solid rgba(255,200,77,.9);
+        border-bottom: 0;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-radius: 50% 50% 0 0;
+        background: transparent;
+        opacity: 0;
+        transform: scaleX(.55) scaleY(.55);
+        transform-origin: 50% 100%;
+        animation: crowdWave 1.45s ease-out infinite;
+      }
+
+      .people-fx .cheer-1 { animation-delay: -.96s; }
+      .people-fx .cheer-2 { animation-delay: -.48s; }
+      .people-fx .cheer-3 { animation-delay: 0s; }
+
+      @keyframes crowdPop {
+        0%, 100% { translate: 0 2px; scale: .82; rotate: -4deg; opacity: .7; }
+        35%      { translate: 0 -7px; scale: 1.12; rotate: 3deg; opacity: 1; }
+        58%      { translate: 0 -4px; scale: 1; rotate: 0deg; opacity: 1; }
+      }
+
+      @keyframes crowdWave {
+        0%   { opacity: 0; transform: scaleX(.42) scaleY(.45) translateY(5px); }
+        30%  { opacity: .72; }
+        72%  { opacity: .22; }
+        100% { opacity: 0; transform: scaleX(1.08) scaleY(1.05) translateY(-7px); }
+      }
+
+
+
+      /* Közönségkedvenc — emberibb közönségfigurák (v2)
+         Csak a felső animáció grafikája változik. */
+      .people-fx {
+        left: 16%;
+        right: 16%;
+        bottom: calc(100% - 3px);
+        height: 64px;
+      }
+
+      .people-fx .person {
+        bottom: 3px;
+        width: 21px;
+        height: 28px;
+        border-radius: 10px 10px 7px 7px;
+        background: var(--cream);
+        border: 2px solid rgba(36,38,31,.88);
+        box-shadow: 0 5px 12px rgba(0,0,0,.12);
+        transform-origin: 50% 100%;
+        animation: peopleCheerNatural 1.55s cubic-bezier(.45,.05,.35,1) infinite;
+        overflow: visible;
+      }
+
+      /* fej + finom nyakérzet */
+      .people-fx .person::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: -17px;
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        background: #ffd276;
+        border: 2px solid rgba(36,38,31,.9);
+        transform: translateX(-50%);
+        box-shadow: 0 10px 0 -6px #ffd276;
+      }
+
+      /* váll + két kar, a test mögött */
+      .people-fx .person::after {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        left: 50%;
+        top: 7px;
+        width: 38px;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--cream);
+        border: 1.5px solid rgba(36,38,31,.82);
+        transform-origin: 50% 50%;
+        transform: translateX(-50%) rotate(-7deg);
+      }
+
+      .people-fx .person-1 {
+        left: 10%;
+        width: 19px;
+        height: 25px;
+        transform: scale(.9) rotate(-2deg);
+        animation-delay: -.92s;
+      }
+      .people-fx .person-1::after {
+        transform: translateX(-50%) rotate(10deg);
+      }
+
+      .people-fx .person-2 {
+        left: calc(50% - 11px);
+        width: 22px;
+        height: 31px;
+        transform: scale(1);
+        animation-delay: -.46s;
+      }
+      .people-fx .person-2::after {
+        width: 42px;
+        top: 6px;
+        transform: translateX(-50%) rotate(-9deg);
+      }
+
+      .people-fx .person-3 {
+        left: auto;
+        right: 10%;
+        width: 19px;
+        height: 25px;
+        transform: scale(.9) rotate(2deg);
+        animation-delay: 0s;
+      }
+      .people-fx .person-3::after {
+        transform: translateX(-50%) rotate(-12deg);
+      }
+
+      /* A korábbi absztrakt hullámok helyett csak apró ünneplő jelek maradnak. */
+      .people-fx .cheer {
+        position: absolute;
+        width: 4px;
+        height: 12px;
+        border: 0;
+        border-radius: 999px;
+        background: #ffc84d;
+        opacity: .78;
+        transform-origin: 50% 100%;
+        animation: peopleCheerRay 1.1s ease-in-out infinite alternate;
+      }
+      .people-fx .cheer-1 {
+        left: 4%;
+        right: auto;
+        top: 7px;
+        bottom: auto;
+        transform: rotate(-7deg);
+        animation-delay: -.7s;
+      }
+      .people-fx .cheer-2 {
+        left: calc(50% - 2px);
+        right: auto;
+        top: -1px;
+        bottom: auto;
+        transform: rotate(0deg);
+        animation-delay: -.35s;
+      }
+      .people-fx .cheer-3 {
+        left: auto;
+        right: 4%;
+        top: 7px;
+        bottom: auto;
+        transform: rotate(7deg);
+        animation-delay: 0s;
+      }
+
+      @keyframes peopleCheerNatural {
+        0%, 100% { translate: 0 1px; rotate: -1deg; }
+        42%      { translate: 0 -4px; rotate: 1.5deg; }
+        68%      { translate: 0 -2px; rotate: 0deg; }
+      }
+
+      @keyframes peopleCheerRay {
+        from { opacity: .32; scale: 1 .72; translate: 0 2px; }
+        to   { opacity: .9;  scale: 1 1.08; translate: 0 -2px; }
+      }
+
 </style>
-  </head>
+  <style>
+
+/* ===== Közönségkedvenc – szív/reakció animáció =====
+   A korábbi figurás effekt felülírása; a gomb és a layout változatlan.
+*/
+.menu-help-tag[data-tag="popular"] .popular-fx,
+.menu-help-tag[data-tag="crowd"] .popular-fx,
+.menu-help-tag[data-tag="favorite"] .popular-fx {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  width: 86px;
+  height: 58px;
+  transform: translateX(-50%) translateY(5px) scale(.96);
+  transform-origin: 50% 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .28s ease, transform .28s cubic-bezier(.2,.8,.2,1);
+}
+
+.menu-help-tag[data-tag="popular"]:hover .popular-fx,
+.menu-help-tag[data-tag="crowd"]:hover .popular-fx,
+.menu-help-tag[data-tag="favorite"]:hover .popular-fx {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* A meglévő elemekből reakció-szívek lesznek. */
+.menu-help-tag[data-tag="popular"] .popular-fx i,
+.menu-help-tag[data-tag="crowd"] .popular-fx i,
+.menu-help-tag[data-tag="favorite"] .popular-fx i {
+  position: absolute !important;
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  border: 0 !important;
+  border-radius: 4px 4px 5px 4px !important;
+  background: var(--yellow) !important;
+  box-shadow: 0 2px 0 rgba(32,33,29,.18) !important;
+  transform: rotate(45deg) scale(.72);
+  transform-origin: center;
+  opacity: 0;
+  animation: crowdHeart 2.25s ease-in-out infinite !important;
+}
+
+.menu-help-tag[data-tag="popular"] .popular-fx i::before,
+.menu-help-tag[data-tag="popular"] .popular-fx i::after,
+.menu-help-tag[data-tag="crowd"] .popular-fx i::before,
+.menu-help-tag[data-tag="crowd"] .popular-fx i::after,
+.menu-help-tag[data-tag="favorite"] .popular-fx i::before,
+.menu-help-tag[data-tag="favorite"] .popular-fx i::after {
+  content: "" !important;
+  position: absolute !important;
+  width: 16px !important;
+  height: 16px !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: inherit !important;
+  box-shadow: none !important;
+}
+
+.menu-help-tag[data-tag="popular"] .popular-fx i::before,
+.menu-help-tag[data-tag="crowd"] .popular-fx i::before,
+.menu-help-tag[data-tag="favorite"] .popular-fx i::before {
+  left: -8px !important;
+  top: 0 !important;
+}
+
+.menu-help-tag[data-tag="popular"] .popular-fx i::after,
+.menu-help-tag[data-tag="crowd"] .popular-fx i::after,
+.menu-help-tag[data-tag="favorite"] .popular-fx i::after {
+  left: 0 !important;
+  top: -8px !important;
+}
+
+.menu-help-tag[data-tag="popular"] .popular-fx i:nth-child(1),
+.menu-help-tag[data-tag="crowd"] .popular-fx i:nth-child(1),
+.menu-help-tag[data-tag="favorite"] .popular-fx i:nth-child(1) {
+  left: 10px !important; bottom: 5px !important; animation-delay: 0s !important;
+}
+.menu-help-tag[data-tag="popular"] .popular-fx i:nth-child(2),
+.menu-help-tag[data-tag="crowd"] .popular-fx i:nth-child(2),
+.menu-help-tag[data-tag="favorite"] .popular-fx i:nth-child(2) {
+  left: 35px !important; bottom: 2px !important; animation-delay: .38s !important;
+}
+.menu-help-tag[data-tag="popular"] .popular-fx i:nth-child(3),
+.menu-help-tag[data-tag="crowd"] .popular-fx i:nth-child(3),
+.menu-help-tag[data-tag="favorite"] .popular-fx i:nth-child(3) {
+  left: 60px !important; bottom: 6px !important; animation-delay: .76s !important;
+}
+.menu-help-tag[data-tag="popular"] .popular-fx i:nth-child(n+4),
+.menu-help-tag[data-tag="crowd"] .popular-fx i:nth-child(n+4),
+.menu-help-tag[data-tag="favorite"] .popular-fx i:nth-child(n+4) {
+  display: none !important;
+}
+
+@keyframes crowdHeart {
+  0%, 12% {
+    opacity: 0;
+    transform: translateY(7px) rotate(45deg) scale(.55);
+  }
+  24% {
+    opacity: 1;
+    transform: translateY(0) rotate(45deg) scale(.9);
+  }
+  38% {
+    opacity: 1;
+    transform: translateY(-8px) rotate(45deg) scale(.78);
+  }
+  58% {
+    opacity: .92;
+    transform: translateY(-19px) rotate(45deg) scale(.68);
+  }
+  74%, 100% {
+    opacity: 0;
+    transform: translateY(-31px) rotate(45deg) scale(.54);
+  }
+}
+
+
+.menu-help-tag[data-tag="popular"] .popular-fx .cheer {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-help-tag[data-tag="popular"] .popular-fx i,
+  .menu-help-tag[data-tag="crowd"] .popular-fx i,
+  .menu-help-tag[data-tag="favorite"] .popular-fx i {
+    animation: none !important;
+  }
+}
+
+</style>
+<style>
+
+/* Közönségkedvenc: hover VAGY aktív állapotban maradjon látható és animált */
+.menu-help-tag[data-tag="popular"]:hover .popular-fx,
+.menu-help-tag[data-tag="popular"][aria-pressed="true"] .popular-fx,
+.menu-help-tag[data-tag="crowd"]:hover .popular-fx,
+.menu-help-tag[data-tag="crowd"][aria-pressed="true"] .popular-fx,
+.menu-help-tag[data-tag="favorite"]:hover .popular-fx,
+.menu-help-tag[data-tag="favorite"][aria-pressed="true"] .popular-fx {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+</style>
+<style>
+
+/* ===== Csípős – deaktiválás végi ugrás javítása =====
+   Csak az átmenet easingje változik: nincs overshoot/visszapattanás.
+   A láng kinézete, mérete és animációs sebessége változatlan. */
+.menu-help-tag[data-tag="spicy"] .flame-fx {
+  transition:
+    opacity .22s ease,
+    transform .42s cubic-bezier(.22,.61,.36,1),
+    filter .22s ease !important;
+}
+
+/* Az ikon se kapjon visszapattanó easinget deaktiváláskor. */
+.menu-help-tag[data-tag="spicy"] .tag-icon {
+  transition:
+    transform .42s cubic-bezier(.22,.61,.36,1),
+    filter .22s ease !important;
+}
+
+</style>
+<style>
+
+/* Csípős: hover mellett aktív/kiválasztott állapotban is maradjon bekapcsolva.
+   A deaktiválás sima, visszaugrás nélküli marad. */
+.menu-help-tag[data-tag="spicy"]:hover .flame-fx,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx {
+  opacity: 1 !important;
+  transform: translateX(-50%) translateY(0) scale(1) !important;
+}
+
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx i {
+  animation-play-state: running !important;
+}
+
+</style>
+<style>
+
+/* ===== Csípős – ugyanaz az interakciós logika, mint a szomszédos effekteknél =====
+   1) alap: rejtve
+   2) hover VAGY aria-pressed=true: ugyanaz a látható állapot
+   3) aktív állapot egér nélkül is folyamatosan fut
+   4) deaktiváláskor a base állapotba transitionnel tér vissza
+*/
+
+/* Alap/rejtett állapot */
+.menu-help-tag[data-tag="spicy"] .flame-fx {
+  opacity: 0 !important;
+  transform: translateY(14px) scale(.78,.64) !important;
+  filter: drop-shadow(0 0 0 rgba(255,91,24,0)) !important;
+  transition:
+    opacity .22s ease,
+    transform .42s cubic-bezier(.22,.61,.36,1),
+    filter .22s ease !important;
+}
+
+/* Hover és aktív: TELJESEN ugyanaz a megjelenített állapot */
+.menu-help-tag[data-tag="spicy"]:hover .flame-fx,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx {
+  opacity: .96 !important;
+  transform: translateY(2px) scale(.94,.86) !important;
+  filter: drop-shadow(0 0 7px rgba(255,91,24,.34)) !important;
+}
+
+/* A láng ugyanúgy folyamatos belső animációt fut, mint a többi effekt elemei.
+   Nem indul újra hover/active váltáskor és nem áll le egérlevételnél, ha aktív. */
+.menu-help-tag[data-tag="spicy"] .flame-fx i,
+.menu-help-tag[data-tag="spicy"]:hover .flame-fx i,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx i,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx i {
+  animation-name: spicyLivingFlame !important;
+  animation-timing-function: ease-in-out !important;
+  animation-iteration-count: infinite !important;
+  animation-direction: alternate !important;
+  animation-play-state: running !important;
+  opacity: .82;
+}
+
+.menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(1) {
+  animation-duration: 2.45s !important; animation-delay: -1.45s !important;
+}
+.menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(2) {
+  animation-duration: 3.05s !important; animation-delay: -.65s !important;
+}
+.menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(3) {
+  animation-duration: 2.65s !important; animation-delay: -1.95s !important;
+}
+.menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(4) {
+  animation-duration: 3.3s !important; animation-delay: -1s !important;
+}
+.menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(5) {
+  animation-duration: 2.75s !important; animation-delay: -.35s !important;
+}
+
+/* Ne legyen külön aktív/hover ikon-animáció, ami újraindulást vagy ugrást okoz.
+   Hover és aktív ugyanazt a folyamatos állapotot kapja. */
+.menu-help-tag[data-tag="spicy"] .tag-icon {
+  animation: none !important;
+  transition: filter .22s ease, transform .32s ease !important;
+}
+.menu-help-tag[data-tag="spicy"]:hover .tag-icon,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"] .tag-icon {
+  animation: spicyEmber 2.4s ease-in-out infinite !important;
+}
+
+/* A korábbi külön burst/kick ne induljon újra hoverre – a többi gomb sem restartolja
+   az effektjét hover/active váltáskor. */
+.menu-help-tag[data-tag="spicy"]:hover,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"],
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover {
+  animation: none !important;
+}
+
+/* A korábban kivett apró szikrák továbbra se jelenjenek meg. */
+.menu-help-tag[data-tag="spicy"]::before,
+.menu-help-tag[data-tag="spicy"]::after {
+  content: none !important;
+  display: none !important;
+}
+
+</style>
+<style>
+
+/* ===== Csípős – folyamatos aktív animáció, hoverre NEM indul újra =====
+   A belső lánganimáció állandóan fut ugyanazzal a computed animationnel.
+   Hover/active kizárólag a konténer láthatóságát változtatja.
+*/
+
+/* A láng idővonala soha ne váltson animation-name-et / durationt hover vagy active miatt. */
+.menu-help-tag[data-tag="spicy"] .flame-fx i,
+.menu-help-tag[data-tag="spicy"]:hover .flame-fx i,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx i,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx i {
+  animation-name: spicyLivingFlame !important;
+  animation-timing-function: ease-in-out !important;
+  animation-iteration-count: infinite !important;
+  animation-direction: alternate !important;
+  animation-fill-mode: both !important;
+  animation-play-state: running !important;
+}
+
+/* Minden lángnyelvnek fix időzítés – hoverre/active-ra sem változik. */
+.menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(1) {
+  animation-duration: 2.45s !important;
+  animation-delay: -1.45s !important;
+}
+.menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(2) {
+  animation-duration: 3.05s !important;
+  animation-delay: -.65s !important;
+}
+.menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(3) {
+  animation-duration: 2.65s !important;
+  animation-delay: -1.95s !important;
+}
+.menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(4) {
+  animation-duration: 3.3s !important;
+  animation-delay: -1s !important;
+}
+.menu-help-tag[data-tag="spicy"] .flame-fx i:nth-child(5) {
+  animation-duration: 2.75s !important;
+  animation-delay: -.35s !important;
+}
+
+/* Rejtett / látható állapot. A hover és az aktív állapot pontosan ugyanaz,
+   ezért aktív állapotban hoverre nincs semmilyen state-váltás. */
+.menu-help-tag[data-tag="spicy"] .flame-fx {
+  opacity: 0 !important;
+  transform: translateY(14px) scale(.78,.64) !important;
+  transition:
+    opacity .22s ease,
+    transform .42s cubic-bezier(.22,.61,.36,1),
+    filter .22s ease !important;
+}
+
+.menu-help-tag[data-tag="spicy"]:hover .flame-fx,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"] .flame-fx,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx {
+  opacity: .96 !important;
+  transform: translateY(2px) scale(.94,.86) !important;
+}
+
+/* A 🔥 ikon se restartoljon hover/active váltáskor:
+   az animáció fixen fut, csak a konténer állapota dönti el a vizuális hangsúlyt. */
+.menu-help-tag[data-tag="spicy"] .tag-icon,
+.menu-help-tag[data-tag="spicy"]:hover .tag-icon,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"] .tag-icon,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .tag-icon {
+  animation-name: spicyEmber !important;
+  animation-duration: 2.4s !important;
+  animation-timing-function: ease-in-out !important;
+  animation-iteration-count: infinite !important;
+  animation-direction: normal !important;
+  animation-play-state: running !important;
+}
+
+</style>
+<style>
+
+/* ===== FIX: aktív Csípős effekt egér nélkül is folyamatosan fusson =====
+   Egy régebbi, specifikus :not(:hover) szabály animation:none !important-tal
+   leállította a lángot. Ezt az aktív állapotban célzottan felülírjuk. */
+
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .flame-fx {
+  opacity: .96 !important;
+  transform: translateY(2px) scale(.94,.86) !important;
+  filter: drop-shadow(0 0 7px rgba(255,91,24,.34)) !important;
+}
+
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .flame-fx i {
+  animation-name: spicyLivingFlame !important;
+  animation-timing-function: ease-in-out !important;
+  animation-iteration-count: infinite !important;
+  animation-direction: alternate !important;
+  animation-fill-mode: both !important;
+  animation-play-state: running !important;
+  opacity: .82;
+}
+
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .flame-fx i:nth-child(1) {
+  animation-duration: 2.45s !important; animation-delay: -1.45s !important;
+}
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .flame-fx i:nth-child(2) {
+  animation-duration: 3.05s !important; animation-delay: -.65s !important;
+}
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .flame-fx i:nth-child(3) {
+  animation-duration: 2.65s !important; animation-delay: -1.95s !important;
+}
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .flame-fx i:nth-child(4) {
+  animation-duration: 3.3s !important; animation-delay: -1s !important;
+}
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .flame-fx i:nth-child(5) {
+  animation-duration: 2.75s !important; animation-delay: -.35s !important;
+}
+
+/* Aktív állapotban a 🔥 ikon se álljon le, amikor lekerül róla a kurzor. */
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:not(:hover) .tag-icon {
+  animation: spicyEmber 2.4s ease-in-out infinite !important;
+}
+
+/* Aktív + hover ugyanazt az állapotot tartja, így ráhúzáskor nincs restart. */
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx {
+  opacity: .96 !important;
+  transform: translateY(2px) scale(.94,.86) !important;
+  filter: drop-shadow(0 0 7px rgba(255,91,24,.34)) !important;
+}
+
+</style>
+<style>
+
+/* ===== Csípős – a többi gombbal azonos működés + saját finom világítás =====
+   Az animáció állapotkezeléséhez nem nyúlunk; csak a gomb körüli glow kerül rá.
+*/
+.menu-help-tag[data-tag="spicy"] {
+  transition:
+    box-shadow .28s ease,
+    filter .28s ease,
+    transform .28s ease !important;
+}
+
+/* Hover és aktív állapotban ugyanaz a világítás. */
+.menu-help-tag[data-tag="spicy"]:hover,
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"],
+.menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover {
+  box-shadow:
+    0 0 0 1px rgba(217,120,92,.16),
+    0 5px 16px rgba(217,120,92,.24),
+    0 0 20px rgba(217,120,92,.18) !important;
+}
+
+/* Deaktiváláskor a glow ugyanúgy transitionnel kifut. */
+.menu-help-tag[data-tag="spicy"]:not(:hover)[aria-pressed="false"] {
+  box-shadow: none !important;
+}
+
+</style>
+<style>
+
+/* ===== Gyors jelölések → ételkártya kiemelés ===== */
+.menu-item {
+  transition:
+    opacity .28s ease,
+    transform .28s cubic-bezier(.22,.61,.36,1),
+    border-color .28s ease,
+    box-shadow .28s ease,
+    background-color .28s ease !important;
+}
+
+.menu-board.quick-tags-active .menu-item.quick-tag-muted {
+  opacity: .42;
+  transform: scale(.985);
+}
+
+.menu-board.quick-tags-active .menu-item.quick-tag-hit {
+  opacity: 1;
+  transform: translateY(-2px) scale(1.012);
+  border-color: rgba(200, 214, 122, .72) !important;
+  background:
+    linear-gradient(135deg, rgba(200,214,122,.10), rgba(243,238,223,.035)) !important;
+  box-shadow:
+    0 0 0 1px rgba(200,214,122,.12),
+    0 8px 22px rgba(200,214,122,.13) !important;
+}
+
+.menu-board.quick-tags-active .menu-item.quick-tag-hit .menu-item-badge {
+  box-shadow: 0 0 0 2px rgba(200,214,122,.20);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-item {
+    transition: none !important;
+  }
+}
+
+</style>
+<style>
+
+/* ===== Erősebb, de az eredeti dizájnba illő ételkártya-kijelölés ===== */
+.menu-board.quick-tags-active .menu-item.quick-tag-muted {
+  opacity: .28 !important;
+  transform: scale(.975) !important;
+  filter: saturate(.72) brightness(.88);
+}
+
+.menu-board.quick-tags-active .menu-item.quick-tag-hit {
+  opacity: 1 !important;
+  transform: translateY(-4px) scale(1.025) !important;
+  border-color: rgba(200,214,122,.95) !important;
+  background:
+    linear-gradient(135deg,
+      rgba(200,214,122,.18),
+      rgba(243,238,223,.055) 58%,
+      rgba(217,120,92,.06)
+    ) !important;
+  box-shadow:
+    0 0 0 2px rgba(200,214,122,.22),
+    0 0 22px rgba(200,214,122,.18),
+    0 12px 28px rgba(0,0,0,.22) !important;
+  filter: saturate(1.08) brightness(1.04);
+}
+
+/* Finom belső fény, hogy első pillantásra látszódjon a találat. */
+.menu-board.quick-tags-active .menu-item.quick-tag-hit::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(243,238,223,.10);
+}
+
+</style>
+<style>
+
+/* ===== Gördülékenyebb gyors-jelölés animáció ===== */
+.menu-board .menu-item {
+  will-change: transform, opacity, filter, box-shadow, border-color;
+  transition:
+    opacity .50s cubic-bezier(.22,.61,.36,1),
+    transform .58s cubic-bezier(.16,1,.3,1),
+    filter .50s cubic-bezier(.22,.61,.36,1),
+    border-color .42s ease,
+    box-shadow .58s cubic-bezier(.16,1,.3,1),
+    background-color .48s ease !important;
+}
+
+/* Nem releváns kártyák: lassabban és puhábban húzódnak háttérbe. */
+.menu-board.quick-tags-active .menu-item.quick-tag-muted {
+  opacity: .28 !important;
+  transform: translateY(2px) scale(.975) !important;
+  filter: saturate(.72) brightness(.88);
+}
+
+/* Találat: finom emelkedés, nem hirtelen ugrás. */
+.menu-board.quick-tags-active .menu-item.quick-tag-hit {
+  opacity: 1 !important;
+  transform: translateY(-4px) scale(1.025) !important;
+}
+
+/* A kártya saját animation tulajdonságát nem írjuk felül.
+   A puha "megérkezés" kizárólag transitionnel történik. */
+.menu-board.quick-tags-active .menu-item.quick-tag-hit {
+  opacity: 1 !important;
+  transform: translateY(-4px) scale(1.025) !important;
+  filter: saturate(1.08) brightness(1.04);
+}
+
+/* Kisebb mozgást kérő felhasználóknál nincs extra settle animáció. */
+@media (prefers-reduced-motion: reduce) {
+  .menu-board .menu-item {
+    transition: opacity .15s linear !important;
+  }
+}
+
+</style>
+<style>
+
+/* ===== Láthatóbb, gördülékeny kijelölési animáció =====
+   A kártya saját belépő animation-jét nem írjuk felül.
+   A kiválasztás effektje pseudo-elemen fut. */
+
+.menu-board .menu-item {
+  position: relative;
+  overflow: hidden;
+}
+
+/* A kijelöléskor végigfutó puha fénycsík. */
+.menu-board .menu-item::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -55%;
+  width: 42%;
+  height: 160%;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transform: skewX(-18deg) translateX(0);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(243,238,223,0.02) 18%,
+    rgba(200,214,122,0.18) 48%,
+    rgba(243,238,223,0.10) 62%,
+    transparent 100%
+  );
+}
+
+/* Amikor találat lesz, a fény egyetlen sima sweepet fut végig. */
+.menu-board.quick-tags-active .menu-item.quick-tag-hit::before {
+  animation: quickTagSweep .78s cubic-bezier(.16,1,.3,1) both;
+}
+
+/* A kártya közben nem ugrik, hanem puhán "megérkezik". */
+.menu-board.quick-tags-active .menu-item.quick-tag-hit {
+  opacity: 1 !important;
+  transform: translateY(-4px) scale(1.025) !important;
+  border-color: rgba(200,214,122,.95) !important;
+  box-shadow:
+    0 0 0 2px rgba(200,214,122,.22),
+    0 0 22px rgba(200,214,122,.18),
+    0 12px 28px rgba(0,0,0,.22) !important;
+  filter: saturate(1.08) brightness(1.04);
+}
+
+/* A nem kiválasztottak is lassabban, természetesebben mennek háttérbe. */
+.menu-board.quick-tags-active .menu-item.quick-tag-muted {
+  opacity: .28 !important;
+  transform: translateY(2px) scale(.975) !important;
+  filter: saturate(.72) brightness(.88);
+}
+
+/* Extra simítás a class-váltásokhoz. */
+.menu-board .menu-item {
+  transition:
+    opacity .56s cubic-bezier(.22,.61,.36,1),
+    transform .62s cubic-bezier(.16,1,.3,1),
+    filter .56s cubic-bezier(.22,.61,.36,1),
+    border-color .50s ease,
+    box-shadow .64s cubic-bezier(.16,1,.3,1),
+    background-color .54s ease !important;
+}
+
+@keyframes quickTagSweep {
+  0% {
+    opacity: 0;
+    transform: skewX(-18deg) translateX(0);
+  }
+  14% {
+    opacity: 1;
+  }
+  72% {
+    opacity: .95;
+  }
+  100% {
+    opacity: 0;
+    transform: skewX(-18deg) translateX(390%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-board.quick-tags-active .menu-item.quick-tag-hit::before {
+    animation: none !important;
+  }
+}
+
+</style>
+<style>
+
+/* ===== Első kijelölés: a nem releváns szövegek lassan húzódjanak háttérbe =====
+   Nem kapcsoljuk le őket hirtelen: a teljes kártya és a szövegek külön,
+   hosszabb transitionnel mennek kisebbre / halványabbra. */
+
+.menu-board .menu-item,
+.menu-board .menu-item strong,
+.menu-board .menu-item p,
+.menu-board .menu-item .menu-item-meta,
+.menu-board .menu-item .menu-item-badge,
+.menu-board .menu-item span {
+  transition:
+    opacity .82s cubic-bezier(.22,.61,.36,1),
+    transform .88s cubic-bezier(.16,1,.3,1),
+    filter .82s cubic-bezier(.22,.61,.36,1),
+    color .68s ease !important;
+}
+
+/* A nem találó kártya maga is csak lassan húzódik vissza. */
+.menu-board.quick-tags-active .menu-item.quick-tag-muted {
+  opacity: .46 !important;
+  transform: translateY(1px) scale(.985) !important;
+  filter: saturate(.78) brightness(.91) !important;
+}
+
+/* A benne lévő szövegek külön is puhán kisebbednek.
+   Így nem egyetlen hirtelen "kártyazsugorodásnak" érződik. */
+.menu-board.quick-tags-active .menu-item.quick-tag-muted strong,
+.menu-board.quick-tags-active .menu-item.quick-tag-muted p,
+.menu-board.quick-tags-active .menu-item.quick-tag-muted .menu-item-meta,
+.menu-board.quick-tags-active .menu-item.quick-tag-muted .menu-item-badge,
+.menu-board.quick-tags-active .menu-item.quick-tag-muted span {
+  opacity: .62;
+  transform: scale(.965);
+  transform-origin: left center;
+}
+
+/* A találatok szövege marad teljes méretű. */
+.menu-board.quick-tags-active .menu-item.quick-tag-hit strong,
+.menu-board.quick-tags-active .menu-item.quick-tag-hit p,
+.menu-board.quick-tags-active .menu-item.quick-tag-hit .menu-item-meta,
+.menu-board.quick-tags-active .menu-item.quick-tag-hit .menu-item-badge,
+.menu-board.quick-tags-active .menu-item.quick-tag-hit span {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Kikapcsoláskor ugyanezzel a hosszú transitionnel tér vissza minden. */
+.menu-board:not(.quick-tags-active) .menu-item,
+.menu-board:not(.quick-tags-active) .menu-item strong,
+.menu-board:not(.quick-tags-active) .menu-item p,
+.menu-board:not(.quick-tags-active) .menu-item .menu-item-meta,
+.menu-board:not(.quick-tags-active) .menu-item .menu-item-badge,
+.menu-board:not(.quick-tags-active) .menu-item span {
+  opacity: 1;
+  transform: scale(1);
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-board .menu-item,
+  .menu-board .menu-item strong,
+  .menu-board .menu-item p,
+  .menu-board .menu-item .menu-item-meta,
+  .menu-board .menu-item .menu-item-badge,
+  .menu-board .menu-item span {
+    transition-duration: .15s !important;
+  }
+}
+
+</style>
+<style>
+
+/* ===== Még lassabb kijelölési átmenet ===== */
+.menu-board .menu-item,
+.menu-board .menu-item strong,
+.menu-board .menu-item p,
+.menu-board .menu-item .menu-item-meta,
+.menu-board .menu-item .menu-item-badge,
+.menu-board .menu-item span {
+  transition:
+    opacity 1.55s cubic-bezier(.22,.61,.36,1),
+    transform 1.70s cubic-bezier(.16,1,.3,1),
+    filter 1.55s cubic-bezier(.22,.61,.36,1),
+    color 1.35s ease !important;
+}
+
+</style>
+<style>
+
+/* ===== Extra lassú, nyugodt gyors-jelölés animációk ===== */
+.menu-board .menu-item,
+.menu-board .menu-item strong,
+.menu-board .menu-item p,
+.menu-board .menu-item .menu-item-meta,
+.menu-board .menu-item .menu-item-badge,
+.menu-board .menu-item span {
+  transition:
+    opacity 2.45s cubic-bezier(.22,.61,.36,1),
+    transform 2.65s cubic-bezier(.16,1,.3,1),
+    filter 2.45s cubic-bezier(.22,.61,.36,1),
+    color 2.15s ease,
+    border-color 2.10s ease,
+    box-shadow 2.35s cubic-bezier(.22,.61,.36,1),
+    background-color 2.20s ease !important;
+}
+
+/* A kijelöléskor végigfutó fény is lassabb legyen. */
+.menu-board.quick-tags-active .menu-item.quick-tag-hit::before {
+  animation-duration: 1.65s !important;
+  animation-timing-function: cubic-bezier(.22,.61,.36,1) !important;
+}
+
+</style>
+<style>
+
+/* ===== ÚJ kijelölési koncepció: Focus Reveal =====
+   Nincs zsugorodó szöveg és nincs végigfutó fénycsík.
+   A találatok "élesre fókuszálnak", a többi kártya puhán háttérbe kerül.
+*/
+
+/* Korábbi sweep teljes kikapcsolása. */
+.menu-board .menu-item::before,
+.menu-board.quick-tags-active .menu-item.quick-tag-hit::before {
+  animation: none !important;
+  opacity: 0 !important;
+}
+
+/* Visszaállítjuk a belső szövegek méretét: nem zsugorodnak külön. */
+.menu-board .menu-item strong,
+.menu-board .menu-item p,
+.menu-board .menu-item .menu-item-meta,
+.menu-board .menu-item .menu-item-badge,
+.menu-board .menu-item span,
+.menu-board.quick-tags-active .menu-item.quick-tag-muted strong,
+.menu-board.quick-tags-active .menu-item.quick-tag-muted p,
+.menu-board.quick-tags-active .menu-item.quick-tag-muted .menu-item-meta,
+.menu-board.quick-tags-active .menu-item.quick-tag-muted .menu-item-badge,
+.menu-board.quick-tags-active .menu-item.quick-tag-muted span,
+.menu-board.quick-tags-active .menu-item.quick-tag-hit strong,
+.menu-board.quick-tags-active .menu-item.quick-tag-hit p,
+.menu-board.quick-tags-active .menu-item.quick-tag-hit .menu-item-meta,
+.menu-board.quick-tags-active .menu-item.quick-tag-hit .menu-item-badge,
+.menu-board.quick-tags-active .menu-item.quick-tag-hit span {
+  transform: none !important;
+  opacity: 1;
+}
+
+/* Az egész kártya mozog nagyon finoman, nem a szöveg. */
+.menu-board .menu-item {
+  transition:
+    opacity .78s cubic-bezier(.22,.61,.36,1),
+    transform .82s cubic-bezier(.16,1,.3,1),
+    filter .82s cubic-bezier(.22,.61,.36,1),
+    border-color .72s ease,
+    box-shadow .82s cubic-bezier(.16,1,.3,1),
+    background-color .72s ease !important;
+}
+
+/* Nem releváns: hátrébb "fókuszál", de olvasható marad. */
+.menu-board.quick-tags-active .menu-item.quick-tag-muted {
+  opacity: .36 !important;
+  transform: translateY(2px) scale(.992) !important;
+  filter: grayscale(.28) saturate(.62) brightness(.82) blur(.35px) !important;
+  box-shadow: none !important;
+}
+
+/* Találat: finom fókusz + stabil kiemelés. */
+.menu-board.quick-tags-active .menu-item.quick-tag-hit {
+  opacity: 1 !important;
+  transform: translateY(-3px) scale(1.012) !important;
+  filter: grayscale(0) saturate(1.08) brightness(1.045) blur(0) !important;
+  border-color: rgba(200,214,122,.92) !important;
+  background:
+    linear-gradient(135deg,
+      rgba(200,214,122,.14),
+      rgba(243,238,223,.035) 62%,
+      rgba(217,120,92,.045)
+    ) !important;
+  box-shadow:
+    0 0 0 1px rgba(200,214,122,.28),
+    0 10px 26px rgba(0,0,0,.20) !important;
+}
+
+/* Egy rövid, organikus "keret-megérkezés" a kártya belsejében.
+   Ez nem fénycsík: egyszerűen finoman kirajzolódik a kijelölés. */
+.menu-board .menu-item::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(.975);
+  transition:
+    opacity .72s ease,
+    transform .82s cubic-bezier(.16,1,.3,1),
+    border-color .72s ease !important;
+}
+
+.menu-board.quick-tags-active .menu-item.quick-tag-hit::after {
+  opacity: .62;
+  transform: scale(1);
+  border-color: rgba(200,214,122,.48);
+}
+
+/* Minden visszaállás ugyanilyen puha. */
+.menu-board:not(.quick-tags-active) .menu-item {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-board .menu-item,
+  .menu-board .menu-item::after {
+    transition-duration: .15s !important;
+  }
+}
+
+</style>
+<style>
+
+/* ===== Focus Reveal finomítás: a szöveg mindig maradjon éles =====
+   A blur-t teljesen kivesszük. A háttérbe kerülő kártyák csak
+   fényerővel, telítettséggel és opacityvel húzódnak hátrébb. */
+.menu-board.quick-tags-active .menu-item.quick-tag-muted {
+  opacity: .42 !important;
+  transform: translateY(2px) scale(.992) !important;
+  filter: grayscale(.18) saturate(.68) brightness(.84) !important;
+  box-shadow: none !important;
+}
+
+.menu-board.quick-tags-active .menu-item.quick-tag-hit {
+  filter: grayscale(0) saturate(1.08) brightness(1.045) !important;
+}
+
+/* A szöveges elemekre semmilyen blur/filter ne öröklődjön külön szabályból. */
+.menu-board .menu-item strong,
+.menu-board .menu-item p,
+.menu-board .menu-item span,
+.menu-board .menu-item .menu-item-meta,
+.menu-board .menu-item .menu-item-badge {
+  filter: none !important;
+}
+
+</style>
+<style>
+
+/* ===== CRISP FOCUS FIX =====
+   A transform + filter a teljes kártyát új kompozit rétegre rakta,
+   ezért a betűk kijelölés után enyhén elmosódhattak.
+   A kiemelés most kizárólag kerettel, háttérrel és árnyékkal történik. */
+
+.menu-board.quick-tags-active .menu-item.quick-tag-hit {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  border-color: rgba(200,214,122,.92) !important;
+  background:
+    linear-gradient(135deg,
+      rgba(200,214,122,.14),
+      rgba(243,238,223,.035) 62%,
+      rgba(217,120,92,.045)
+    ) !important;
+  box-shadow:
+    0 0 0 1px rgba(200,214,122,.28),
+    0 10px 26px rgba(0,0,0,.20) !important;
+}
+
+/* A nem releváns kártyák sem kapnak scale/filter effektet,
+   így azok szövege is pixeléles marad. */
+.menu-board.quick-tags-active .menu-item.quick-tag-muted {
+  opacity: .42 !important;
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+/* A kártya alapállapotában se kérünk külön GPU-s transform réteget. */
+.menu-board .menu-item {
+  will-change: opacity, box-shadow, border-color, background-color;
+}
+
+/* A belső keret marad a Focus Reveal része, de nem skálázódik. */
+.menu-board .menu-item::after {
+  transform: none !important;
+  transition:
+    opacity .72s ease,
+    border-color .72s ease !important;
+}
+
+.menu-board.quick-tags-active .menu-item.quick-tag-hit::after {
+  opacity: .62;
+  transform: none !important;
+  border-color: rgba(200,214,122,.48);
+}
+
+</style>
+<style>
+
+/* ===== PSEUDO-ONLY FOCUS =====
+   A kijelölésnél sem a kártyát, sem a szöveget tartalmazó elemeket
+   nem transformáljuk / filterezzük. A vizuális animáció kizárólag
+   pseudo-elemekkel történik, így a szövegrenderelés éles marad. */
+
+.menu-board .menu-item {
+  position: relative;
+  isolation: isolate;
+  transform: none !important;
+  filter: none !important;
+  will-change: auto !important;
+  transition:
+    opacity .78s cubic-bezier(.22,.61,.36,1),
+    border-color .72s ease,
+    background-color .72s ease !important;
+}
+
+/* A tartalom mindig a pseudo overlay fölött marad. */
+.menu-board .menu-item > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Alap kiemelő réteg. */
+.menu-board .menu-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transform: none !important;
+  background:
+    linear-gradient(135deg,
+      rgba(200,214,122,.00),
+      rgba(200,214,122,.00)
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(200,214,122,0),
+    0 0 0 rgba(200,214,122,0);
+  transition:
+    opacity .90s cubic-bezier(.22,.61,.36,1),
+    background .90s ease,
+    box-shadow .95s cubic-bezier(.16,1,.3,1) !important;
+}
+
+/* Találat: csak az overlay épül fel. */
+.menu-board.quick-tags-active .menu-item.quick-tag-hit {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  border-color: rgba(200,214,122,.82) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.menu-board.quick-tags-active .menu-item.quick-tag-hit::after {
+  opacity: 1;
+  background:
+    linear-gradient(135deg,
+      rgba(200,214,122,.14),
+      rgba(243,238,223,.025) 62%,
+      rgba(217,120,92,.035)
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(200,214,122,.34),
+    0 8px 24px rgba(0,0,0,.16),
+    0 0 18px rgba(200,214,122,.10);
+}
+
+/* Nem találat: csak opacity, nincs filter/scale. */
+.menu-board.quick-tags-active .menu-item.quick-tag-muted {
+  opacity: .40 !important;
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Szövegelemeket biztosan nem módosítunk. */
+.menu-board .menu-item strong,
+.menu-board .menu-item p,
+.menu-board .menu-item span,
+.menu-board .menu-item .menu-item-meta,
+.menu-board .menu-item .menu-item-badge {
+  transform: none !important;
+  filter: none !important;
+  text-shadow: none;
+  backface-visibility: visible;
+  -webkit-font-smoothing: auto;
+}
+
+/* A régi sweep/pseudo animációk maradjanak kikapcsolva. */
+.menu-board .menu-item::before {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+}
+
+/* Visszaálláskor is csak opacity/overlay változzon. */
+.menu-board:not(.quick-tags-active) .menu-item {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-board .menu-item,
+  .menu-board .menu-item::after {
+    transition-duration: .15s !important;
+  }
+}
+
+</style>
+<style>
+
+/* ===== Gyors jelölések – designer címblokk ===== */
+.menu-help {
+  position: relative;
+  overflow: visible;
+}
+
+/* Bal oldali cím kap egy kis "menü matrica" hangulatot. */
+.menu-help-title {
+  position: relative;
+  min-width: 205px;
+  padding: 12px 18px 17px 18px;
+  border-left: 2px solid rgba(200,214,122,.82);
+  border-radius: 14px 0 0 14px;
+  background:
+    linear-gradient(90deg, rgba(200,214,122,.075), transparent 78%);
+}
+
+/* Apró felső felirat, hogy rétegezettebb legyen a design. */
+.menu-help-title::before {
+  content: "FILTER";
+  display: block;
+  margin-bottom: 5px;
+  color: rgba(200,214,122,.78);
+  font-size: .52rem;
+  font-weight: 950;
+  letter-spacing: .22em;
+  line-height: 1;
+}
+
+/* A fő felirat hangsúlyosabb, de marad a site tipográfiájában. */
+.menu-help-title strong {
+  position: relative;
+  display: inline-block;
+  color: var(--cream);
+  font-size: .94rem;
+  font-weight: 950;
+  letter-spacing: -.015em;
+  line-height: 1.05;
+  text-shadow: 0 1px 0 rgba(0,0,0,.18);
+}
+
+/* Kis sárga "pont" a cím végén. */
+.menu-help-title strong::after {
+  content: "";
+  position: absolute;
+  right: -13px;
+  top: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--yellow);
+  box-shadow: 0 0 0 4px rgba(200,214,122,.08);
+}
+
+/* A régi egyszerű vonal helyett kézzel rajzolt dupla ecsetvonás. */
+.menu-help-scribble {
+  position: absolute;
+  left: 18px;
+  bottom: 7px;
+  width: 122px;
+  height: 8px;
+  border: 0;
+  border-radius: 0;
+  transform: rotate(-2deg);
+  opacity: 1;
+  background:
+    linear-gradient(
+      173deg,
+      transparent 0 35%,
+      rgba(200,214,122,.95) 36% 52%,
+      transparent 53% 100%
+    );
+  clip-path: polygon(
+    0 57%, 7% 45%, 16% 51%, 27% 31%, 39% 43%,
+    51% 24%, 64% 37%, 77% 20%, 89% 34%, 100% 27%,
+    98% 60%, 88% 57%, 76% 72%, 62% 61%, 49% 78%,
+    35% 65%, 22% 81%, 10% 68%, 0 75%
+  );
+}
+
+.menu-help-scribble::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 5px;
+  width: 78px;
+  height: 2px;
+  border: 0;
+  background: rgba(217,120,92,.75);
+  transform: rotate(-3deg);
+  border-radius: 999px;
+}
+
+/* Apró dekor pöttyök, hogy kevésbé üres legyen a cím környéke. */
+.menu-help-title::after {
+  content: "•••";
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  color: rgba(243,238,223,.20);
+  font-size: .65rem;
+  letter-spacing: .18em;
+}
+
+/* Mobilon ne foglaljon indokolatlanul sok helyet. */
+@media (max-width: 760px) {
+  .menu-help-title {
+    min-width: 0;
+    width: 100%;
+    padding-right: 14px;
+  }
+
+  .menu-help-title::after {
+    right: 4px;
+  }
+}
+
+</style>
+<style>
+
+/* Gyors jelölések – FILTER és három pont eltávolítva */
+.menu-help-title::before,
+.menu-help-title::after {
+  content: none !important;
+  display: none !important;
+}
+
+.menu-help-title {
+  padding-top: 12px;
+}
+
+</style>
+</head>
   <body>
     <div class="cursor"></div>
     <div class="noise"></div>
@@ -3482,8 +6039,8 @@
           <div class="hero-actions">
             <a class="btn btn-primary hoverable" href="#menu"
               >Nézd meg az étlapot <span>↗</span></a
-            ><a class="btn btn-link hoverable" href="#story"
-              ><span class="story-label">A sztorink</span
+            ><a class="btn btn-link hoverable" href="#order"
+              ><span class="story-label">Rendelj most</span
               ><span class="story-arrow" aria-hidden="true">↘</span></a
             >
           </div>
@@ -3511,7 +6068,7 @@
           >
         </div>
       </div>
-      <section class="menu" id="menu">
+<section class="menu" id="menu">
         <div class="featured-showcase">
           <span class="featured-shape featured-shape-a" aria-hidden="true"></span>
           <span class="featured-shape featured-shape-b" aria-hidden="true"></span>
@@ -3653,48 +6210,98 @@
                 <button class="menu-filter hoverable" type="button" role="tab" aria-selected="false" data-menu-filter="dessert"><span>05</span><strong>Desszert</strong><small>4 tétel</small></button>
                 <button class="menu-filter hoverable" type="button" role="tab" aria-selected="false" data-menu-filter="drink"><span>06</span><strong>Italok</strong><small>6 tétel</small></button>
               </div>
+
+            <div class="menu-help reveal" aria-label="Étlap jelölések">
+              <div class="menu-help-title">
+                <strong>Gyors jelölések</strong>
+                <span class="menu-help-scribble" aria-hidden="true"></span>
+              </div>
+
+              <div class="menu-help-tags" aria-label="Választható gyors jelölések">
+                <button class="menu-help-tag hoverable" type="button" data-tag="all" aria-pressed="true">
+                  <span class="tag-label">Összes</span>
+                </button>
+
+                <button class="menu-help-tag hoverable" type="button" data-tag="spicy" aria-pressed="false">
+                  <span class="tag-icon" aria-hidden="true">🔥</span>
+                  <span class="tag-label">Csípős</span>
+                  <span class="tag-fx flame-fx" aria-hidden="true">
+                    <i></i><i></i><i></i><i></i><i></i>
+                  </span>
+                </button>
+
+                <button class="menu-help-tag hoverable" type="button" data-tag="vega" aria-pressed="false">
+                  <span class="tag-icon" aria-hidden="true">🌱</span>
+                  <span class="tag-label">Vega</span>
+                  <span class="tag-fx leaf-fx" aria-hidden="true">
+                    <i class="leaf leaf-1"></i>
+                    <i class="leaf leaf-2"></i>
+                    <i class="leaf leaf-3"></i>
+                    <i class="leaf leaf-4"></i>
+                    <i class="leaf leaf-5"></i>
+                  </span>
+                </button>
+
+                <button class="menu-help-tag hoverable" type="button" data-tag="popular" aria-pressed="false">
+                  <span class="tag-icon" aria-hidden="true">★</span>
+                  <span class="tag-label">Közönségkedvenc</span>
+                  <span class="tag-fx popular-fx" aria-hidden="true">
+                    <i></i><i></i><i></i>
+                  </span>
+                </button>
+
+                <button class="menu-help-tag hoverable" type="button" data-tag="extra" aria-pressed="false">
+                  <span class="tag-icon" aria-hidden="true">＋</span>
+                  <span class="tag-label">Extrázható</span>
+                  <span class="tag-fx plus-fx" aria-hidden="true">
+                    <i>+</i><i>+</i><i>+</i><i>+</i><i>+</i>
+                  </span>
+                </button>
+              </div>
+            </div>
+
               <div class="menu-board">
                 <section class="menu-category" data-category="burger">
                   <div class="menu-category-head"><span class="menu-category-no">01</span><h3>Smash burgerek</h3><span class="menu-category-count">8 tétel</span></div>
                   <div class="menu-items">
-                    <article class="menu-item" style="--i:1"><div class="menu-item-main"><span class="menu-item-badge">Klasszik</span><strong>Single Crush</strong><small>Marha, cheddar, uborka, hagyma, crush szósz</small></div><span class="menu-item-price">2 990 Ft</span></article>
-                    <article class="menu-item" style="--i:2"><div class="menu-item-main"><span class="menu-item-badge">Bestseller</span><strong>Double Trouble</strong><small>2× marha, cheddar, hagymalekvár, crush szósz</small></div><span class="menu-item-price">3 890 Ft</span></article>
-                    <article class="menu-item" style="--i:3"><div class="menu-item-main"><span class="menu-item-badge">Crunch</span><strong>Cluck Norris</strong><small>Ropogós csirke, coleslaw, uborka, BBQ</small></div><span class="menu-item-price">3 590 Ft</span></article>
-                    <article class="menu-item" style="--i:4"><div class="menu-item-main"><span class="menu-item-badge">Füstös</span><strong>Smokey Bandit</strong><small>Marha, füstölt cheddar, bacon, jalapeño</small></div><span class="menu-item-price">3 990 Ft</span></article>
-                    <article class="menu-item" style="--i:5"><div class="menu-item-main"><span class="menu-item-badge">Új</span><strong>Big Dill Energy</strong><small>Dupla marha, cheddar, extra savanyú uborka, kapros mayo</small></div><span class="menu-item-price">3 790 Ft</span></article>
-                    <article class="menu-item" style="--i:6"><div class="menu-item-main"><span class="menu-item-badge">Prémium</span><strong>Truffle Shuffle</strong><small>Marha, provolone, gomba, szarvasgombás mayo</small></div><span class="menu-item-price">4 190 Ft</span></article>
-                    <article class="menu-item" style="--i:7"><div class="menu-item-main"><span class="menu-item-badge">Csípős</span><strong>Firestarter</strong><small>Marha, pepper jack, jalapeño, chili crunch, hot sauce</small></div><span class="menu-item-price">3 990 Ft</span></article>
-                    <article class="menu-item" style="--i:8"><div class="menu-item-main"><span class="menu-item-badge">Vega</span><strong>Plant Smasher</strong><small>Növényi pogácsa, cheddar, saláta, uborka, crush szósz</small></div><span class="menu-item-price">3 690 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="extra" style="--i:1"><div class="menu-item-main"><span class="menu-item-badge">Klasszik</span><strong>Single Crush</strong><small>Marha, cheddar, uborka, hagyma, crush szósz</small></div><span class="menu-item-price">2 990 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="popular extra" style="--i:2"><div class="menu-item-main"><span class="menu-item-badge">Bestseller</span><strong>Double Trouble</strong><small>2× marha, cheddar, hagymalekvár, crush szósz</small></div><span class="menu-item-price">3 890 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="extra" style="--i:3"><div class="menu-item-main"><span class="menu-item-badge">Crunch</span><strong>Cluck Norris</strong><small>Ropogós csirke, coleslaw, uborka, BBQ</small></div><span class="menu-item-price">3 590 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="extra" style="--i:4"><div class="menu-item-main"><span class="menu-item-badge">Füstös</span><strong>Smokey Bandit</strong><small>Marha, füstölt cheddar, bacon, jalapeño</small></div><span class="menu-item-price">3 990 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="extra" style="--i:5"><div class="menu-item-main"><span class="menu-item-badge">Új</span><strong>Big Dill Energy</strong><small>Dupla marha, cheddar, extra savanyú uborka, kapros mayo</small></div><span class="menu-item-price">3 790 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="extra" style="--i:6"><div class="menu-item-main"><span class="menu-item-badge">Prémium</span><strong>Truffle Shuffle</strong><small>Marha, provolone, gomba, szarvasgombás mayo</small></div><span class="menu-item-price">4 190 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="spicy extra" style="--i:7"><div class="menu-item-main"><span class="menu-item-badge">Csípős</span><strong>Firestarter</strong><small>Marha, pepper jack, jalapeño, chili crunch, hot sauce</small></div><span class="menu-item-price">3 990 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="vega extra" style="--i:8"><div class="menu-item-main"><span class="menu-item-badge">Vega</span><strong>Plant Smasher</strong><small>Növényi pogácsa, cheddar, saláta, uborka, crush szósz</small></div><span class="menu-item-price">3 690 Ft</span></article>
                   </div>
                 </section>
                 <section class="menu-category" data-category="pizza">
                   <div class="menu-category-head"><span class="menu-category-no">02</span><h3>Nápolyi pizzák</h3><span class="menu-category-count">8 tétel</span></div>
                   <div class="menu-items">
-                    <article class="menu-item" style="--i:9"><div class="menu-item-main"><span class="menu-item-badge">Klasszik</span><strong>Holy Margherita</strong><small>San Marzano, fior di latte, parmezán, bazsalikom</small></div><span class="menu-item-price">3 290 Ft</span></article>
-                    <article class="menu-item" style="--i:10"><div class="menu-item-main"><span class="menu-item-badge">Csípős</span><strong>Hot Mess</strong><small>Mozzarella, pepperoni, chili méz</small></div><span class="menu-item-price">3 690 Ft</span></article>
-                    <article class="menu-item" style="--i:11"><div class="menu-item-main"><span class="menu-item-badge">Vega</span><strong>Shroom Boom</strong><small>Erdei gomba, fokhagymakrém, rukkola</small></div><span class="menu-item-price">3 490 Ft</span></article>
-                    <article class="menu-item" style="--i:0"><div class="menu-item-main"><span class="menu-item-badge">Zöld</span><strong>Green Machine</strong><small>Pisztáciapesztó, cukkini, feta, citrom</small></div><span class="menu-item-price">3 590 Ft</span></article>
-                    <article class="menu-item" style="--i:1"><div class="menu-item-main"><span class="menu-item-badge">Népszerű</span><strong>Salami Drama</strong><small>San Marzano, mozzarella, csípős szalámi, pecorino</small></div><span class="menu-item-price">3 790 Ft</span></article>
-                    <article class="menu-item" style="--i:2"><div class="menu-item-main"><span class="menu-item-badge">Krémes</span><strong>Morty & Ricotta</strong><small>Mortadella, ricotta, pisztácia, citromhéj</small></div><span class="menu-item-price">3 990 Ft</span></article>
-                    <article class="menu-item" style="--i:3"><div class="menu-item-main"><span class="menu-item-badge">4 sajt</span><strong>Cheesy Does It</strong><small>Fior di latte, gorgonzola, taleggio, parmezán</small></div><span class="menu-item-price">3 690 Ft</span></article>
-                    <article class="menu-item" style="--i:4"><div class="menu-item-main"><span class="menu-item-badge">Közönségkedvenc</span><strong>Ham Solo</strong><small>Sonka, mozzarella, gomba, olíva, oregano</small></div><span class="menu-item-price">3 890 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="vega extra" style="--i:9"><div class="menu-item-main"><span class="menu-item-badge">Klasszik</span><strong>Holy Margherita</strong><small>San Marzano, fior di latte, parmezán, bazsalikom</small></div><span class="menu-item-price">3 290 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="spicy popular extra" style="--i:10"><div class="menu-item-main"><span class="menu-item-badge">Csípős</span><strong>Hot Mess</strong><small>Mozzarella, pepperoni, chili méz</small></div><span class="menu-item-price">3 690 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="vega extra" style="--i:11"><div class="menu-item-main"><span class="menu-item-badge">Vega</span><strong>Shroom Boom</strong><small>Erdei gomba, fokhagymakrém, rukkola</small></div><span class="menu-item-price">3 490 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="vega extra" style="--i:0"><div class="menu-item-main"><span class="menu-item-badge">Zöld</span><strong>Green Machine</strong><small>Pisztáciapesztó, cukkini, feta, citrom</small></div><span class="menu-item-price">3 590 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="spicy popular extra" style="--i:1"><div class="menu-item-main"><span class="menu-item-badge">Népszerű</span><strong>Salami Drama</strong><small>San Marzano, mozzarella, csípős szalámi, pecorino</small></div><span class="menu-item-price">3 790 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="extra" style="--i:2"><div class="menu-item-main"><span class="menu-item-badge">Krémes</span><strong>Morty & Ricotta</strong><small>Mortadella, ricotta, pisztácia, citromhéj</small></div><span class="menu-item-price">3 990 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="vega extra" style="--i:3"><div class="menu-item-main"><span class="menu-item-badge">4 sajt</span><strong>Cheesy Does It</strong><small>Fior di latte, gorgonzola, taleggio, parmezán</small></div><span class="menu-item-price">3 690 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="popular extra" style="--i:4"><div class="menu-item-main"><span class="menu-item-badge">Közönségkedvenc</span><strong>Ham Solo</strong><small>Sonka, mozzarella, gomba, olíva, oregano</small></div><span class="menu-item-price">3 890 Ft</span></article>
                   </div>
                 </section>
                 <section class="menu-category" data-category="side">
                   <div class="menu-category-head"><span class="menu-category-no">03</span><h3>Fries & sideok</h3><span class="menu-category-count">5 tétel</span></div>
                   <div class="menu-items">
-                    <article class="menu-item" style="--i:5"><div class="menu-item-main"><span class="menu-item-badge">Klasszik</span><strong>Crush Fries</strong><small>Ropogós burgonya, házi fűszersó</small></div><span class="menu-item-price">1 290 Ft</span></article>
-                    <article class="menu-item" style="--i:6"><div class="menu-item-main"><span class="menu-item-badge">Loaded</span><strong>Loaded Fries</strong><small>Cheddar, bacon, jalapeño, újhagyma</small></div><span class="menu-item-price">1 890 Ft</span></article>
-                    <article class="menu-item" style="--i:7"><div class="menu-item-main"><span class="menu-item-badge">Sajtos</span><strong>Parmesan Fries</strong><small>Parmezán, fokhagyma, petrezselyem</small></div><span class="menu-item-price">1 690 Ft</span></article>
-                    <article class="menu-item" style="--i:8"><div class="menu-item-main"><span class="menu-item-badge">Crunch</span><strong>Onion Chaos</strong><small>Ropogós hagymakarika, füstös dip</small></div><span class="menu-item-price">1 590 Ft</span></article>
-                    <article class="menu-item" style="--i:9"><div class="menu-item-main"><span class="menu-item-badge">Friss</span><strong>Slaw Me Down</strong><small>Káposzta, répa, lime, könnyű mayo</small></div><span class="menu-item-price">990 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="vega" style="--i:5"><div class="menu-item-main"><span class="menu-item-badge">Klasszik</span><strong>Crush Fries</strong><small>Ropogós burgonya, házi fűszersó</small></div><span class="menu-item-price">1 290 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="spicy extra" style="--i:6"><div class="menu-item-main"><span class="menu-item-badge">Loaded</span><strong>Loaded Fries</strong><small>Cheddar, bacon, jalapeño, újhagyma</small></div><span class="menu-item-price">1 890 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="vega" style="--i:7"><div class="menu-item-main"><span class="menu-item-badge">Sajtos</span><strong>Parmesan Fries</strong><small>Parmezán, fokhagyma, petrezselyem</small></div><span class="menu-item-price">1 690 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="vega" style="--i:8"><div class="menu-item-main"><span class="menu-item-badge">Crunch</span><strong>Onion Chaos</strong><small>Ropogós hagymakarika, füstös dip</small></div><span class="menu-item-price">1 590 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="vega" style="--i:9"><div class="menu-item-main"><span class="menu-item-badge">Friss</span><strong>Slaw Me Down</strong><small>Káposzta, répa, lime, könnyű mayo</small></div><span class="menu-item-price">990 Ft</span></article>
                   </div>
                 </section>
                 <section class="menu-category" data-category="sauce">
                   <div class="menu-category-head"><span class="menu-category-no">04</span><h3>Szószok</h3><span class="menu-category-count">4 tétel</span></div>
                   <div class="menu-items">
                     <article class="menu-item" style="--i:10"><div class="menu-item-main"><span class="menu-item-badge">Házi</span><strong>Crush szósz</strong><small>Krémes, savanykás, enyhén füstös</small></div><span class="menu-item-price">390 Ft</span></article>
-                    <article class="menu-item" style="--i:11"><div class="menu-item-main"><span class="menu-item-badge">Csípős</span><strong>Hot Honey</strong><small>Chili, méz, ecet — pizza mellé veszélyes</small></div><span class="menu-item-price">450 Ft</span></article>
+                    <article class="menu-item" data-quick-tags="spicy" style="--i:11"><div class="menu-item-main"><span class="menu-item-badge">Csípős</span><strong>Hot Honey</strong><small>Chili, méz, ecet — pizza mellé veszélyes</small></div><span class="menu-item-price">450 Ft</span></article>
                     <article class="menu-item" style="--i:0"><div class="menu-item-main"><span class="menu-item-badge">Krémes</span><strong>Garlic Cloud</strong><small>Sült fokhagyma, citrom, mayo</small></div><span class="menu-item-price">390 Ft</span></article>
                     <article class="menu-item" style="--i:1"><div class="menu-item-main"><span class="menu-item-badge">Füstös</span><strong>BBQ After Dark</strong><small>Füstös-paradicsomos, melaszos BBQ</small></div><span class="menu-item-price">390 Ft</span></article>
                   </div>
@@ -3956,7 +6563,62 @@
       });
 
 
-      // Étlap V2: egyszerre pontosan egy kategória látszik.
+
+      // Gyors jelölések: kattintható / többes kijelölés.
+      // Ezek jelenleg vizuális jelölések; a választás állapotát egyértelműen mutatják,
+      // és később egyszerűen ráköthetők valódi étel-szűrésre is.
+      const quickTagButtons = [...document.querySelectorAll(".menu-help-tag")];
+      const allQuickTag = quickTagButtons.find((button) => button.dataset.tag === "all");
+
+      function syncQuickTags() {
+        const selected = quickTagButtons.filter(
+          (button) => button.dataset.tag !== "all" && button.getAttribute("aria-pressed") === "true"
+        );
+
+        if (allQuickTag) {
+          allQuickTag.setAttribute("aria-pressed", String(selected.length === 0));
+        }
+
+        const selectedTags = selected.map((button) => button.dataset.tag);
+        const menuBoard = document.querySelector(".menu-board");
+        const menuItems = [...document.querySelectorAll(".menu-board .menu-item")];
+
+        if (menuBoard) {
+          menuBoard.classList.toggle("quick-tags-active", selectedTags.length > 0);
+        }
+
+        menuItems.forEach((item) => {
+          const itemTags = (item.dataset.quickTags || "").split(/\s+/).filter(Boolean);
+
+          // Több kijelölésnél elég, ha a fogás legalább egy aktív címkéhez tartozik.
+          const isHit =
+            selectedTags.length > 0 &&
+            selectedTags.some((tag) => itemTags.includes(tag));
+
+          item.classList.toggle("quick-tag-hit", isHit);
+          item.classList.toggle("quick-tag-muted", selectedTags.length > 0 && !isHit);
+        });
+      }
+
+      quickTagButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          if (button.dataset.tag === "all") {
+            quickTagButtons.forEach((item) => {
+              item.setAttribute("aria-pressed", String(item.dataset.tag === "all"));
+            });
+            syncQuickTags();
+            return;
+          }
+
+          const nextState = button.getAttribute("aria-pressed") !== "true";
+          button.setAttribute("aria-pressed", String(nextState));
+          syncQuickTags();
+        });
+      });
+
+      syncQuickTags();
+
+            // Étlap V2: egyszerre pontosan egy kategória látszik.
       // Így nagy maradhat a kínálat anélkül, hogy hosszú katalógussá válna az oldal.
       const menuFilters = [...document.querySelectorAll(".menu-filter")];
       const menuCategories = [...document.querySelectorAll(".menu-category")];
@@ -4135,6 +6797,25 @@
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && chatShell.classList.contains("open")) setChatOpen(false);
       });
+
+      // A lebegő chat gomb ne takarja ki a lap alján lévő elemeket.
+      const pageFooter = document.querySelector("body > footer");
+
+      function keepChatAboveFooter() {
+        if (!pageFooter || !chatLauncher) return;
+
+        const footerRect = pageFooter.getBoundingClientRect();
+        const overlap = Math.max(0, window.innerHeight - footerRect.top);
+
+        document.documentElement.style.setProperty(
+          "--chat-footer-offset",
+          `${overlap}px`
+        );
+      }
+
+      window.addEventListener("scroll", keepChatAboveFooter, { passive: true });
+      window.addEventListener("resize", keepChatAboveFooter);
+      keepChatAboveFooter();
 
 
     </script>
