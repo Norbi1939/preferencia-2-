@@ -6005,6 +6005,564 @@
 }
 
 </style>
+
+<style>
+  /* Játékos pizza/burger mikroanimációk a közösségi + Wolt gombokra. */
+  .socials {
+    align-items: center;
+    gap: 14px;
+    overflow: visible;
+  }
+
+  .socials .food-social {
+    --food-accent: var(--yellow);
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 92px;
+    padding: 11px 16px;
+    border: 1px solid rgba(243, 238, 223, 0.2);
+    border-radius: 999px;
+    background: rgba(243, 238, 223, 0.045);
+    color: var(--cream);
+    font-weight: 800;
+    letter-spacing: .03em;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+    transform-origin: 50% 80%;
+    overflow: visible;
+    transition:
+      color .35s var(--ease),
+      background .35s var(--ease),
+      border-color .35s var(--ease),
+      box-shadow .35s var(--ease),
+      transform .35s cubic-bezier(.2,.9,.25,1.35);
+  }
+
+  .socials .food-social::before,
+  .socials .food-social::after {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    filter: drop-shadow(0 6px 5px rgba(0,0,0,.2));
+    transition:
+      opacity .2s ease,
+      transform .5s cubic-bezier(.2,.9,.2,1.35);
+  }
+
+  .socials .food-pizza::before { content: "🍕"; left: -6px; top: 50%; font-size: 1.65rem; transform: translate(12px,-50%) rotate(-32deg) scale(.25); }
+  .socials .food-pizza::after  { content: "🧀"; right: 1px; top: -4px; font-size: 1.1rem; transform: translate(-10px,10px) rotate(18deg) scale(.2); }
+
+  .socials .food-burger::before { content: "🍔"; left: -7px; top: 50%; font-size: 1.65rem; transform: translate(14px,-50%) rotate(28deg) scale(.25); }
+  .socials .food-burger::after  { content: "🥬"; right: 2px; top: -5px; font-size: 1.05rem; transform: translate(-11px,10px) rotate(-22deg) scale(.2); }
+
+  .socials .food-combo::before { content: "🍕"; left: -7px; top: 50%; font-size: 1.45rem; transform: translate(12px,-50%) rotate(-26deg) scale(.25); }
+  .socials .food-combo::after  { content: "🍔"; right: -7px; top: 50%; font-size: 1.45rem; transform: translate(-12px,-50%) rotate(26deg) scale(.25); }
+
+  .socials .food-pizza { --food-accent: var(--red); }
+  .socials .food-burger { --food-accent: var(--yellow); }
+  .socials .food-combo { --food-accent: var(--cream); }
+
+  .socials .food-social:hover {
+    color: var(--ink);
+    background: var(--food-accent);
+    border-color: var(--food-accent);
+    box-shadow: 0 7px 0 rgba(0,0,0,.3);
+    transform: translateY(-7px) rotate(-2deg) scale(1.05);
+    animation: food-squish .55s cubic-bezier(.2,.85,.25,1.25) both;
+  }
+
+  .socials .food-burger:hover { transform: translateY(-7px) rotate(2deg) scale(1.05); }
+  .socials .food-combo:hover { transform: translateY(-7px) rotate(-1deg) scale(1.05); }
+
+  .socials .food-social:hover::before,
+  .socials .food-social:hover::after { opacity: 1; }
+
+  .socials .food-pizza:hover::before { transform: translate(-19px,-68%) rotate(-17deg) scale(1); animation: pizza-float .8s ease-in-out infinite alternate; }
+  .socials .food-pizza:hover::after  { transform: translate(14px,-12px) rotate(14deg) scale(1); animation: topping-pop .65s ease-in-out infinite alternate; }
+
+  .socials .food-burger:hover::before { transform: translate(-19px,-64%) rotate(12deg) scale(1); animation: burger-bounce .7s ease-in-out infinite alternate; }
+  .socials .food-burger:hover::after  { transform: translate(14px,-13px) rotate(-13deg) scale(1); animation: topping-pop .6s .08s ease-in-out infinite alternate; }
+
+  .socials .food-combo:hover::before { transform: translate(-18px,-66%) rotate(-12deg) scale(1); animation: pizza-float .75s ease-in-out infinite alternate; }
+  .socials .food-combo:hover::after  { transform: translate(18px,-62%) rotate(10deg) scale(1); animation: burger-bounce .72s .06s ease-in-out infinite alternate; }
+
+  /* A rendelési Wolt gombnál egy mini pizza „kigurul”, a nyíl pedig megpördül. */
+  .order-choice.wolt-food-btn {
+    position: relative;
+    isolation: isolate;
+    overflow: visible;
+  }
+
+  .order-choice.wolt-food-btn::before {
+    content: "🍕";
+    position: absolute;
+    z-index: 3;
+    right: 55px;
+    top: 50%;
+    font-size: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(18px,-50%) rotate(-70deg) scale(.25);
+    transition: opacity .2s ease, transform .55s cubic-bezier(.2,.9,.2,1.35);
+  }
+
+  .order-choice.wolt-food-btn:hover::before {
+    opacity: 1;
+    transform: translate(-9px,-50%) rotate(12deg) scale(1);
+    animation: pizza-roll .85s ease-in-out infinite alternate;
+  }
+
+  .order-choice.wolt-food-btn > span:last-child {
+    display: inline-block;
+    transition: transform .45s cubic-bezier(.2,.9,.2,1.35);
+  }
+
+  .order-choice.wolt-food-btn:hover > span:last-child {
+    transform: translateX(5px) rotate(45deg) scale(1.15);
+  }
+
+  @keyframes food-squish {
+    0%   { scale: 1; }
+    35%  { scale: 1.08 .92; }
+    68%  { scale: .98 1.05; }
+    100% { scale: 1.05; }
+  }
+
+  @keyframes pizza-float {
+    to { translate: 0 -5px; rotate: 7deg; }
+  }
+
+  @keyframes burger-bounce {
+    to { translate: 0 -6px; rotate: -7deg; }
+  }
+
+  @keyframes topping-pop {
+    to { translate: 0 -5px; rotate: 8deg; }
+  }
+
+  @keyframes pizza-roll {
+    to { translate: -5px -2px; rotate: 18deg; }
+  }
+
+  @media (max-width: 560px) {
+    .socials { width: 100%; flex-wrap: wrap; gap: 10px; }
+    .socials .food-social { min-width: 86px; padding: 10px 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .socials .food-social,
+    .socials .food-social::before,
+    .socials .food-social::after,
+    .order-choice.wolt-food-btn::before,
+    .order-choice.wolt-food-btn > span:last-child {
+      animation: none !important;
+    }
+  }
+</style>
+
+
+<style id="food-button-animations-v2">
+/* Látványos, mobilon is működő pizza/burger gombanimációk */
+.socials .food-social {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 16px 11px 44px;
+  border: 1px solid rgba(243,238,223,.28);
+  border-radius: 999px;
+  background: rgba(243,238,223,.06);
+  overflow: visible;
+  isolation: isolate;
+  transform-origin: center;
+  animation: foodButtonIdle 4.2s ease-in-out infinite;
+}
+.socials .food-social::before {
+  position: absolute !important;
+  left: 10px !important;
+  top: 50% !important;
+  right: auto !important;
+  opacity: 1 !important;
+  font-size: 1.45rem !important;
+  line-height: 1 !important;
+  transform: translateY(-50%) rotate(-8deg) scale(1) !important;
+  filter: drop-shadow(0 3px 0 rgba(0,0,0,.18));
+  transition: transform .45s cubic-bezier(.2,.9,.2,1.25), filter .45s ease !important;
+  z-index: 2;
+}
+.socials .food-social::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 3px !important;
+  opacity: .22 !important;
+  border-radius: inherit;
+  background: transparent;
+  transform: none !important;
+  z-index: -1;
+  transition: opacity .3s ease, transform .45s ease !important;
+}
+.socials .food-pizza::before { content:"🍕" !important; }
+.socials .food-burger::before { content:"🍔" !important; }
+.socials .food-combo::before { content:"🍕🍔" !important; font-size:1.15rem !important; letter-spacing:-5px; left:7px !important; }
+
+.socials .food-social:hover,
+.socials .food-social:focus-visible,
+.socials .food-social:active {
+  background: var(--yellow);
+  color: var(--ink);
+  border-color: var(--yellow);
+  transform: translateY(-6px) rotate(-1deg) scale(1.06) !important;
+  box-shadow: 0 8px 0 var(--red), 0 14px 24px rgba(0,0,0,.18);
+}
+.socials .food-social:hover::before,
+.socials .food-social:focus-visible::before,
+.socials .food-social:active::before {
+  transform: translateY(-50%) rotate(12deg) scale(1.28) !important;
+  filter: drop-shadow(0 5px 0 rgba(0,0,0,.2));
+  animation: foodIconPop .55s ease-in-out infinite alternate;
+}
+.socials .food-social:hover::after,
+.socials .food-social:focus-visible::after,
+.socials .food-social:active::after {
+  opacity: .5 !important;
+  transform: scale(1.12) rotate(2deg) !important;
+}
+
+/* Wolt rendelés gomb: pizza becsúszik, a gomb "dobozként" megpattan */
+.order-choice.wolt-food-btn {
+  position: relative;
+  overflow: hidden;
+  padding-left: 74px;
+  animation: woltIdle 4.8s ease-in-out infinite;
+}
+.order-choice.wolt-food-btn::before {
+  content:"🍕" !important;
+  position:absolute !important;
+  left:22px !important;
+  top:50% !important;
+  opacity:1 !important;
+  font-size:2rem !important;
+  line-height:1 !important;
+  transform:translateY(-50%) rotate(-14deg) scale(1) !important;
+  z-index:2;
+  filter:drop-shadow(0 3px 0 rgba(0,0,0,.2));
+  transition:transform .5s cubic-bezier(.2,.9,.2,1.25) !important;
+}
+.order-choice.wolt-food-btn::after {
+  content:"🍔";
+  position:absolute;
+  right:56px;
+  top:50%;
+  font-size:1.5rem;
+  opacity:.18;
+  transform:translateY(-50%) rotate(8deg);
+  transition:all .45s ease;
+}
+.order-choice.wolt-food-btn:hover,
+.order-choice.wolt-food-btn:focus-visible,
+.order-choice.wolt-food-btn:active {
+  transform:translateX(9px) translateY(-3px) rotate(-.5deg) scale(1.02) !important;
+  box-shadow:0 8px 0 rgba(32,33,29,.28);
+}
+.order-choice.wolt-food-btn:hover::before,
+.order-choice.wolt-food-btn:focus-visible::before,
+.order-choice.wolt-food-btn:active::before {
+  transform:translateY(-50%) rotate(16deg) scale(1.28) !important;
+  animation:pizzaSpinPop .65s ease-in-out infinite alternate;
+}
+.order-choice.wolt-food-btn:hover::after,
+.order-choice.wolt-food-btn:focus-visible::after,
+.order-choice.wolt-food-btn:active::after {
+  opacity:.72;
+  right:70px;
+  transform:translateY(-50%) rotate(-10deg) scale(1.15);
+}
+.order-choice.wolt-food-btn > span:last-child {
+  transition:transform .45s cubic-bezier(.2,.9,.2,1.25);
+}
+.order-choice.wolt-food-btn:hover > span:last-child,
+.order-choice.wolt-food-btn:focus-visible > span:last-child,
+.order-choice.wolt-food-btn:active > span:last-child {
+  transform:translate(4px,-4px) rotate(18deg) scale(1.25);
+}
+
+@keyframes foodButtonIdle {
+  0%,78%,100% { transform:translateY(0) rotate(0); }
+  84% { transform:translateY(-3px) rotate(-1deg); }
+  90% { transform:translateY(0) rotate(1deg); }
+  96% { transform:translateY(-1px) rotate(0); }
+}
+@keyframes foodIconPop {
+  from { transform:translateY(-50%) rotate(-10deg) scale(1.12); }
+  to   { transform:translateY(-58%) rotate(13deg) scale(1.36); }
+}
+@keyframes woltIdle {
+  0%,82%,100% { transform:translateX(0); }
+  88% { transform:translateX(5px); }
+  94% { transform:translateX(0); }
+}
+@keyframes pizzaSpinPop {
+  from { transform:translateY(-50%) rotate(-12deg) scale(1.12); }
+  to { transform:translateY(-58%) rotate(18deg) scale(1.35); }
+}
+
+@media (max-width: 900px) {
+  .socials { gap: 10px; }
+  .socials .food-social { padding: 10px 13px 10px 40px; animation-duration:3.6s; }
+  .order-choice.wolt-food-btn { padding-left:66px; }
+  .order-choice.wolt-food-btn::before { left:18px !important; font-size:1.8rem !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socials .food-social, .order-choice.wolt-food-btn { animation:none !important; }
+}
+</style>
+
+<style id="wolt-footer-animation-clean">
+/* Wolt footer – új, tiszta animáció. Az ikonok és a szöveg végig egy sorban maradnak. */
+.socials .food-combo {
+  position: relative !important;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  padding: 11px 16px !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+  background: rgba(243,238,223,.06) !important;
+  color: var(--cream) !important;
+  border: 1px solid rgba(243,238,223,.28) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  transform: none !important;
+  animation: none !important;
+  overflow: visible !important;
+  isolation: isolate;
+  transition:
+    background-color .3s ease,
+    color .3s ease,
+    border-color .3s ease,
+    box-shadow .35s var(--ease),
+    transform .35s var(--ease) !important;
+}
+
+.socials .food-combo::before,
+.socials .food-combo::after {
+  position: static !important;
+  inset: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  opacity: 1 !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+  pointer-events: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  animation: none !important;
+  transition: transform .3s cubic-bezier(.2,.9,.2,1.25) !important;
+}
+
+.socials .food-combo::before {
+  content: "🍕" !important;
+  font-size: 1.12rem !important;
+}
+
+.socials .food-combo::after {
+  content: "🍔" !important;
+  font-size: 1.12rem !important;
+}
+
+/* Új hover: a gomb finoman kiemelkedik, az ikonok helyben "táncolnak". */
+.socials .food-combo:hover,
+.socials .food-combo:focus-visible {
+  background: var(--yellow) !important;
+  color: var(--ink) !important;
+  border-color: var(--yellow) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 8px 0 var(--red) !important;
+}
+
+.socials .food-combo:hover::before,
+.socials .food-combo:focus-visible::before {
+  animation: woltPizzaTwist .62s cubic-bezier(.2,.8,.2,1) both !important;
+}
+
+.socials .food-combo:hover::after,
+.socials .food-combo:focus-visible::after {
+  animation: woltBurgerTwist .62s .06s cubic-bezier(.2,.8,.2,1) both !important;
+}
+
+@keyframes woltPizzaTwist {
+  0%   { transform: rotate(0deg) scale(1); }
+  35%  { transform: rotate(-16deg) scale(1.16); }
+  70%  { transform: rotate(8deg) scale(1.08); }
+  100% { transform: rotate(0deg) scale(1.10); }
+}
+
+@keyframes woltBurgerTwist {
+  0%   { transform: rotate(0deg) scale(1); }
+  35%  { transform: rotate(14deg) scale(1.16); }
+  70%  { transform: rotate(-7deg) scale(1.08); }
+  100% { transform: rotate(0deg) scale(1.10); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socials .food-combo,
+  .socials .food-combo::before,
+  .socials .food-combo::after {
+    animation: none !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+
+
+<style id="empty-wolt-button-fix">
+/* A harmadik kapszula megmarad, de teljesen üres: nincs Wolt, pizza, burger vagy más belső tartalom. */
+.socials .empty-wolt-button {
+  min-width: 128px;
+  min-height: 44px;
+  padding: 11px 16px;
+  pointer-events: none;
+}
+.socials .empty-wolt-button::before,
+.socials .empty-wolt-button::after {
+  content: none !important;
+  display: none !important;
+}
+</style>
+
+<style id="social-buttons-final-polish">
+/* VÉGSŐ FOOTER GOMBOK: Instagram + TikTok egységes, valódi kapszula-gombként. */
+.socials {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 18px !important;
+  overflow: visible !important;
+}
+
+.socials .food-social {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 54px !important;
+  min-width: 154px !important;
+  padding: 0 24px 0 58px !important;
+  margin: 0 !important;
+  border: 1px solid rgba(243, 238, 223, .34) !important;
+  border-radius: 999px !important;
+  background: rgba(243, 238, 223, .045) !important;
+  color: var(--cream) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.025) !important;
+  text-decoration: none !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  letter-spacing: .015em !important;
+  white-space: nowrap !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+  transform-origin: 50% 80% !important;
+  animation: foodButtonIdle 4.2s ease-in-out infinite !important;
+  transition:
+    background .3s ease,
+    color .3s ease,
+    border-color .3s ease,
+    box-shadow .35s ease,
+    transform .45s cubic-bezier(.2,.9,.2,1.25) !important;
+}
+
+/* Instagram picit szélesebb a hosszabb felirat miatt. */
+.socials .food-pizza { min-width: 178px !important; }
+.socials .food-burger { min-width: 154px !important; }
+
+/* Bal oldali emoji ugyanazon a helyen és méretben. */
+.socials .food-social::before {
+  position: absolute !important;
+  left: 20px !important;
+  top: 50% !important;
+  right: auto !important;
+  z-index: 2 !important;
+  opacity: 1 !important;
+  font-size: 1.45rem !important;
+  line-height: 1 !important;
+  transform: translateY(-50%) rotate(-7deg) scale(1) !important;
+  filter: drop-shadow(0 2px 0 rgba(0,0,0,.16)) !important;
+  pointer-events: none !important;
+  transition: transform .45s cubic-bezier(.2,.9,.2,1.25), filter .45s ease !important;
+}
+.socials .food-pizza::before { content: "🍕" !important; }
+.socials .food-burger::before { content: "🍔" !important; }
+
+/* A régi másodlagos sajt/saláta dekor eltűnik, hogy tiszta legyen, mint a mintán. */
+.socials .food-social::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Mindkét gomb ugyanazt a hover/focus mozgást kapja. */
+.socials .food-social:hover,
+.socials .food-social:focus-visible,
+.socials .food-social:active {
+  background: rgba(243, 238, 223, .10) !important;
+  color: var(--cream) !important;
+  border-color: rgba(243, 238, 223, .62) !important;
+  box-shadow: 0 8px 18px rgba(0,0,0,.18) !important;
+  transform: translateY(-6px) rotate(-1deg) scale(1.055) !important;
+  animation: food-squish .55s cubic-bezier(.2,.85,.25,1.25) both !important;
+}
+
+.socials .food-social:hover::before,
+.socials .food-social:focus-visible::before,
+.socials .food-social:active::before {
+  transform: translateY(-50%) rotate(12deg) scale(1.22) !important;
+  filter: drop-shadow(0 4px 0 rgba(0,0,0,.20)) !important;
+  animation: foodIconPop .55s ease-in-out infinite alternate !important;
+}
+
+@media (max-width: 560px) {
+  .socials {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+  .socials .food-social {
+    height: 50px !important;
+    min-width: 145px !important;
+    padding: 0 20px 0 53px !important;
+    font-size: .95rem !important;
+  }
+  .socials .food-pizza { min-width: 166px !important; }
+  .socials .food-social::before { left: 18px !important; font-size: 1.35rem !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socials .food-social,
+  .socials .food-social::before {
+    animation: none !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+
 </head>
   <body>
     <div class="cursor"></div>
@@ -6419,7 +6977,7 @@
           <h2>Éhes<br />lettél?</h2>
           <div class="order-choices">
             <a class="order-choice hoverable" href="tel:+3615550123"><span><strong>Elvitelre kérem</strong><small>Telefonos rendelés · 15–20 perc</small></span><span>↗</span></a>
-            <a class="order-choice hoverable" href="https://wolt.com/hu/hun" target="_blank" rel="noopener"><span><strong>Kiszállítás Wolton</strong><small>Kövesd élőben a futárod</small></span><span>↗</span></a>
+            <a class="order-choice hoverable wolt-food-btn" href="https://wolt.com/hu/hun" target="_blank" rel="noopener"><span><strong>Kiszállítás Wolton</strong><small>Kövesd élőben a futárod</small></span><span>↗</span></a>
             <a class="order-choice hoverable" href="https://www.foodora.hu/" target="_blank" rel="noopener"><span><strong>Kiszállítás Foodorán</strong><small>Rendelj házhoz néhány kattintással</small></span><span>↗</span></a>
             <a class="order-choice hoverable" href="tel:+3615550123"><span><strong>Asztalt foglalok</strong><small>+36 1 555 0123</small></span><span>↗</span></a>
           </div>
@@ -6429,10 +6987,19 @@
     <footer>
       <a class="logo hoverable" href="#top">CRUSH<span>&</span>CRUST</a
       ><span>© 2026 · Burger × Pizza × Good times</span>
-      <div class="socials">
-        <a class="hoverable" href="#">Instagram</a
-        ><a class="hoverable" href="#">TikTok</a
-        ><a class="hoverable" href="#">Wolt</a>
+      <div class="socials cc-socials-v4" aria-label="Közösségi linkek és rendelés">
+        <a class="hoverable food-social food-pizza cc-social-v4 cc-social-instagram" href="https://www.instagram.com/_snt_nrb_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram megnyitása">
+          <span class="cc-social-badge" aria-hidden="true">IG</span>
+          <span class="cc-social-copy" aria-hidden="true"><span>Instagram</span><span>Instagram ↗</span></span>
+        </a>
+        <a class="hoverable food-social food-burger cc-social-v4 cc-social-tiktok" href="https://www.tiktok.com/@norbi852" target="_blank" rel="noopener noreferrer" aria-label="TikTok megnyitása">
+          <span class="cc-social-badge" aria-hidden="true">TK</span>
+          <span class="cc-social-copy" aria-hidden="true"><span>TikTok</span><span>TikTok ↗</span></span>
+        </a>
+        <a class="hoverable food-social food-wolt cc-social-v4 cc-social-wolt" href="https://wolt.com/hu/hun" target="_blank" rel="noopener noreferrer" aria-label="Wolt megnyitása">
+          <span class="cc-social-badge" aria-hidden="true">W</span>
+          <span class="cc-social-copy" aria-hidden="true"><span>Wolt</span><span>Rendelj ↗</span></span>
+        </a>
       </div>
     </footer>
 
@@ -6819,5 +7386,723 @@
 
 
     </script>
-  </body>
+  
+<style>
+/* Wolt: a pizza és a burger külön oldalon jelenjen meg, ne olvadjanak össze. */
+.socials .food-combo {
+  padding-left: 34px;
+  padding-right: 34px;
+}
+.socials .food-combo::before {
+  left: 4px !important;
+  right: auto !important;
+  top: 50% !important;
+  font-size: 1.35rem !important;
+  transform: translate(-2px,-50%) rotate(-18deg) scale(.9) !important;
+  opacity: .95 !important;
+}
+.socials .food-combo::after {
+  right: 4px !important;
+  left: auto !important;
+  top: 50% !important;
+  font-size: 1.35rem !important;
+  transform: translate(2px,-50%) rotate(18deg) scale(.9) !important;
+  opacity: .95 !important;
+}
+.socials .food-combo:hover::before {
+  transform: translate(-8px,-68%) rotate(-24deg) scale(1.06) !important;
+  animation: pizza-float .8s ease-in-out infinite alternate;
+}
+.socials .food-combo:hover::after {
+  transform: translate(8px,-34%) rotate(24deg) scale(1.06) !important;
+  animation: burger-bounce .72s ease-in-out infinite alternate;
+}
+@media (max-width: 900px) {
+  .socials .food-combo { padding-left: 31px; padding-right: 31px; }
+  .socials .food-combo::before { left: 3px !important; }
+  .socials .food-combo::after { right: 3px !important; }
+}
+</style>
+
+<style>
+/* VÉGSŐ IGAZÍTÁS: a Wolt gomb pontosan egy vonalban az Instagram/TikTok gombokkal. */
+.socials { align-items: center !important; }
+.socials .food-combo {
+  align-self: center !important;
+  transform: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  vertical-align: middle !important;
+}
+/* Az ikonok alapállapotban ugyanazon a vízszintes középvonalon vannak a Wolt felirattal. */
+.socials .food-combo::before,
+.socials .food-combo::after {
+  top: 50% !important;
+}
+.socials .food-combo::before { transform: translate(-2px,-50%) rotate(-18deg) scale(.9) !important; }
+.socials .food-combo::after  { transform: translate(2px,-50%) rotate(18deg) scale(.9) !important; }
+</style>
+
+<style id="social-buttons-no-rectangle">
+/* A három footer social gomb körüli téglalap/pill eltávolítva. */
+.socials .food-social {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+.socials .food-social:hover,
+.socials .food-social:focus-visible,
+.socials .food-social:active {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  color: var(--cream) !important;
+}
+</style>
+
+
+<style id="footer-social-redesign">
+/* Footer social redesign — Crush & Crust */
+.socials {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  overflow: visible !important;
+}
+
+.socials .food-social {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: 48px !important;
+  padding: 0 19px 0 50px !important;
+  border: 2px solid var(--cream) !important;
+  border-radius: 15px !important;
+  background: var(--cream) !important;
+  color: var(--ink) !important;
+  box-shadow: 5px 5px 0 var(--red) !important;
+  text-decoration: none !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: .82rem !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  isolation: isolate !important;
+  animation: none !important;
+  transform: rotate(-1deg) !important;
+  transition:
+    transform .35s var(--ease),
+    box-shadow .35s var(--ease),
+    background-color .35s var(--ease),
+    color .35s var(--ease) !important;
+}
+
+/* Kis, plakátszerű ikonlap a gomb bal oldalán */
+.socials .food-social::before {
+  position: absolute !important;
+  left: 8px !important;
+  top: 50% !important;
+  width: 30px !important;
+  height: 30px !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 0 !important;
+  border-radius: 9px !important;
+  opacity: 1 !important;
+  color: var(--ink) !important;
+  font-family: "Archivo Black", sans-serif !important;
+  font-size: .78rem !important;
+  line-height: 1 !important;
+  pointer-events: none !important;
+  transform: translateY(-50%) rotate(-4deg) !important;
+  transition: transform .35s cubic-bezier(.2,.9,.2,1.25) !important;
+  animation: none !important;
+}
+
+/* Minden korábbi étel/dekorációs ::after kikapcsolása */
+.socials .food-social::after {
+  content: "" !important;
+  position: absolute !important;
+  right: 10px !important;
+  bottom: -6px !important;
+  width: 18px !important;
+  height: 4px !important;
+  border-radius: 999px !important;
+  background: var(--yellow) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: scaleX(.25) rotate(-5deg) !important;
+  transition: opacity .25s ease, transform .35s var(--ease) !important;
+  animation: none !important;
+}
+
+/* Instagram: krém + piros árnyék */
+.socials .food-pizza {
+  min-width: 148px !important;
+  box-shadow: 5px 5px 0 var(--red) !important;
+}
+.socials .food-pizza::before {
+  content: "IG" !important;
+  background: var(--red) !important;
+}
+
+/* TikTok: sárga, hogy párban is játékos maradjon */
+.socials .food-burger {
+  min-width: 124px !important;
+  background: var(--yellow) !important;
+  border-color: var(--yellow) !important;
+  box-shadow: 5px 5px 0 var(--cream) !important;
+  transform: rotate(1deg) !important;
+}
+.socials .food-burger::before {
+  content: "TT" !important;
+  background: var(--ink) !important;
+  color: var(--yellow) !important;
+}
+
+/* Hover: ugyanaz a kézzel rakott, enyhén elforduló nyelv, mint a többi CTA-nál */
+.socials .food-social:hover,
+.socials .food-social:focus-visible {
+  background: var(--red) !important;
+  color: var(--ink) !important;
+  border-color: var(--cream) !important;
+  box-shadow: 8px 8px 0 var(--yellow) !important;
+  transform: translateY(-4px) rotate(1deg) !important;
+  outline: none !important;
+}
+
+.socials .food-burger:hover,
+.socials .food-burger:focus-visible {
+  background: var(--cream) !important;
+  border-color: var(--cream) !important;
+  box-shadow: 8px 8px 0 var(--red) !important;
+  transform: translateY(-4px) rotate(-1deg) !important;
+}
+
+.socials .food-social:hover::before,
+.socials .food-social:focus-visible::before {
+  opacity: 1 !important;
+  transform: translateY(-50%) rotate(5deg) scale(1.08) !important;
+  animation: none !important;
+}
+
+.socials .food-social:hover::after,
+.socials .food-social:focus-visible::after {
+  opacity: 1 !important;
+  transform: scaleX(1) rotate(-5deg) !important;
+  animation: none !important;
+}
+
+@media (max-width: 900px) {
+  .socials {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+  .socials .food-social {
+    height: 45px !important;
+    padding-right: 15px !important;
+    padding-left: 46px !important;
+    font-size: .76rem !important;
+  }
+  .socials .food-pizza { min-width: 138px !important; }
+  .socials .food-burger { min-width: 116px !important; }
+  .socials .food-social::before {
+    width: 28px !important;
+    height: 28px !important;
+  }
+}
+</style>
+
+
+<style id="footer-social-hover-contrast-fix">
+/* Instagram hover: az IG badge ne olvadjon bele a piros gombtestbe. */
+.socials .food-pizza:hover::before,
+.socials .food-pizza:focus-visible::before {
+  background: var(--cream) !important;
+  color: var(--ink) !important;
+  box-shadow: 3px 3px 0 var(--ink) !important;
+  transform: translateY(-50%) rotate(5deg) scale(1.08) !important;
+}
+
+/* A TikTok badge kontrasztja hoveren is maradjon erős. */
+.socials .food-burger:hover::before,
+.socials .food-burger:focus-visible::before {
+  background: var(--ink) !important;
+  color: var(--yellow) !important;
+  box-shadow: 3px 3px 0 var(--red) !important;
+}
+</style>
+
+
+<style id="footer-social-spacing-fix">
+/* Kicsit nagyobb tér az Instagram és TikTok között. */
+.socials {
+  gap: 22px !important;
+}
+
+@media (max-width: 900px) {
+  .socials {
+    gap: 16px !important;
+  }
+}
+</style>
+
+
+<style id="footer-wolt-button">
+/* Wolt — ugyanaz a vizuális rendszer és ugyanaz a .socials gap. */
+.socials .food-wolt {
+  min-width: 124px !important;
+  background: var(--cream) !important;
+  border-color: var(--cream) !important;
+  color: var(--ink) !important;
+  box-shadow: 5px 5px 0 var(--yellow) !important;
+  transform: rotate(-1deg) !important;
+}
+
+.socials .food-wolt::before {
+  content: "W" !important;
+  background: var(--red) !important;
+  color: var(--ink) !important;
+}
+
+.socials .food-wolt:hover,
+.socials .food-wolt:focus-visible {
+  background: var(--yellow) !important;
+  border-color: var(--cream) !important;
+  color: var(--ink) !important;
+  box-shadow: 8px 8px 0 var(--red) !important;
+  transform: translateY(-4px) rotate(1deg) !important;
+}
+
+.socials .food-wolt:hover::before,
+.socials .food-wolt:focus-visible::before {
+  background: var(--ink) !important;
+  color: var(--yellow) !important;
+  box-shadow: 3px 3px 0 var(--cream) !important;
+  transform: translateY(-50%) rotate(5deg) scale(1.08) !important;
+}
+
+@media (max-width: 900px) {
+  .socials .food-wolt {
+    min-width: 112px !important;
+  }
+}
+</style>
+
+
+<style id="cc-footer-social-v4">
+/* ============================================================
+   CRUSH & CRUST — FOOTER SOCIAL V4
+   Saját belső elemeket animál, nem a régi ::before/::after rétegeket.
+   ============================================================ */
+
+.cc-socials-v4 {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 18px !important;
+  overflow: visible !important;
+}
+
+.cc-socials-v4 .cc-social-v4 {
+  --cc-bg: var(--cream);
+  --cc-fg: var(--ink);
+  --cc-shadow: var(--red);
+  --cc-accent: var(--yellow);
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: auto !important;
+  min-width: 142px !important;
+  height: 52px !important;
+  padding: 0 18px 0 54px !important;
+  margin: 0 !important;
+  border: 2px solid var(--cream) !important;
+  border-radius: 16px !important;
+  background: var(--cc-bg) !important;
+  color: var(--cc-fg) !important;
+  box-shadow: 5px 5px 0 var(--cc-shadow) !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  text-decoration: none !important;
+  transform: none !important;
+  animation: none !important;
+  transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease, border-color .2s ease !important;
+}
+
+/* Kill every legacy pseudo decoration on these three specific buttons. */
+.cc-socials-v4 .cc-social-v4::before,
+.cc-socials-v4 .cc-social-v4::after {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+}
+
+.cc-socials-v4 .cc-social-instagram {
+  --cc-bg: var(--cream);
+  --cc-fg: var(--ink);
+  --cc-shadow: var(--red);
+  --cc-accent: var(--yellow);
+  transform: rotate(-1deg) !important;
+}
+
+.cc-socials-v4 .cc-social-tiktok {
+  --cc-bg: var(--yellow);
+  --cc-fg: var(--ink);
+  --cc-shadow: var(--cream);
+  --cc-accent: var(--red);
+  transform: rotate(1deg) !important;
+  min-width: 126px !important;
+}
+
+.cc-socials-v4 .cc-social-wolt {
+  --cc-bg: var(--cream);
+  --cc-fg: var(--ink);
+  --cc-shadow: var(--yellow);
+  --cc-accent: var(--red);
+  transform: rotate(-.5deg) !important;
+  min-width: 126px !important;
+}
+
+.cc-social-v4 .cc-social-badge {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--cc-accent);
+  color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  font-family: "DM Sans", sans-serif;
+  font-size: .69rem;
+  font-weight: 1000;
+  line-height: 1;
+  letter-spacing: -.03em;
+  transform: translateY(-50%) rotate(-7deg);
+  transform-origin: 50% 50%;
+  transition: transform .32s cubic-bezier(.18,.89,.32,1.35), box-shadow .2s ease;
+}
+
+.cc-social-v4 .cc-social-copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  height: 1em;
+  overflow: hidden;
+  font-family: "DM Sans", sans-serif;
+  font-size: .8rem;
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.cc-social-v4 .cc-social-copy > span {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  transition: transform .34s cubic-bezier(.2,.8,.2,1), opacity .22s ease;
+}
+
+.cc-social-v4 .cc-social-copy > span:first-child {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cc-social-v4 .cc-social-copy > span:last-child {
+  transform: translateY(135%);
+  opacity: 0;
+}
+
+.cc-social-v4 .cc-social-streak {
+  position: absolute;
+  z-index: 1;
+  left: -22%;
+  top: -35%;
+  width: 34%;
+  height: 170%;
+  background: var(--cc-accent);
+  opacity: .92;
+  transform: rotate(18deg) translateX(-130%);
+  transition: transform .5s cubic-bezier(.2,.75,.2,1);
+  pointer-events: none;
+}
+
+/* Hover = ticket-swipe + badge pop + label roll. */
+.cc-socials-v4 .cc-social-v4:hover,
+.cc-socials-v4 .cc-social-v4:focus-visible {
+  transform: translateY(-5px) rotate(0deg) !important;
+  box-shadow: 9px 10px 0 var(--cc-shadow) !important;
+  outline: none !important;
+}
+
+.cc-social-v4:hover .cc-social-copy > span:first-child,
+.cc-social-v4:focus-visible .cc-social-copy > span:first-child {
+  transform: translateY(-135%);
+  opacity: 0;
+}
+
+.cc-social-v4:hover .cc-social-copy > span:last-child,
+.cc-social-v4:focus-visible .cc-social-copy > span:last-child {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cc-social-v4:hover .cc-social-streak,
+.cc-social-v4:focus-visible .cc-social-streak {
+  transform: rotate(18deg) translateX(420%);
+}
+
+/* Mindháromnak külön karaktere van. */
+.cc-social-instagram:hover .cc-social-badge,
+.cc-social-instagram:focus-visible .cc-social-badge {
+  animation: ccIgPop .52s cubic-bezier(.17,.89,.32,1.38) both;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.cc-social-tiktok:hover .cc-social-badge,
+.cc-social-tiktok:focus-visible .cc-social-badge {
+  animation: ccTkGlitch .42s steps(2,end) both;
+  box-shadow: 4px 4px 0 var(--red);
+}
+
+.cc-social-wolt:hover .cc-social-badge,
+.cc-social-wolt:focus-visible .cc-social-badge {
+  animation: ccWoltDash .58s cubic-bezier(.17,.89,.32,1.28) both;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.cc-social-v4:active {
+  transform: translateY(1px) scale(.96) !important;
+  box-shadow: 2px 2px 0 var(--cc-shadow) !important;
+  transition-duration: .07s !important;
+}
+
+@keyframes ccIgPop {
+  0%   { transform: translateY(-50%) rotate(-7deg) scale(1); }
+  34%  { transform: translate(3px,-65%) rotate(13deg) scale(1.18); }
+  62%  { transform: translate(-2px,-53%) rotate(-12deg) scale(.97); }
+  100% { transform: translate(0,-56%) rotate(5deg) scale(1.08); }
+}
+
+@keyframes ccTkGlitch {
+  0%   { transform: translateY(-50%) translateX(0) rotate(-7deg) scale(1); }
+  25%  { transform: translateY(-55%) translateX(5px) rotate(8deg) scale(1.10); }
+  50%  { transform: translateY(-55%) translateX(-4px) rotate(-12deg) scale(1.04); }
+  75%  { transform: translateY(-55%) translateX(3px) rotate(6deg) scale(1.10); }
+  100% { transform: translateY(-56%) translateX(0) rotate(-3deg) scale(1.07); }
+}
+
+@keyframes ccWoltDash {
+  0%   { transform: translateY(-50%) translateX(0) rotate(-7deg) scale(1); }
+  38%  { transform: translateY(-70%) translateX(9px) rotate(11deg) scale(1.16); }
+  68%  { transform: translateY(-54%) translateX(-2px) rotate(-6deg) scale(1.01); }
+  100% { transform: translateY(-58%) translateX(1px) rotate(3deg) scale(1.08); }
+}
+
+@media (max-width: 900px) {
+  .cc-socials-v4 {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+  }
+  .cc-socials-v4 .cc-social-v4 {
+    height: 46px !important;
+    min-width: 116px !important;
+    padding-left: 48px !important;
+    padding-right: 14px !important;
+  }
+  .cc-social-v4 .cc-social-badge {
+    width: 28px;
+    height: 28px;
+    left: 9px;
+  }
+  .cc-social-v4 .cc-social-copy { font-size: .72rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-socials-v4 .cc-social-v4,
+  .cc-social-v4 .cc-social-badge,
+  .cc-social-v4 .cc-social-copy > span,
+  .cc-social-v4 .cc-social-streak {
+    animation: none !important;
+    transition: none !important;
+  }
+  .cc-socials-v4 .cc-social-v4:hover,
+  .cc-socials-v4 .cc-social-v4:focus-visible {
+    transform: translateY(-3px) !important;
+  }
+}
+</style>
+
+
+
+<style id="footer-social-clean-motion">
+/* ============================================================
+   CLEAN FOOTER SOCIAL MOTION
+   Megtartja a kapszula-gombok kinézetét, de eltávolítja a
+   zavaró átfutó téglalapot és a túlmozgásos hover effekteket.
+   ============================================================ */
+
+/* Az átfutó "ticket swipe" réteg teljes tiltása. */
+.cc-social-v4 .cc-social-streak {
+  display: none !important;
+  content: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Nincs folyamatos idle animáció. */
+.cc-socials-v4 .cc-social-v4 {
+  animation: none !important;
+  transition:
+    transform .24s cubic-bezier(.2,.8,.2,1),
+    box-shadow .24s ease,
+    border-color .2s ease !important;
+}
+
+/* Egyszerű, kontrollált hover: csak finom emelés. */
+.cc-socials-v4 .cc-social-v4:hover,
+.cc-socials-v4 .cc-social-v4:focus-visible {
+  transform: translateY(-3px) rotate(0deg) !important;
+  box-shadow: 7px 8px 0 var(--cc-shadow) !important;
+  outline: none !important;
+}
+
+.cc-socials-v4 .cc-social-v4:active {
+  transform: translateY(0) scale(.98) !important;
+  box-shadow: 3px 3px 0 var(--cc-shadow) !important;
+}
+
+/* A badge-ek ne glitch-eljenek / pattogjanak. */
+.cc-social-v4 .cc-social-badge,
+.cc-social-instagram:hover .cc-social-badge,
+.cc-social-instagram:focus-visible .cc-social-badge,
+.cc-social-tiktok:hover .cc-social-badge,
+.cc-social-tiktok:focus-visible .cc-social-badge,
+.cc-social-wolt:hover .cc-social-badge,
+.cc-social-wolt:focus-visible .cc-social-badge {
+  animation: none !important;
+  transition: transform .24s cubic-bezier(.2,.8,.2,1), box-shadow .2s ease !important;
+}
+
+.cc-social-instagram:hover .cc-social-badge,
+.cc-social-instagram:focus-visible .cc-social-badge {
+  transform: translateY(-50%) rotate(2deg) scale(1.05) !important;
+}
+
+.cc-social-tiktok:hover .cc-social-badge,
+.cc-social-tiktok:focus-visible .cc-social-badge {
+  transform: translateY(-50%) rotate(-2deg) scale(1.05) !important;
+}
+
+.cc-social-wolt:hover .cc-social-badge,
+.cc-social-wolt:focus-visible .cc-social-badge {
+  transform: translateY(-50%) rotate(2deg) scale(1.05) !important;
+}
+
+/* A felirat ne cserélődjön / gördüljön hoverkor. */
+.cc-social-v4 .cc-social-copy > span:first-child,
+.cc-social-v4:hover .cc-social-copy > span:first-child,
+.cc-social-v4:focus-visible .cc-social-copy > span:first-child {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
+
+.cc-social-v4 .cc-social-copy > span:last-child,
+.cc-social-v4:hover .cc-social-copy > span:last-child,
+.cc-social-v4:focus-visible .cc-social-copy > span:last-child {
+  transform: translateY(135%) !important;
+  opacity: 0 !important;
+}
+</style>
+
+<style id="footer-social-color-contrast-fix">
+/* Footer social: minden állapotban erős, egyértelmű kontraszt. */
+.cc-socials-v4 .cc-social-instagram {
+  background: var(--cream) !important;
+  color: var(--ink) !important;
+  border-color: var(--cream) !important;
+}
+.cc-socials-v4 .cc-social-instagram:hover,
+.cc-socials-v4 .cc-social-instagram:focus-visible {
+  background: var(--red) !important;
+  color: var(--ink) !important;
+  border-color: var(--cream) !important;
+  box-shadow: 7px 8px 0 var(--yellow) !important;
+}
+.cc-socials-v4 .cc-social-instagram .cc-social-badge,
+.cc-socials-v4 .cc-social-instagram:hover .cc-social-badge,
+.cc-socials-v4 .cc-social-instagram:focus-visible .cc-social-badge {
+  background: var(--yellow) !important;
+  color: var(--ink) !important;
+  border-color: var(--ink) !important;
+  box-shadow: 2px 2px 0 var(--ink) !important;
+}
+
+.cc-socials-v4 .cc-social-tiktok {
+  background: var(--yellow) !important;
+  color: var(--ink) !important;
+  border-color: var(--cream) !important;
+}
+.cc-socials-v4 .cc-social-tiktok:hover,
+.cc-socials-v4 .cc-social-tiktok:focus-visible {
+  background: var(--cream) !important;
+  color: var(--ink) !important;
+  border-color: var(--yellow) !important;
+  box-shadow: 7px 8px 0 var(--red) !important;
+}
+.cc-socials-v4 .cc-social-tiktok .cc-social-badge,
+.cc-socials-v4 .cc-social-tiktok:hover .cc-social-badge,
+.cc-socials-v4 .cc-social-tiktok:focus-visible .cc-social-badge {
+  background: var(--ink) !important;
+  color: var(--yellow) !important;
+  border-color: var(--ink) !important;
+  box-shadow: 2px 2px 0 var(--red) !important;
+}
+
+.cc-socials-v4 .cc-social-wolt {
+  background: var(--cream) !important;
+  color: var(--ink) !important;
+  border-color: var(--yellow) !important;
+}
+.cc-socials-v4 .cc-social-wolt:hover,
+.cc-socials-v4 .cc-social-wolt:focus-visible {
+  background: var(--yellow) !important;
+  color: var(--ink) !important;
+  border-color: var(--cream) !important;
+  box-shadow: 7px 8px 0 var(--red) !important;
+}
+.cc-socials-v4 .cc-social-wolt .cc-social-badge,
+.cc-socials-v4 .cc-social-wolt:hover .cc-social-badge,
+.cc-socials-v4 .cc-social-wolt:focus-visible .cc-social-badge {
+  background: var(--red) !important;
+  color: var(--ink) !important;
+  border-color: var(--ink) !important;
+  box-shadow: 2px 2px 0 var(--ink) !important;
+}
+
+/* Billentyűzetes fókusznál is jól látható legyen a gomb. */
+.cc-socials-v4 .cc-social-v4:focus-visible {
+  outline: 3px solid var(--cream) !important;
+  outline-offset: 4px !important;
+}
+</style>
+
+</body>
+
 </html>
