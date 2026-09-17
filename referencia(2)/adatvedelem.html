@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Crush & Crust — Adatkezelési tájékoztató." />
+  <title>Adatvédelem — CRUSH & CRUST</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --ink:#20211d;
+      --cream:#f3eedf;
+      --red:#d9785c;
+      --yellow:#c8d67a;
+      --muted:#c5c0b4;
+      --line:rgba(243,238,223,.15);
+      --ease:cubic-bezier(.2,.8,.2,1);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--ink);
+      color:var(--cream);
+      font-family:"DM Sans",sans-serif;
+      line-height:1.75;
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    ::selection{background:var(--yellow);color:var(--ink)}
+
+    .noise{
+      position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.022;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+    }
+
+    .nav{
+      min-height:86px;padding:18px 5vw;
+      display:flex;align-items:center;justify-content:space-between;gap:24px;
+      border-bottom:1px solid var(--line);
+      background:rgba(32,33,29,.94);
+    }
+    .logo{
+      font-family:"Archivo Black",sans-serif;
+      font-size:1.35rem;letter-spacing:-.04em;text-decoration:none;
+    }
+    .logo span{color:var(--red)}
+    .back{
+      display:inline-flex;align-items:center;gap:10px;
+      text-decoration:none;text-transform:uppercase;
+      letter-spacing:.1em;font-size:.76rem;font-weight:700;
+      color:var(--muted);transition:.25s ease;
+    }
+    .back:hover{color:var(--yellow);transform:translateX(-3px)}
+
+    .hero{
+      position:relative;overflow:hidden;
+      padding:100px 5vw 72px;
+      border-bottom:1px solid var(--line);
+    }
+    .hero:before{
+      content:"";position:absolute;width:320px;height:320px;
+      right:-150px;top:-120px;background:var(--red);opacity:.42;
+      border-radius:42% 58% 65% 35%/45% 40% 60% 55%;
+      transform:rotate(18deg);
+    }
+    .hero:after{
+      content:"";position:absolute;width:150px;height:150px;
+      right:16%;bottom:-95px;border:22px solid var(--yellow);
+      border-radius:50%;opacity:.55;
+    }
+    .hero-inner{max-width:1050px;margin:auto;position:relative;z-index:2}
+    .eyebrow{
+      display:flex;align-items:center;gap:12px;
+      text-transform:uppercase;letter-spacing:.17em;
+      font-size:.75rem;font-weight:700;color:var(--yellow);
+      margin-bottom:22px;
+    }
+    .eyebrow:before{content:"";width:34px;height:2px;background:currentColor}
+    h1{
+      font-family:"Archivo Black",sans-serif;
+      font-size:clamp(3.4rem,7vw,7rem);
+      line-height:.95;text-transform:uppercase;
+      letter-spacing:-.055em;
+    }
+    h1 span{
+      display:inline-block;background:var(--cream);color:var(--ink);
+      padding:.04em .14em .09em;border-radius:.18em;
+      transform:rotate(-1deg);
+    }
+    .lead{
+      max-width:730px;margin-top:32px;color:var(--muted);
+      font-size:1.08rem;line-height:1.8;
+    }
+    .updated{
+      display:inline-flex;margin-top:26px;padding:9px 13px;
+      border:1px solid rgba(200,214,122,.38);border-radius:999px;
+      color:var(--yellow);font-size:.76rem;font-weight:700;
+      letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    .layout{
+      width:min(1180px,90vw);margin:0 auto;
+      display:grid;grid-template-columns:250px minmax(0,1fr);
+      gap:72px;padding:78px 0 110px;
+    }
+    .toc{position:relative}
+    .toc-inner{
+      position:sticky;top:28px;
+      padding:24px;border:1px solid var(--line);
+      border-radius:22px;background:rgba(243,238,223,.035);
+    }
+    .toc-title{
+      font-family:"Archivo Black",sans-serif;
+      text-transform:uppercase;font-size:.88rem;
+      color:var(--yellow);margin-bottom:16px;
+    }
+    .toc a{
+      display:block;padding:9px 0;color:var(--muted);
+      text-decoration:none;font-size:.87rem;
+      border-bottom:1px solid rgba(243,238,223,.07);
+      transition:.2s;
+    }
+    .toc a:last-child{border:0}
+    .toc a:hover{color:var(--cream);padding-left:5px}
+
+    .content{max-width:790px}
+    .notice{
+      margin-bottom:48px;padding:24px 26px;
+      border-left:5px solid var(--yellow);
+      background:rgba(200,214,122,.07);
+      border-radius:0 18px 18px 0;
+      color:var(--muted);
+    }
+    .notice strong{color:var(--cream)}
+
+    .legal-section{
+      padding:0 0 52px;margin-bottom:52px;
+      border-bottom:1px solid var(--line);
+      scroll-margin-top:30px;
+    }
+    .legal-section:last-child{border-bottom:0;margin-bottom:0}
+    .number{
+      display:inline-grid;place-items:center;
+      min-width:42px;height:42px;padding:0 10px;
+      background:var(--red);color:var(--ink);
+      border-radius:12px;font-family:"Archivo Black",sans-serif;
+      transform:rotate(-2deg);margin-bottom:18px;
+    }
+    h2{
+      font-family:"Archivo Black",sans-serif;
+      font-size:clamp(1.75rem,3vw,2.65rem);
+      line-height:1.08;letter-spacing:-.035em;
+      text-transform:uppercase;margin-bottom:22px;
+    }
+    h3{
+      font-size:1.05rem;color:var(--yellow);
+      margin:27px 0 8px;
+    }
+    p{color:#ddd8cb;margin:12px 0}
+    ul{padding-left:22px;margin:14px 0;color:#ddd8cb}
+    li{margin:8px 0}
+    strong{color:var(--cream)}
+    .placeholder{
+      display:inline-block;padding:1px 7px;
+      border-radius:5px;background:rgba(217,120,92,.15);
+      color:#efaa96;border:1px dashed rgba(217,120,92,.55);
+      font-weight:700;
+    }
+
+    .contact-box{
+      margin-top:24px;padding:25px;
+      border:1px solid rgba(200,214,122,.34);
+      border-radius:20px;background:rgba(243,238,223,.035);
+    }
+
+    footer{
+      padding:32px 5vw;border-top:1px solid var(--line);
+      display:flex;justify-content:space-between;align-items:center;
+      gap:22px;flex-wrap:wrap;color:var(--muted);font-size:.82rem;
+    }
+    footer a{text-decoration:none}
+    footer a:hover{color:var(--yellow)}
+
+    @media(max-width:850px){
+      .layout{grid-template-columns:1fr;gap:35px;padding-top:50px}
+      .toc-inner{position:static}
+      .toc{order:0}
+      .hero{padding-top:72px}
+    }
+    @media(max-width:560px){
+      .nav{padding:16px 5vw}
+      .logo{font-size:1.12rem}
+      .back{font-size:.68rem}
+      .hero{padding-bottom:58px}
+      .layout{width:90vw}
+      .legal-section{padding-bottom:40px;margin-bottom:40px}
+      footer{align-items:flex-start;flex-direction:column}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *{scroll-behavior:auto!important;transition-duration:.01ms!important}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise"></div>
+
+  <nav class="nav" aria-label="Fő navigáció">
+    <a class="logo" href="index.html">CRUSH<span>&</span>CRUST</a>
+    <a class="back" href="index.html">← Vissza a főoldalra</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Jogi információk</div>
+      <h1><span>Adatvédelem.</span></h1>
+      <p class="lead">
+        Fontos számunkra, hogy átláthatóan kezeld és értsd, milyen személyes adatokat
+        használunk, miért van rájuk szükségünk, és milyen jogok illetnek meg téged.
+      </p>
+      <div class="updated">Utolsó frissítés: 2026. szeptember 17.</div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="toc" aria-label="Tartalomjegyzék">
+      <div class="toc-inner">
+        <div class="toc-title">Tartalom</div>
+        <a href="#adatkezelo">1. Adatkezelő</a>
+        <a href="#adatok">2. Kezelt adatok</a>
+        <a href="#celok">3. Cél és jogalap</a>
+        <a href="#megorzes">4. Megőrzési idő</a>
+        <a href="#cimzettek">5. Címzettek</a>
+        <a href="#sutik">6. Sütik</a>
+        <a href="#jogok">7. Érintetti jogok</a>
+        <a href="#biztonsag">8. Adatbiztonság</a>
+        <a href="#jogorvoslat">9. Jogorvoslat</a>
+        <a href="#modositas">10. Módosítások</a>
+      </div>
+    </aside>
+
+    <article class="content">
+      <div class="notice">
+        <strong>Fontos:</strong> ez az oldal professzionális, kitölthető adatkezelési
+        tájékoztatóként készült a Crush & Crust weboldal stílusához. A pirossal jelölt
+        mezőket a vállalkozás tényleges adataival kell kitölteni, és éles használat előtt
+        célszerű jogi/adatvédelmi szakemberrel ellenőriztetni.
+      </div>
+
+      <section class="legal-section" id="adatkezelo">
+        <div class="number">01</div>
+        <h2>Az adatkezelő adatai</h2>
+        <p>Az oldal használata során kezelt személyes adatok adatkezelője:</p>
+        <p>
+          <strong>Név / cégnév:</strong> <span class="placeholder">[KITÖLTENDŐ]</span><br>
+          <strong>Székhely:</strong> <span class="placeholder">[KITÖLTENDŐ]</span><br>
+          <strong>E-mail:</strong> <span class="placeholder">[KITÖLTENDŐ]</span><br>
+          <strong>Telefonszám:</strong> <span class="placeholder">[KITÖLTENDŐ]</span>
+        </p>
+      </section>
+
+      <section class="legal-section" id="adatok">
+        <div class="number">02</div>
+        <h2>Milyen adatokat kezelhetünk?</h2>
+        <p>Az általunk kezelt adatok köre attól függ, hogy milyen funkciót használsz.</p>
+        <ul>
+          <li>kapcsolatfelvételkor megadott név, e-mail-cím, telefonszám és az üzenet tartalma;</li>
+          <li>asztalfoglalással vagy rendeléssel összefüggésben önkéntesen megadott adatok;</li>
+          <li>a weboldal működéséhez szükséges technikai adatok, például IP-cím, böngésző- és eszközinformációk;</li>
+          <li>sütikhez vagy analitikai szolgáltatásokhoz kapcsolódó adatok, amennyiben ilyen szolgáltatásokat ténylegesen használunk.</li>
+        </ul>
+        <p>Nem kérünk olyan személyes adatot, amelyre az adott szolgáltatás teljesítéséhez nincs szükség.</p>
+      </section>
+
+      <section class="legal-section" id="celok">
+        <div class="number">03</div>
+        <h2>Az adatkezelés célja és jogalapja</h2>
+        <h3>Kapcsolattartás és megkeresések kezelése</h3>
+        <p>A hozzánk érkező kérdések, visszajelzések és egyéb megkeresések megválaszolása.</p>
+        <h3>Rendelés és foglalás</h3>
+        <p>Az általad kezdeményezett rendelés vagy foglalás kezelése és a szükséges kapcsolattartás.</p>
+        <h3>Weboldal működtetése és biztonsága</h3>
+        <p>A weboldal megfelelő, biztonságos működésének biztosítása, hibák feltárása és a visszaélések megelőzése.</p>
+        <p>
+          Az egyes adatkezelések konkrét jogalapja a körülményektől függően lehet
+          szerződés teljesítése, jogi kötelezettség teljesítése, jogos érdek vagy az
+          érintett hozzájárulása.
+        </p>
+      </section>
+
+      <section class="legal-section" id="megorzes">
+        <div class="number">04</div>
+        <h2>Meddig őrizzük meg az adatokat?</h2>
+        <p>
+          A személyes adatokat csak addig tároljuk, ameddig az adatkezelés céljának
+          eléréséhez szükséges, illetve ameddig azt jogszabályi kötelezettség előírja.
+          Ha az adatkezelés hozzájáruláson alapul, a hozzájárulás visszavonása hatással
+          lehet a további adatkezelésre.
+        </p>
+        <p>
+          A vállalkozás által alkalmazott konkrét megőrzési időket az egyes
+          adatkezelési folyamatok alapján kell meghatározni.
+        </p>
+      </section>
+
+      <section class="legal-section" id="cimzettek">
+        <div class="number">05</div>
+        <h2>Adattovábbítás és szolgáltatók</h2>
+        <p>
+          Személyes adatokat kizárólag akkor továbbítunk vagy teszünk hozzáférhetővé
+          más szervezet számára, ha az a szolgáltatás biztosításához szükséges,
+          jogszabály írja elő, vagy megfelelő jogalap áll rendelkezésre.
+        </p>
+        <p>
+          A főoldalon külső rendelési és közösségi szolgáltatásokra mutató linkek is
+          megjelenhetnek. Az ilyen külső oldalakon történő adatkezelésre az adott
+          szolgáltató saját adatvédelmi szabályai vonatkoznak.
+        </p>
+      </section>
+
+      <section class="legal-section" id="sutik">
+        <div class="number">06</div>
+        <h2>Sütik és hasonló technológiák</h2>
+        <p>
+          A weboldal használhat a működéshez feltétlenül szükséges sütiket. Analitikai,
+          marketing- vagy egyéb nem szükséges sütik használata esetén az ezekhez
+          kapcsolódó adatkezelést és a látogató választási lehetőségeit külön,
+          megfelelő módon kell kezelni.
+        </p>
+        <p>
+          A ténylegesen használt sütik és külső technológiák listáját a weboldal
+          végleges technikai konfigurációjához kell igazítani.
+        </p>
+      </section>
+
+      <section class="legal-section" id="jogok">
+        <div class="number">07</div>
+        <h2>Milyen jogaid vannak?</h2>
+        <p>A vonatkozó adatvédelmi szabályok alapján – az adott adatkezeléstől függően – többek között kérheted:</p>
+        <ul>
+          <li>tájékoztatást személyes adataid kezeléséről és hozzáférést az adatokhoz;</li>
+          <li>a pontatlan személyes adatok helyesbítését;</li>
+          <li>személyes adataid törlését, ha annak jogszabályi feltételei fennállnak;</li>
+          <li>az adatkezelés korlátozását;</li>
+          <li>bizonyos esetekben az adatok hordozását;</li>
+          <li>a jogos érdeken alapuló adatkezeléssel szembeni tiltakozást;</li>
+          <li>hozzájárulásod visszavonását, ha az adatkezelés hozzájáruláson alapul.</li>
+        </ul>
+        <div class="contact-box">
+          <strong>Adatvédelmi kérdésed van?</strong>
+          <p>
+            Írj nekünk: <span class="placeholder">[ADATVÉDELMI E-MAIL-CÍM]</span>.
+            Kérelmedet a vonatkozó jogszabályok szerint kezeljük.
+          </p>
+        </div>
+      </section>
+
+      <section class="legal-section" id="biztonsag">
+        <div class="number">08</div>
+        <h2>Adatbiztonság</h2>
+        <p>
+          Az adatkezelés során a kockázatokhoz igazodó technikai és szervezési
+          intézkedések alkalmazására törekszünk annak érdekében, hogy a személyes
+          adatokat megóvjuk többek között a jogosulatlan hozzáféréstől, módosítástól,
+          nyilvánosságra hozataltól, elvesztéstől vagy megsemmisüléstől.
+        </p>
+      </section>
+
+      <section class="legal-section" id="jogorvoslat">
+        <div class="number">09</div>
+        <h2>Panasz és jogorvoslat</h2>
+        <p>
+          Ha úgy gondolod, hogy személyes adataid kezelése nem megfelelő, elsőként
+          közvetlenül hozzánk is fordulhatsz a fenti elérhetőségen.
+        </p>
+        <p>
+          Emellett jogosult lehetsz panaszt benyújtani az illetékes adatvédelmi
+          felügyeleti hatósághoz, illetve a jogszabályban meghatározott esetekben
+          bírósághoz fordulni.
+        </p>
+      </section>
+
+      <section class="legal-section" id="modositas">
+        <div class="number">10</div>
+        <h2>A tájékoztató módosítása</h2>
+        <p>
+          A tájékoztatót időről időre módosíthatjuk, például a weboldal funkcióinak,
+          az alkalmazott szolgáltatásoknak vagy a vonatkozó szabályozásnak a változása
+          miatt. Az aktuális verzió mindig ezen az oldalon érhető el.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <a class="logo" href="index.html">CRUSH<span>&</span>CRUST</a>
+    <span>© 2026 · Burger × Pizza × Good times</span>
+    <a href="index.html">Vissza a főoldalra ↑</a>
+  </footer>
+</body>
+</html>
