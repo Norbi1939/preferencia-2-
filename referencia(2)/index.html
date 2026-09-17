@@ -6606,6 +6606,1616 @@
       }
     </style>
 
+
+<style id="cc-cookie-consent-styles">
+.cc-cookie-layer{position:fixed;inset:0;z-index:12000;display:grid;align-items:end;padding:28px;pointer-events:none;visibility:hidden}
+.cc-cookie-layer.is-visible{visibility:visible;pointer-events:auto}
+.cc-cookie-backdrop{position:absolute;inset:0;background:rgba(12,13,11,.52);backdrop-filter:blur(7px);opacity:0;transition:opacity .48s ease}
+.cc-cookie-layer.is-visible .cc-cookie-backdrop{opacity:1}
+.cc-cookie-card{position:relative;width:min(760px,100%);margin:0 auto;overflow:hidden;color:var(--cream);background:radial-gradient(circle at 96% 2%,rgba(200,214,122,.13),transparent 27%),linear-gradient(135deg,#292a25 0%,var(--ink) 72%);border:1px solid rgba(243,238,223,.18);border-radius:30px 76px 30px 30px;box-shadow:0 12px 0 rgba(217,120,92,.78),0 28px 70px rgba(0,0,0,.42);transform:translateY(60px) scale(.96) rotate(-.35deg);opacity:0;transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .42s ease}
+.cc-cookie-layer.is-visible .cc-cookie-card{transform:none;opacity:1}
+.cc-cookie-card:before{content:"";position:absolute;width:126px;height:126px;right:-48px;top:-54px;border:19px solid var(--yellow);border-radius:50%;opacity:.68}
+.cc-cookie-card:after{content:"";position:absolute;width:72px;height:72px;left:-34px;bottom:34px;background:var(--red);border-radius:23px 48px 30px 45px;transform:rotate(28deg);opacity:.72}
+.cc-cookie-inner{position:relative;z-index:2;padding:30px 32px 28px}
+.cc-cookie-topline{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.cc-cookie-chip{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;background:var(--yellow);color:var(--ink);border-radius:999px;font-size:.69rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase;box-shadow:3px 3px 0 rgba(217,120,92,.8);transform:rotate(-1deg)}
+.cc-cookie-dot{width:7px;height:7px;border-radius:50%;background:var(--red)}
+.cc-cookie-mini{color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.cc-cookie-title{max-width:650px;margin:0;font-family:"Archivo Black",sans-serif;font-size:clamp(1.75rem,4vw,3.05rem);line-height:.98;letter-spacing:-.045em;text-transform:uppercase}
+.cc-cookie-title span{color:var(--red)}
+.cc-cookie-copy{max-width:670px;margin-top:17px;color:#d5d0c4;font-size:.94rem;line-height:1.68}
+.cc-cookie-copy strong{color:var(--cream)} .cc-cookie-copy a{color:var(--yellow);font-weight:800;text-underline-offset:4px}
+.cc-cookie-actions{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;margin-top:25px}
+.cc-cookie-btn{min-height:49px;border:0;border-radius:999px;padding:0 19px;font-size:.75rem;font-weight:900;letter-spacing:.075em;text-transform:uppercase;transition:transform .28s var(--ease),box-shadow .28s ease,background .28s ease,color .28s ease}
+.cc-cookie-btn:hover,.cc-cookie-btn:focus-visible{transform:translateY(-3px);outline:none}
+.cc-cookie-btn--settings{justify-self:start;color:var(--cream);background:transparent;border:1px solid rgba(243,238,223,.32)}
+.cc-cookie-btn--reject{color:var(--cream);background:#373832;box-shadow:0 4px 0 #171815}
+.cc-cookie-btn--accept{color:var(--ink);background:var(--yellow);box-shadow:0 5px 0 #7f8950}
+.cc-cookie-btn--accept:hover{box-shadow:0 8px 0 var(--red)}
+.cc-cookie-settings{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .48s var(--ease),opacity .28s ease,margin .48s var(--ease)}
+.cc-cookie-settings.is-open{grid-template-rows:1fr;opacity:1;margin-top:24px}
+.cc-cookie-settings-inner{min-height:0;overflow:hidden}.cc-cookie-divider{height:1px;margin-bottom:18px;background:rgba(243,238,223,.12)}
+.cc-cookie-option{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:13px 0}.cc-cookie-option+.cc-cookie-option{border-top:1px solid rgba(243,238,223,.08)}
+.cc-cookie-option strong{display:block;font-size:.9rem}.cc-cookie-option small{display:block;max-width:510px;margin-top:4px;color:var(--muted);font-size:.76rem;line-height:1.5}
+.cc-cookie-switch{position:relative;width:49px;height:28px}.cc-cookie-switch input{position:absolute;opacity:0}
+.cc-cookie-slider{position:absolute;inset:0;border-radius:999px;background:#4b4c45;border:1px solid rgba(243,238,223,.16);transition:.25s}
+.cc-cookie-slider:after{content:"";position:absolute;width:20px;height:20px;left:3px;top:3px;border-radius:50%;background:var(--cream);transition:transform .25s var(--ease)}
+.cc-cookie-switch input:checked+.cc-cookie-slider{background:var(--yellow)}.cc-cookie-switch input:checked+.cc-cookie-slider:after{transform:translateX(21px);background:var(--ink)}
+.cc-cookie-switch input:focus-visible+.cc-cookie-slider{outline:2px solid var(--cream);outline-offset:3px}.cc-cookie-switch input:disabled+.cc-cookie-slider{opacity:.72}
+.cc-cookie-save{display:flex;justify-content:flex-end;padding-top:13px}
+.cc-cookie-reopen{position:fixed;z-index:11990;left:20px;bottom:20px;display:none;align-items:center;gap:9px;min-height:43px;padding:0 14px;border:1px solid rgba(243,238,223,.18);border-radius:999px;background:rgba(32,33,29,.92);color:var(--cream);box-shadow:4px 4px 0 rgba(217,120,92,.72);backdrop-filter:blur(10px);font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.cc-cookie-reopen.is-visible{display:inline-flex}.cc-cookie-reopen:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:6px 7px 0 rgba(200,214,122,.7)}
+.cc-cookie-reopen-mark{width:22px;height:22px;display:grid;place-items:center;border-radius:50%;background:var(--yellow);color:var(--ink);font-family:"Archivo Black",sans-serif;font-size:.65rem}
+@media(max-width:720px){.cc-cookie-layer{padding:14px}.cc-cookie-card{border-radius:24px 50px 24px 24px}.cc-cookie-inner{padding:25px 21px 22px}.cc-cookie-topline{align-items:flex-start;flex-direction:column;gap:9px}.cc-cookie-actions{grid-template-columns:1fr 1fr}.cc-cookie-btn--settings{grid-column:1/-1;width:100%;justify-self:stretch}.cc-cookie-btn--reject,.cc-cookie-btn--accept{width:100%;padding:0 12px}.cc-cookie-reopen{left:12px;bottom:12px}}
+@media(max-width:430px){.cc-cookie-actions{grid-template-columns:1fr}.cc-cookie-btn--settings{grid-column:auto}.cc-cookie-title{font-size:1.7rem}.cc-cookie-copy{font-size:.86rem}}
+</style>
+
+<style id="cc-cookie-polish-v2">
+/* ===== Cookie UI polish v2 ===== */
+
+/* 1) A mentés gomb soha ne vágódjon le. */
+.cc-cookie-settings-inner {
+  overflow: visible !important;
+}
+.cc-cookie-settings {
+  overflow: visible !important;
+}
+.cc-cookie-save {
+  padding: 18px 3px 8px 3px !important;
+  overflow: visible !important;
+}
+#ccCookieSave {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 5px;
+}
+
+/* 2) "Csak szükséges" — finom, karakteres wipe + pipa animáció. */
+#ccCookieReject {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(243,238,223,.22);
+  transition:
+    color .45s var(--ease),
+    border-color .45s var(--ease),
+    transform .35s var(--ease),
+    box-shadow .35s var(--ease);
+}
+#ccCookieReject::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -2px;
+  background: var(--cream);
+  transform: translateX(-108%) skewX(-16deg);
+  transition: transform .62s cubic-bezier(.22,1,.36,1);
+}
+#ccCookieReject::after {
+  content: "✓";
+  display: inline-grid;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-left: 0;
+  font-weight: 1000;
+  transform: translateX(-8px) rotate(-18deg);
+  transition:
+    width .35s var(--ease),
+    opacity .25s ease,
+    margin .35s var(--ease),
+    transform .48s cubic-bezier(.22,1,.36,1);
+}
+#ccCookieReject:hover,
+#ccCookieReject:focus-visible {
+  color: var(--ink);
+  border-color: var(--cream);
+  transform: translateY(-4px) rotate(-1deg);
+  box-shadow: 0 7px 0 var(--red);
+}
+#ccCookieReject:hover::before,
+#ccCookieReject:focus-visible::before {
+  transform: translateX(0) skewX(0);
+}
+#ccCookieReject:hover::after,
+#ccCookieReject:focus-visible::after {
+  width: 16px;
+  opacity: 1;
+  margin-left: 8px;
+  transform: translateX(0) rotate(0);
+}
+
+/* 3) Bal alsó "Süti beállítások" — cookie-szerű mikroanimáció. */
+#ccCookieReopen {
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform .4s cubic-bezier(.22,1,.36,1),
+    box-shadow .4s ease,
+    color .35s ease,
+    border-color .35s ease;
+}
+#ccCookieReopen::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .55s cubic-bezier(.22,1,.36,1);
+}
+#ccCookieReopen:hover,
+#ccCookieReopen:focus-visible {
+  color: var(--ink);
+  border-color: var(--yellow);
+  transform: translateY(-5px) rotate(-1.5deg);
+  box-shadow: 7px 8px 0 var(--red);
+  outline: none;
+}
+#ccCookieReopen:hover::before,
+#ccCookieReopen:focus-visible::before {
+  transform: scaleX(1);
+}
+#ccCookieReopen .cc-cookie-reopen-mark {
+  position: relative;
+  transition:
+    transform .6s cubic-bezier(.34,1.56,.64,1),
+    background .35s ease,
+    color .35s ease;
+}
+#ccCookieReopen:hover .cc-cookie-reopen-mark,
+#ccCookieReopen:focus-visible .cc-cookie-reopen-mark {
+  transform: rotate(360deg) scale(1.12);
+  background: var(--red);
+  color: var(--cream);
+}
+
+/* 4) Footer Adatvédelem — oldalváltást előkészítő animáció. */
+.privacy-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 8px 11px;
+  margin: -8px -11px;
+  border-radius: 999px;
+  transition:
+    color .35s var(--ease),
+    transform .35s var(--ease),
+    box-shadow .35s var(--ease);
+}
+.privacy-link::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--yellow);
+  transform: translateY(105%);
+  transition: transform .5s cubic-bezier(.22,1,.36,1);
+}
+.privacy-link::after {
+  content: "↗";
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  background: none !important;
+  opacity: 0;
+  transform: translate(-7px,7px) rotate(-35deg) !important;
+  transition:
+    opacity .25s ease,
+    transform .45s cubic-bezier(.22,1,.36,1) !important;
+}
+.privacy-link:hover,
+.privacy-link:focus-visible {
+  color: var(--ink) !important;
+  transform: translateY(-2px) rotate(-1deg);
+  box-shadow: 4px 5px 0 rgba(217,120,92,.72);
+  outline: none;
+}
+.privacy-link:hover::before,
+.privacy-link:focus-visible::before {
+  transform: translateY(0);
+}
+.privacy-link:hover::after,
+.privacy-link:focus-visible::after {
+  opacity: 1;
+  transform: translate(0,0) rotate(0) !important;
+}
+
+/* Kattintáskor a teljes viewporton végigfutó brand-transition. */
+.cc-page-transition {
+  position: fixed;
+  z-index: 50000;
+  inset: 0;
+  pointer-events: none;
+  visibility: hidden;
+  overflow: hidden;
+}
+.cc-page-transition::before,
+.cc-page-transition::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateY(102%);
+}
+.cc-page-transition::before {
+  background: var(--red);
+  transition: transform .58s cubic-bezier(.76,0,.24,1);
+}
+.cc-page-transition::after {
+  background: var(--ink);
+  transition: transform .58s .12s cubic-bezier(.76,0,.24,1);
+}
+.cc-page-transition.is-running {
+  visibility: visible;
+}
+.cc-page-transition.is-running::before,
+.cc-page-transition.is-running::after {
+  transform: translateY(0);
+}
+.cc-page-transition-label {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  color: var(--cream);
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(1.7rem,5vw,4.4rem);
+  letter-spacing: -.05em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translate(-50%,-35%) rotate(-2deg);
+  white-space: nowrap;
+  transition:
+    opacity .3s .28s ease,
+    transform .48s .24s cubic-bezier(.22,1,.36,1);
+}
+.cc-page-transition.is-running .cc-page-transition-label {
+  opacity: 1;
+  transform: translate(-50%,-50%) rotate(0);
+}
+.cc-page-transition-label span { color: var(--yellow); }
+
+@media (max-width:720px) {
+  .cc-cookie-save { padding-bottom: 10px !important; }
+  #ccCookieSave { width: 100%; }
+}
+@media (prefers-reduced-motion:reduce) {
+  #ccCookieReject::before,
+  #ccCookieReject::after,
+  #ccCookieReopen::before,
+  #ccCookieReopen .cc-cookie-reopen-mark,
+  .privacy-link::before,
+  .privacy-link::after,
+  .cc-page-transition::before,
+  .cc-page-transition::after,
+  .cc-page-transition-label {
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+
+
+
+<style id="cc-cookie-click-fix-v3">
+/* =========================================================
+   COOKIE SETTINGS CLICK FIX
+   A bezárt beállítás-panel többé nem fedi le láthatatlanul
+   az alsó gombokat.
+   ========================================================= */
+
+.cc-cookie-settings {
+  overflow: hidden !important;
+  pointer-events: none;
+}
+
+.cc-cookie-settings.is-open {
+  overflow: visible !important;
+  pointer-events: auto;
+}
+
+.cc-cookie-settings-inner {
+  overflow: hidden !important;
+  padding-bottom: 10px;
+}
+
+.cc-cookie-settings.is-open .cc-cookie-settings-inner {
+  overflow: visible !important;
+}
+
+/* Az akciógombok mindig a beállítás-panel fölött és kattinthatóan maradnak. */
+.cc-cookie-actions {
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+#ccCookieCustomize,
+#ccCookieReject,
+#ccCookieAccept {
+  position: relative;
+  z-index: 21;
+  pointer-events: auto;
+}
+
+/* A mentés gomb továbbra se vágódjon le. */
+.cc-cookie-save {
+  position: relative;
+  z-index: 10;
+  padding: 18px 4px 10px !important;
+  overflow: visible !important;
+}
+
+#ccCookieSave {
+  position: relative;
+  z-index: 11;
+  margin-bottom: 4px;
+}
+</style>
+
+
+
+<style id="cc-cookie-privacy-link-hover-v4">
+/* Cookie ablak — Adatvédelmi tájékoztató link hover */
+.cc-cookie-copy a[href="adatvedelem.html"] {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+  padding: 0 3px 1px;
+  margin: 0 -3px;
+  color: var(--yellow);
+  text-decoration: none;
+  font-weight: 800;
+  transition:
+    color .35s var(--ease),
+    transform .35s cubic-bezier(.22,1,.36,1);
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -2px;
+  right: -2px;
+  bottom: 0;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--yellow);
+  transform-origin: left center;
+  transition:
+    height .42s cubic-bezier(.22,1,.36,1),
+    border-radius .42s ease;
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]::after {
+  content: "↗";
+  display: inline-block;
+  width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  opacity: 0;
+  color: var(--ink);
+  font-weight: 1000;
+  transform: translate(-8px,7px) rotate(-35deg);
+  transition:
+    width .38s var(--ease),
+    margin-left .38s var(--ease),
+    opacity .24s ease,
+    transform .48s cubic-bezier(.22,1,.36,1);
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:hover,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible {
+  color: var(--ink);
+  transform: translateY(-2px) rotate(-.35deg);
+  outline: none;
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:hover::before,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible::before {
+  height: 100%;
+  border-radius: 6px;
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:hover::after,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible::after {
+  width: 16px;
+  margin-left: 6px;
+  opacity: 1;
+  transform: translate(0,0) rotate(0);
+}
+
+/* Apró "nyomás" kattintáskor. */
+.cc-cookie-copy a[href="adatvedelem.html"]:active {
+  transform: translateY(1px) scale(.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-cookie-copy a[href="adatvedelem.html"],
+  .cc-cookie-copy a[href="adatvedelem.html"]::before,
+  .cc-cookie-copy a[href="adatvedelem.html"]::after {
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+
+
+
+<style id="cc-cookie-privacy-link-hover-v5">
+/* Adatvédelmi link: az aláhúzás nem nő fel téglalappá. */
+.cc-cookie-copy a[href="adatvedelem.html"]::before {
+  height: 3px !important;
+  border-radius: 999px !important;
+  transform: scaleX(.34);
+  transform-origin: left center;
+  transition:
+    transform .48s cubic-bezier(.22,1,.36,1),
+    box-shadow .35s ease !important;
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:hover::before,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible::before {
+  height: 3px !important;
+  border-radius: 999px !important;
+  transform: scaleX(1);
+  box-shadow: 0 2px 0 rgba(217,120,92,.55);
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:hover,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible {
+  color: var(--yellow) !important;
+}
+</style>
+
+
+
+<style id="cc-cookie-privacy-link-hover-v6">
+/* =========================================================
+   ADATVÉDELMI LINK — új "lift + arrow" design
+   Nincs félbehagyott vonal és nincs téglalap-kitöltés.
+   ========================================================= */
+
+.cc-cookie-copy a[href="adatvedelem.html"] {
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0;
+  padding: 2px 0 3px !important;
+  margin: 0 !important;
+  color: var(--yellow) !important;
+  text-decoration: none !important;
+  font-weight: 800;
+  transform: translateY(0) rotate(0) !important;
+  transition:
+    color .3s ease,
+    transform .38s cubic-bezier(.22,1,.36,1),
+    text-shadow .3s ease !important;
+}
+
+/* A korábbi aláhúzás teljes kikapcsolása. */
+.cc-cookie-copy a[href="adatvedelem.html"]::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* A nyíl alapból egy kis sárga körben jelenik meg. */
+.cc-cookie-copy a[href="adatvedelem.html"]::after {
+  content: "↗" !important;
+  position: relative !important;
+  display: inline-grid !important;
+  place-items: center;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px;
+  margin-left: 7px !important;
+  overflow: visible !important;
+  border-radius: 50%;
+  background: rgba(200,214,122,.14) !important;
+  border: 1px solid rgba(200,214,122,.48);
+  color: var(--yellow) !important;
+  opacity: .78 !important;
+  font-size: .68rem;
+  line-height: 1;
+  font-weight: 1000;
+  transform: translate(0,0) rotate(0) scale(.9) !important;
+  transition:
+    transform .5s cubic-bezier(.34,1.56,.64,1),
+    background .3s ease,
+    color .3s ease,
+    border-color .3s ease,
+    opacity .3s ease,
+    box-shadow .3s ease !important;
+}
+
+/* Hover: a szöveg finoman megemelkedik, a nyíl "kilő". */
+.cc-cookie-copy a[href="adatvedelem.html"]:hover,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible {
+  color: var(--cream) !important;
+  transform: translateY(-2px) !important;
+  text-shadow: 0 5px 18px rgba(200,214,122,.16);
+  outline: none;
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:hover::after,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible::after {
+  background: var(--yellow) !important;
+  color: var(--ink) !important;
+  border-color: var(--yellow);
+  opacity: 1 !important;
+  transform: translate(3px,-3px) rotate(45deg) scale(1.08) !important;
+  box-shadow: 3px 4px 0 rgba(217,120,92,.72);
+}
+
+/* Kattintás: rövid tactile feedback. */
+.cc-cookie-copy a[href="adatvedelem.html"]:active {
+  transform: translateY(1px) scale(.98) !important;
+}
+.cc-cookie-copy a[href="adatvedelem.html"]:active::after {
+  transform: translate(1px,-1px) rotate(45deg) scale(.94) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-cookie-copy a[href="adatvedelem.html"],
+  .cc-cookie-copy a[href="adatvedelem.html"]::after {
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+
+
+
+<style id="cc-cookie-privacy-link-hover-v7">
+/* =========================================================
+   ADATVÉDELMI LINK — "STAMP / JELÖLŐFILC" mikrointerakció
+   Nincs nyíl, nincs fél vonal, nincs téglalappá növő háttér.
+   Hoverkor egy organikus sárga ecsetfolt csúszik a szöveg mögé,
+   a szöveg pedig enyhén "rápecsételődik".
+   ========================================================= */
+
+.cc-cookie-copy a[href="adatvedelem.html"] {
+  position: relative !important;
+  display: inline-block !important;
+  isolation: isolate;
+  overflow: visible !important;
+  padding: 1px 5px 2px !important;
+  margin: 0 -5px !important;
+  color: var(--yellow) !important;
+  text-decoration: none !important;
+  font-weight: 800;
+  transform: none !important;
+  text-shadow: none !important;
+  transition:
+    color .28s ease,
+    letter-spacing .42s cubic-bezier(.22,1,.36,1),
+    transform .42s cubic-bezier(.34,1.56,.64,1) !important;
+}
+
+/* Organikus "marker swipe" a szöveg mögött. */
+.cc-cookie-copy a[href="adatvedelem.html"]::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  left: -4px !important;
+  right: -4px !important;
+  top: 52% !important;
+  bottom: auto !important;
+  width: auto !important;
+  height: 72% !important;
+  background: var(--yellow) !important;
+  border-radius: 52% 44% 58% 39% / 34% 57% 41% 63% !important;
+  opacity: 0 !important;
+  transform:
+    translateY(-50%)
+    translateX(-14px)
+    scaleX(.08)
+    rotate(-2deg) !important;
+  transform-origin: left center !important;
+  transition:
+    transform .58s cubic-bezier(.22,1,.36,1),
+    opacity .18s ease !important;
+}
+
+/* A korábbi kör/nyíl teljes eltávolítása. */
+.cc-cookie-copy a[href="adatvedelem.html"]::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  z-index: -2 !important;
+  width: 8px !important;
+  height: 8px !important;
+  right: -8px !important;
+  top: -1px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: var(--red) !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  transform: scale(.2) rotate(0) !important;
+  transition:
+    opacity .2s .18s ease,
+    transform .5s .12s cubic-bezier(.34,1.56,.64,1) !important;
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:hover,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible {
+  color: var(--ink) !important;
+  letter-spacing: .012em;
+  transform: translateY(-1px) rotate(-.45deg) !important;
+  outline: none !important;
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:hover::before,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible::before {
+  opacity: 1 !important;
+  transform:
+    translateY(-50%)
+    translateX(0)
+    scaleX(1)
+    rotate(-1deg) !important;
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:hover::after,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible::after {
+  opacity: 1 !important;
+  transform: scale(1) rotate(180deg) !important;
+}
+
+/* Kattintáskor egy rövid "pecsét" érzet. */
+.cc-cookie-copy a[href="adatvedelem.html"]:active {
+  transform: translateY(1px) rotate(.25deg) scale(.975) !important;
+}
+.cc-cookie-copy a[href="adatvedelem.html"]:active::before {
+  transform:
+    translateY(-50%)
+    translateX(0)
+    scaleX(.97)
+    scaleY(.9)
+    rotate(0deg) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-cookie-copy a[href="adatvedelem.html"],
+  .cc-cookie-copy a[href="adatvedelem.html"]::before,
+  .cc-cookie-copy a[href="adatvedelem.html"]::after {
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+
+
+
+<style id="cc-cookie-privacy-link-hover-v8-fix">
+/* =========================================================
+   MARKER HOVER — javított verzió
+   A marker most kizárólag a link saját sorában marad.
+   ========================================================= */
+
+.cc-cookie-copy a[href="adatvedelem.html"] {
+  position: relative !important;
+  display: inline-block !important;
+  isolation: isolate !important;
+  vertical-align: baseline !important;
+  overflow: hidden !important;
+  padding: 1px 5px 2px !important;
+  margin: 0 -5px !important;
+  line-height: 1.28 !important;
+  color: var(--yellow) !important;
+  text-decoration: none !important;
+  font-weight: 800;
+}
+
+/* A sárga marker nem lóghat ki a linkből. */
+.cc-cookie-copy a[href="adatvedelem.html"]::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  z-index: -1 !important;
+
+  left: 1px !important;
+  right: 1px !important;
+  top: 50% !important;
+  bottom: auto !important;
+
+  width: auto !important;
+  height: 82% !important;
+  max-height: 1.25em !important;
+
+  background: var(--yellow) !important;
+  border-radius: 48% 42% 52% 40% / 30% 52% 35% 58% !important;
+
+  opacity: 0 !important;
+  transform:
+    translateY(-50%)
+    translateX(-8%)
+    scaleX(.08)
+    rotate(-1deg) !important;
+  transform-origin: left center !important;
+
+  transition:
+    transform .52s cubic-bezier(.22,1,.36,1),
+    opacity .16s ease !important;
+}
+
+/* Az előző piros pöttyöt eltávolítjuk: ez okozhatott zavaró kilógást is. */
+.cc-cookie-copy a[href="adatvedelem.html"]::after {
+  content: none !important;
+  display: none !important;
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:hover,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible {
+  color: var(--ink) !important;
+  transform: translateY(-1px) rotate(-.3deg) !important;
+  outline: none !important;
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:hover::before,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible::before {
+  opacity: 1 !important;
+  transform:
+    translateY(-50%)
+    translateX(0)
+    scaleX(1)
+    rotate(-1deg) !important;
+}
+
+.cc-cookie-copy a[href="adatvedelem.html"]:active {
+  transform: translateY(1px) scale(.98) !important;
+}
+</style>
+
+
+
+<style id="cc-cookie-privacy-link-hover-v9">
+/* =========================================================
+   ADATVÉDELMI LINK — "TYPE SHIFT" animáció
+   Teljesen elhagyjuk a ::before / ::after grafikákat.
+   Így semmi nem tud ráfedni a környező szövegre.
+   ========================================================= */
+
+.cc-cookie-copy a[href="adatvedelem.html"] {
+  position: relative !important;
+  display: inline !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  color: var(--yellow) !important;
+  text-decoration-line: underline !important;
+  text-decoration-color: rgba(200,214,122,.48) !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 4px !important;
+
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+  transform: none !important;
+  text-shadow: none !important;
+
+  transition:
+    color .28s ease,
+    text-decoration-color .28s ease,
+    text-decoration-thickness .28s ease,
+    text-underline-offset .28s ease,
+    letter-spacing .38s cubic-bezier(.22,1,.36,1),
+    filter .35s ease !important;
+}
+
+/* Minden korábbi pseudo-element animáció kikapcsolása. */
+.cc-cookie-copy a[href="adatvedelem.html"]::before,
+.cc-cookie-copy a[href="adatvedelem.html"]::after {
+  content: none !important;
+  display: none !important;
+}
+
+/*
+  Hoverkor nem rajzolunk semmit a link köré.
+  A karakterek finoman szétnyílnak, a szín cream-re vált,
+  az underline pedig erősebb, piros akcentust kap.
+*/
+.cc-cookie-copy a[href="adatvedelem.html"]:hover,
+.cc-cookie-copy a[href="adatvedelem.html"]:focus-visible {
+  color: var(--cream) !important;
+  letter-spacing: .035em !important;
+  text-decoration-color: var(--red) !important;
+  text-decoration-thickness: 3px !important;
+  text-underline-offset: 6px !important;
+  filter: drop-shadow(0 4px 8px rgba(200,214,122,.12));
+  outline: none !important;
+}
+
+/* Kattintáskor gyors színvillanás, pozícióváltoztatás nélkül. */
+.cc-cookie-copy a[href="adatvedelem.html"]:active {
+  color: var(--red) !important;
+  letter-spacing: .012em !important;
+  filter: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-cookie-copy a[href="adatvedelem.html"] {
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+
+
+
+<style id="cc-transition-seamless-handoff-v2">
+/* A navigáció előtti utolsó frame legyen teljesen stabil. */
+.cc-page-transition.is-running .cc-page-transition-label {
+  opacity: 1 !important;
+  transform: translate(-50%,-50%) rotate(0) scale(1) !important;
+  transition:
+    opacity .22s .22s ease,
+    transform .42s .18s cubic-bezier(.22,1,.36,1) !important;
+}
+</style>
+
+
+
+<style id="cc-transition-no-seam-v3">
+/* ===== Seamless navigation v3 =====
+   A felirat csak az index oldalon él. Nem próbáljuk két HTML között
+   ugyanazt a mozgó szöveget imitálni. */
+.cc-page-transition-label {
+  transition:
+    opacity .22s .18s ease,
+    transform .38s .12s cubic-bezier(.22,1,.36,1) !important;
+}
+.cc-page-transition.is-running .cc-page-transition-label {
+  opacity: 1 !important;
+  transform: translate(-50%,-50%) rotate(0) scale(1) !important;
+}
+.cc-page-transition.is-committing .cc-page-transition-label {
+  opacity: 0 !important;
+  transform: translate(-50%,-58%) scale(.96) !important;
+}
+</style>
+
+
+
+<style id="cc-scrollbar-layout-stability-fix">
+/* =========================================================
+   SCROLLBAR / LAYOUT SHIFT FIX
+   A jobb oldali scrollbar helye végig fenntartva marad,
+   ezért transition közben sem ugrik oldalra a teljes layout.
+   ========================================================= */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Régebbi böngészőkhöz: a függőleges scrollbar mindig foglaljon helyet. */
+@supports not (scrollbar-gutter: stable) {
+  html {
+    overflow-y: scroll;
+  }
+}
+
+/*
+  Az adatvédelmi belépő transition alatt korábban a body overflow:hidden
+  miatt eltűnhetett a scrollbar. Nem tiltjuk le a body görgetését:
+  a fixed cover úgyis teljesen takarja az oldalt.
+*/
+html.cc-from-index body {
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+</style>
+
+
+
+<style id="cc-footer-cookie-clearance-fix">
+/*
+  Nem a Süti beállítások gombot mozgatjuk:
+  az alatta lévő footer CRUSH & CRUST logót húzzuk jobbra,
+  hogy görgetéskor ne kerüljön a fix gomb mögé.
+*/
+body > footer > .logo {
+  margin-left: 175px !important;
+}
+
+/* Tableten/mobilon a footer tördelődik, ott kisebb hely is elég. */
+@media (max-width: 900px) {
+  body > footer > .logo {
+    margin-left: 155px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  body > footer > .logo {
+    margin-left: 145px !important;
+  }
+}
+</style>
+
+
+
+<style id="cc-chat-launcher-open-fix">
+/* =========================================================
+   CRUSHBOT — nyitott állapot
+   A lebegő ikon eltűnik, amikor a chatpanel nyitva van,
+   így nem takarja ki az inputmezőt / küldés részt.
+   ========================================================= */
+.chat-launcher {
+  transition:
+    bottom .45s var(--ease),
+    transform .42s var(--ease),
+    box-shadow .42s var(--ease),
+    background .42s var(--ease),
+    opacity .25s ease,
+    visibility .25s ease !important;
+}
+
+.chat-launcher.chat-is-open {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(18px) rotate(10deg) scale(.72) !important;
+}
+
+/* Bezáráskor szépen visszajön az ikon. */
+.chat-launcher:not(.chat-is-open) {
+  opacity: 1;
+  visibility: visible;
+}
+</style>
+
+
+
+<style id="cc-chat-quick-buttons-hover-fix">
+/* =========================================================
+   CRUSHBOT — gyorsgomb hover javítás
+   Hoverkor a gombok nem nőnek kifelé és nem lógnak ki
+   a chat panelből. A mozgás helyett belső animációt kapnak.
+   ========================================================= */
+
+/* A gyorsgombokat tartalmazó sor kapjon biztonságos belső helyet. */
+.chat-quick,
+.chat-quick-actions,
+.chat-suggestions,
+.chat-chips {
+  padding: 4px 5px 7px !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+/* Minden chat gyorsgomb maradjon a saját méretén belül. */
+.chat-quick button,
+.chat-quick-actions button,
+.chat-suggestions button,
+.chat-chips button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  transform: none !important;
+  transform-origin: center !important;
+  transition:
+    color .28s ease,
+    border-color .28s ease,
+    box-shadow .28s ease,
+    background-color .28s ease !important;
+}
+
+/* Korábbi translate/scale hover felülírása. */
+.chat-quick button:hover,
+.chat-quick button:focus-visible,
+.chat-quick-actions button:hover,
+.chat-quick-actions button:focus-visible,
+.chat-suggestions button:hover,
+.chat-suggestions button:focus-visible,
+.chat-chips button:hover,
+.chat-chips button:focus-visible {
+  transform: none !important;
+  background: var(--yellow) !important;
+  color: var(--ink) !important;
+  border-color: var(--ink) !important;
+
+  /* Külső nagy árnyék helyett belső, így nem lóg ki. */
+  box-shadow:
+    inset 0 -4px 0 rgba(32,33,29,.18),
+    inset 0 0 0 1px rgba(32,33,29,.08) !important;
+
+  outline: none !important;
+}
+
+/* Finom "fénycsík" a gomb BELSEJÉBEN. */
+.chat-quick button::after,
+.chat-quick-actions button::after,
+.chat-suggestions button::after,
+.chat-chips button::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -35%;
+  bottom: -35%;
+  left: -38%;
+  width: 26%;
+  background: rgba(255,255,255,.32);
+  transform: skewX(-20deg);
+  transition: left .48s cubic-bezier(.22,1,.36,1);
+  pointer-events: none;
+}
+
+.chat-quick button:hover::after,
+.chat-quick button:focus-visible::after,
+.chat-quick-actions button:hover::after,
+.chat-quick-actions button:focus-visible::after,
+.chat-suggestions button:hover::after,
+.chat-suggestions button:focus-visible::after,
+.chat-chips button:hover::after,
+.chat-chips button:focus-visible::after {
+  left: 118%;
+}
+
+/* Kattintáskor se változzon a gomb külső mérete. */
+.chat-quick button:active,
+.chat-quick-actions button:active,
+.chat-suggestions button:active,
+.chat-chips button:active {
+  transform: none !important;
+  box-shadow: inset 0 3px 0 rgba(32,33,29,.18) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-quick button,
+  .chat-quick-actions button,
+  .chat-suggestions button,
+  .chat-chips button,
+  .chat-quick button::after,
+  .chat-quick-actions button::after,
+  .chat-suggestions button::after,
+  .chat-chips button::after {
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+
+
+
+<style id="cc-language-toggle-redesign">
+/* =========================================================
+   HU / EN — floating brand switch
+   A navot nem nyomja össze; jobb oldalon, alatta lebeg.
+   ========================================================= */
+.cc-lang-toggle{
+  --lang-index:0;
+  position:fixed !important;
+  z-index:780;
+  top:88px;
+  right:28px;
+  display:grid !important;
+  grid-template-columns:28px 46px 1px 46px;
+  align-items:center;
+  gap:0;
+  width:auto;
+  height:44px;
+  margin:0 !important;
+  padding:4px 5px 4px 6px !important;
+  border:1px solid rgba(243,238,223,.24) !important;
+  border-radius:999px !important;
+  background:rgba(32,33,29,.92) !important;
+  box-shadow:
+    4px 5px 0 rgba(217,120,92,.88),
+    0 12px 30px rgba(0,0,0,.20) !important;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  isolation:isolate;
+  overflow:hidden;
+  transform:rotate(1deg);
+  transition:
+    transform .35s cubic-bezier(.22,1,.36,1),
+    box-shadow .35s ease,
+    border-color .35s ease !important;
+}
+
+.cc-lang-toggle:hover{
+  transform:translateY(-2px) rotate(0deg);
+  border-color:rgba(200,214,122,.52) !important;
+  box-shadow:
+    5px 7px 0 rgba(217,120,92,.95),
+    0 16px 34px rgba(0,0,0,.24) !important;
+}
+
+.cc-lang-globe{
+  position:relative;
+  z-index:3;
+  display:grid;
+  place-items:center;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:var(--cream);
+  color:var(--ink);
+  font-size:17px;
+  font-weight:1000;
+  line-height:1;
+  transform:rotate(-8deg);
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1);
+}
+.cc-lang-toggle:hover .cc-lang-globe{
+  transform:rotate(172deg) scale(1.06);
+}
+
+.cc-lang-divider{
+  position:relative;
+  z-index:3;
+  width:1px;
+  height:17px;
+  background:rgba(243,238,223,.20);
+}
+
+.cc-lang-btn{
+  position:relative;
+  z-index:4;
+  min-width:0 !important;
+  width:46px !important;
+  height:34px !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:999px !important;
+  background:transparent !important;
+  color:rgba(243,238,223,.62) !important;
+  font-family:"DM Sans",sans-serif !important;
+  font-size:.68rem !important;
+  line-height:1 !important;
+  font-weight:1000 !important;
+  letter-spacing:.10em !important;
+  cursor:pointer;
+  transform:none !important;
+  box-shadow:none !important;
+  transition:
+    color .28s ease,
+    letter-spacing .3s ease !important;
+}
+
+.cc-lang-btn:hover{
+  color:var(--cream) !important;
+  letter-spacing:.15em !important;
+  transform:none !important;
+}
+
+.cc-lang-btn.is-active{
+  color:var(--ink) !important;
+}
+
+/* A sárga aktív állapot külön rétegen csúszik HU <-> EN között. */
+.cc-lang-slider{
+  position:absolute;
+  z-index:2;
+  top:5px;
+  left:34px;
+  width:46px;
+  height:34px;
+  border-radius:999px;
+  background:var(--yellow);
+  box-shadow:
+    inset 0 -3px 0 rgba(32,33,29,.14),
+    0 0 0 1px rgba(200,214,122,.14);
+  transform:translateX(calc(var(--lang-index) * 47px));
+  transition:transform .46s cubic-bezier(.34,1.56,.64,1);
+}
+
+.cc-lang-toggle:has(.cc-lang-btn[data-lang="en"].is-active){
+  --lang-index:1;
+}
+
+/* Mobilon jobb felső sarokban kompaktabb. */
+@media(max-width:820px){
+  .cc-lang-toggle{
+    top:76px;
+    right:14px;
+    grid-template-columns:24px 40px 1px 40px;
+    height:40px;
+    padding:3px 4px 3px 5px !important;
+  }
+  .cc-lang-globe{width:21px;height:21px;font-size:14px}
+  .cc-lang-btn{width:40px !important;height:32px !important;font-size:.62rem !important}
+  .cc-lang-slider{left:29px;top:4px;width:40px;height:32px;transform:translateX(calc(var(--lang-index) * 41px))}
+}
+</style>
+
+
+
+<style id="cc-language-toggle-redesign-v2">
+/* =========================================================
+   HU / EN — CORNER TAB
+   Új elhelyezés: jobb felső sarok, a képernyő széléhez rögzítve.
+   Új forma: vertikális "ticket/tab", nem lebegő kapszula.
+   ========================================================= */
+
+.cc-lang-toggle{
+  --lang-index:0;
+  position:fixed !important;
+  z-index:920 !important;
+  top:150px !important;
+  right:-2px !important;
+
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:3px !important;
+
+  width:58px !important;
+  height:auto !important;
+  margin:0 !important;
+  padding:8px 7px 9px !important;
+
+  border:1px solid rgba(243,238,223,.26) !important;
+  border-right:0 !important;
+  border-radius:18px 0 0 18px !important;
+
+  background:var(--ink) !important;
+  box-shadow:
+    -5px 5px 0 var(--red),
+    -14px 18px 32px rgba(0,0,0,.22) !important;
+
+  backdrop-filter:none !important;
+  overflow:visible !important;
+  isolation:isolate;
+  transform:translateX(0) rotate(0deg) !important;
+
+  transition:
+    width .38s cubic-bezier(.22,1,.36,1),
+    transform .38s cubic-bezier(.22,1,.36,1),
+    box-shadow .38s ease !important;
+}
+
+/* Kis dekoratív bevágás, mint egy ticketen. */
+.cc-lang-toggle::before,
+.cc-lang-toggle::after{
+  content:"";
+  position:absolute;
+  left:-6px;
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:var(--cream);
+  border:1px solid rgba(32,33,29,.16);
+  z-index:5;
+}
+.cc-lang-toggle::before{top:39px}
+.cc-lang-toggle::after{bottom:39px}
+
+.cc-lang-toggle:hover{
+  width:64px !important;
+  transform:translateX(-3px) !important;
+  box-shadow:
+    -7px 7px 0 var(--red),
+    -18px 20px 34px rgba(0,0,0,.25) !important;
+}
+
+/* Az előző globe helyett egyszerű LANG felirat. */
+.cc-lang-globe{
+  width:auto !important;
+  height:auto !important;
+  min-width:0 !important;
+  margin:1px 0 5px !important;
+  padding:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  color:var(--cream) !important;
+  font-size:0 !important;
+  transform:none !important;
+}
+.cc-lang-globe::after{
+  content:"LANG";
+  font-family:"DM Sans",sans-serif;
+  font-size:.53rem;
+  font-weight:1000;
+  letter-spacing:.17em;
+  color:rgba(243,238,223,.52);
+}
+.cc-lang-toggle:hover .cc-lang-globe{transform:none !important}
+
+/* Nincs középső függőleges divider. */
+.cc-lang-divider{display:none !important}
+
+/* A két nyelv egymás alatt. */
+.cc-lang-btn{
+  position:relative !important;
+  z-index:4 !important;
+  display:grid !important;
+  place-items:center !important;
+
+  width:42px !important;
+  min-width:42px !important;
+  height:38px !important;
+  padding:0 !important;
+
+  border:0 !important;
+  border-radius:11px !important;
+  background:transparent !important;
+  color:rgba(243,238,223,.55) !important;
+  box-shadow:none !important;
+
+  font-family:"DM Sans",sans-serif !important;
+  font-size:.67rem !important;
+  font-weight:1000 !important;
+  letter-spacing:.08em !important;
+
+  transform:none !important;
+  transition:
+    color .25s ease,
+    transform .3s cubic-bezier(.34,1.56,.64,1) !important;
+}
+
+.cc-lang-btn:hover{
+  color:var(--cream) !important;
+  transform:translateX(-2px) !important;
+  letter-spacing:.08em !important;
+}
+
+.cc-lang-btn.is-active{
+  color:var(--ink) !important;
+}
+
+/* Aktív nyelv: külön kis "címke" csúszik függőlegesen. */
+.cc-lang-slider{
+  position:absolute !important;
+  z-index:2 !important;
+  top:31px !important;
+  left:8px !important;
+
+  width:42px !important;
+  height:38px !important;
+
+  border-radius:11px !important;
+  background:var(--yellow) !important;
+  box-shadow:
+    inset 0 -3px 0 rgba(32,33,29,.15),
+    2px 2px 0 rgba(243,238,223,.10) !important;
+
+  transform:translateY(calc(var(--lang-index) * 41px)) rotate(-2deg) !important;
+  transition:
+    transform .48s cubic-bezier(.34,1.56,.64,1) !important;
+}
+
+.cc-lang-toggle:has(.cc-lang-btn[data-lang="en"].is-active){
+  --lang-index:1;
+}
+
+/* Mobilon alacsonyabbra és kisebbre kerül, hogy ne ütközzön a navval. */
+@media(max-width:820px){
+  .cc-lang-toggle{
+    top:112px !important;
+    right:-2px !important;
+    width:52px !important;
+    padding:7px 5px 8px !important;
+    border-radius:16px 0 0 16px !important;
+  }
+  .cc-lang-toggle:hover{width:56px !important}
+  .cc-lang-btn{
+    width:38px !important;
+    min-width:38px !important;
+    height:35px !important;
+    font-size:.61rem !important;
+  }
+  .cc-lang-slider{
+    left:7px !important;
+    top:29px !important;
+    width:38px !important;
+    height:35px !important;
+    transform:translateY(calc(var(--lang-index) * 38px)) rotate(-2deg) !important;
+  }
+  .cc-lang-toggle::before{top:35px}
+  .cc-lang-toggle::after{bottom:35px}
+}
+</style>
+
+
+
+<style id="cc-language-final-polish">
+.cc-lang-toggle::before,
+.cc-lang-toggle::after{
+  content:none !important;
+  display:none !important;
+}
+</style>
+
+
+
+<style id="cc-language-edge-chat-fix">
+/* =========================================================
+   HU / EN — képernyőszél + CrushBot ütközés javítás
+   ========================================================= */
+
+/* A piros offset rész ténylegesen fusson ki a viewport jobb széléig. */
+.cc-lang-toggle{
+  right:0 !important;
+  border-radius:18px 0 0 18px !important;
+  box-shadow:
+    -6px 0 0 var(--red),
+    -6px 6px 0 var(--red),
+    -14px 18px 32px rgba(0,0,0,.22) !important;
+}
+
+/* Külön piros hátlap: a jobb oldala pontosan a képernyő szélén záródik. */
+.cc-lang-toggle::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:-1 !important;
+  top:-6px !important;
+  bottom:-6px !important;
+  left:-7px !important;
+  right:0 !important;
+  width:auto !important;
+  height:auto !important;
+  border:0 !important;
+  border-radius:22px 0 0 22px !important;
+  background:var(--red) !important;
+  pointer-events:none !important;
+}
+
+/* A korábbi felső dekorációs pötty továbbra se jelenjen meg. */
+.cc-lang-toggle::before{
+  content:none !important;
+  display:none !important;
+}
+
+/* A sötét kapcsoló a piros hátlap fölött marad. */
+.cc-lang-toggle > *{
+  position:relative;
+  z-index:2;
+}
+
+/*
+   Amikor a CrushBot nyitva van, a nyelvváltó nem marad a panel fölött:
+   finoman kicsúszik jobbra és teljesen kattinthatatlanná válik.
+*/
+body:has(.chat-shell.open) .cc-lang-toggle{
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+  transform:translateX(110%) !important;
+  transition:
+    opacity .20s ease,
+    visibility .20s ease,
+    transform .38s cubic-bezier(.22,1,.36,1) !important;
+}
+
+/* Bezárt chatnél visszatér. */
+body:not(:has(.chat-shell.open)) .cc-lang-toggle{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
+@media(max-width:820px){
+  .cc-lang-toggle{
+    right:0 !important;
+  }
+}
+</style>
+
+
+
+<style id="cc-language-old-design-edge-only-fix">
+/* =========================================================
+   HU / EN — vissza az előző sötét ticket designhoz.
+   CSAK a külső piros offset/hátlap fut ki a képernyő széléig.
+   A chat nyitásakor továbbra is eltűnik.
+   ========================================================= */
+
+.cc-lang-toggle{
+  right:0 !important;
+  width:58px !important;
+  padding:8px 7px 9px !important;
+  border:1px solid rgba(243,238,223,.26) !important;
+  border-right:0 !important;
+  border-radius:18px 0 0 18px !important;
+  background:var(--ink) !important;
+
+  /* A régi design piros offsetje, jobb oldalon a viewport széléig zárva. */
+  box-shadow:
+    -5px 5px 0 var(--red),
+    0 5px 0 var(--red),
+    -14px 18px 32px rgba(0,0,0,.22) !important;
+
+  overflow:visible !important;
+}
+
+/* Az előző javítás nagy piros hátlapját kikapcsoljuk. */
+.cc-lang-toggle::before,
+.cc-lang-toggle::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* Visszaállítjuk a régi LANG / HU / EN belső megjelenést. */
+.cc-lang-globe{
+  width:auto !important;
+  height:auto !important;
+  min-width:0 !important;
+  margin:1px 0 5px !important;
+  padding:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  color:var(--cream) !important;
+  font-size:0 !important;
+  transform:none !important;
+}
+.cc-lang-globe::after{
+  content:"LANG" !important;
+  display:block !important;
+  font-family:"DM Sans",sans-serif !important;
+  font-size:.53rem !important;
+  font-weight:1000 !important;
+  letter-spacing:.17em !important;
+  color:rgba(243,238,223,.52) !important;
+}
+
+.cc-lang-divider{display:none !important}
+
+.cc-lang-btn{
+  width:42px !important;
+  min-width:42px !important;
+  height:38px !important;
+  border-radius:11px !important;
+  background:transparent !important;
+  color:rgba(243,238,223,.55) !important;
+}
+
+.cc-lang-btn.is-active{
+  color:var(--ink) !important;
+}
+
+.cc-lang-slider{
+  top:31px !important;
+  left:8px !important;
+  width:42px !important;
+  height:38px !important;
+  border-radius:11px !important;
+  background:var(--yellow) !important;
+  transform:translateY(calc(var(--lang-index) * 41px)) rotate(-2deg) !important;
+}
+
+/* Hover is a régi, visszafogott ticket mozgás. */
+body:not(:has(.chat-shell.open)) .cc-lang-toggle:hover{
+  width:64px !important;
+  transform:translateX(-3px) !important;
+  box-shadow:
+    -7px 7px 0 var(--red),
+    0 7px 0 var(--red),
+    -18px 20px 34px rgba(0,0,0,.25) !important;
+}
+
+/* A jó chat-fix megmarad. */
+body:has(.chat-shell.open) .cc-lang-toggle{
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+  transform:translateX(110%) !important;
+}
+
+@media(max-width:820px){
+  .cc-lang-toggle{
+    right:0 !important;
+    width:52px !important;
+    padding:7px 5px 8px !important;
+    border-radius:16px 0 0 16px !important;
+  }
+  .cc-lang-btn{
+    width:38px !important;
+    min-width:38px !important;
+    height:35px !important;
+  }
+  .cc-lang-slider{
+    left:7px !important;
+    top:29px !important;
+    width:38px !important;
+    height:35px !important;
+    transform:translateY(calc(var(--lang-index) * 38px)) rotate(-2deg) !important;
+  }
+}
+</style>
+
 </head>
   <body>
     <div class="cursor"></div>
@@ -6620,6 +8230,13 @@
         ><a class="order hoverable" href="#order">Rendelj most</a>
       </div>
     </nav>
+    <div class="cc-lang-toggle" role="group" aria-label="Nyelvválasztó">
+      <span class="cc-lang-globe" aria-hidden="true">◎</span>
+      <button class="cc-lang-btn is-active hoverable" type="button" data-lang="hu" aria-pressed="true">HU</button>
+      <span class="cc-lang-divider" aria-hidden="true"></span>
+      <button class="cc-lang-btn hoverable" type="button" data-lang="en" aria-pressed="false">EN</button>
+      <span class="cc-lang-slider" aria-hidden="true"></span>
+    </div>
     <main>
       <header class="hero" id="top">
         <span class="shape shape-one"></span
@@ -7348,6 +8965,10 @@
         chatShell.classList.toggle("open", open);
         chatShell.setAttribute("aria-hidden", String(!open));
         chatLauncher.setAttribute("aria-expanded", String(open));
+
+        /* Nyitott chatnél a lebegő launcher ne takarja az inputmezőt. */
+        chatLauncher.classList.toggle("chat-is-open", open);
+
         if (open) setTimeout(() => chatInput.focus(), 180);
       }
 
@@ -7361,7 +8982,16 @@
       }
 
       function botReply(message) {
-        const q = message.toLocaleLowerCase("hu-HU");
+        const isEn = window.ccLanguage === "en";
+        const q = message.toLocaleLowerCase(isEn ? "en-US" : "hu-HU");
+        if (isEn) {
+          if (q.includes("open") || q.includes("hour") || q.includes("when")) return "You can find today's exact opening hours in the Visit us section. You can also jump straight to the ordering options there. 😎";
+          if (q.includes("order") || q.includes("deliver") || q.includes("wolt") || q.includes("foodora")) return "You can order through the ordering cards on the page. Pick the option that suits you and your food is on its way. 🛵💨";
+          if (q.includes("pizza")) return "If you're in a pizza mood, open the full menu and switch to the Pizza tab. I'd start with something bold and extra cheesy. 🍕";
+          if (q.includes("burger") || q.includes("recommend") || q.includes("first")) return "For a first order, I'd go with a crowd favorite: a signature burger plus a crispy side is hard to miss. 🔥";
+          if (q.includes("veg") || q.includes("allerg") || q.includes("free")) return "You'll find allergen information under the full menu. For special dietary needs, it's best to ask the restaurant directly before ordering. 🌱";
+          return "Good question. 😄 I can already help with the menu, ordering, opening hours and basic info — tell me what you're curious about!";
+        }
         if (q.includes("nyit") || q.includes("mikor") || q.includes("óra")) {
           return "A pontos mai nyitvatartást a Látogass meg résznél látod. Ha éhes vagy, ott rögtön a rendelési opciókhoz is tovább tudsz menni. 😎";
         }
@@ -8146,6 +9776,192 @@
   outline-offset: 4px !important;
 }
 </style>
+
+
+<div class="cc-cookie-layer" id="ccCookieLayer" aria-hidden="true">
+ <div class="cc-cookie-backdrop" aria-hidden="true"></div>
+ <section class="cc-cookie-card" role="dialog" aria-modal="true" aria-labelledby="ccCookieTitle" aria-describedby="ccCookieDescription">
+  <div class="cc-cookie-inner">
+   <div class="cc-cookie-topline"><span class="cc-cookie-chip"><span class="cc-cookie-dot"></span>Cookie check</span><span class="cc-cookie-mini">Te döntöd el, mi kerülhet a tányérra.</span></div>
+   <h2 class="cc-cookie-title" id="ccCookieTitle">Sütik? <span>Csak amit kérsz.</span></h2>
+   <p class="cc-cookie-copy" id="ccCookieDescription">A weboldal működéséhez szükséges sütiket használjuk. Az <strong>analitikai</strong> és <strong>marketing</strong> sütikhez csak akkor adunk engedélyt, ha te is kéred. A választásodat később bármikor módosíthatod. Részletek az <a href="adatvedelem.html">Adatvédelmi tájékoztatóban</a>.</p>
+   <div class="cc-cookie-settings" id="ccCookieSettings" aria-hidden="true"><div class="cc-cookie-settings-inner">
+    <div class="cc-cookie-divider"></div>
+    <div class="cc-cookie-option"><div><strong>Szükséges sütik</strong><small>Az oldal alapvető működéséhez kellenek, ezért nem kapcsolhatók ki.</small></div><label class="cc-cookie-switch" aria-label="Szükséges sütik"><input type="checkbox" checked disabled><span class="cc-cookie-slider"></span></label></div>
+    <div class="cc-cookie-option"><div><strong>Analitikai sütik</strong><small>Segíthetnek megérteni, hogyan használják a látogatók az oldalt.</small></div><label class="cc-cookie-switch"><input id="ccAnalytics" type="checkbox"><span class="cc-cookie-slider"></span></label></div>
+    <div class="cc-cookie-option"><div><strong>Marketing sütik</strong><small>Személyre szabott kommunikációhoz vagy kampányméréshez használhatók.</small></div><label class="cc-cookie-switch"><input id="ccMarketing" type="checkbox"><span class="cc-cookie-slider"></span></label></div>
+    <div class="cc-cookie-save"><button class="cc-cookie-btn cc-cookie-btn--accept hoverable" id="ccCookieSave" type="button">Beállítások mentése</button></div>
+   </div></div>
+   <div class="cc-cookie-actions">
+    <button class="cc-cookie-btn cc-cookie-btn--settings hoverable" id="ccCookieCustomize" type="button" aria-expanded="false">Beállítások</button>
+    <button class="cc-cookie-btn cc-cookie-btn--reject hoverable" id="ccCookieReject" type="button">Csak szükséges</button>
+    <button class="cc-cookie-btn cc-cookie-btn--accept hoverable" id="ccCookieAccept" type="button">Mindet elfogadom</button>
+   </div>
+  </div>
+ </section>
+</div>
+<button class="cc-cookie-reopen hoverable" id="ccCookieReopen" type="button" aria-label="Süti beállítások megnyitása"><span class="cc-cookie-reopen-mark">C</span>Süti beállítások</button>
+
+<script id="cc-cookie-consent-script">
+(()=>{const K="cc_cookie_consent_v1",L=document.getElementById("ccCookieLayer"),S=document.getElementById("ccCookieSettings"),C=document.getElementById("ccCookieCustomize"),A=document.getElementById("ccCookieAccept"),R=document.getElementById("ccCookieReject"),V=document.getElementById("ccCookieSave"),O=document.getElementById("ccCookieReopen"),AN=document.getElementById("ccAnalytics"),M=document.getElementById("ccMarketing");if(!L)return;
+const read=()=>{try{return JSON.parse(localStorage.getItem(K))}catch(e){return null}};
+const apply=c=>{window.ccCookieConsent=c;window.dispatchEvent(new CustomEvent("cc:consentchange",{detail:c}))};
+const close=()=>{L.classList.remove("is-visible");L.setAttribute("aria-hidden","true");S.classList.remove("is-open");S.setAttribute("aria-hidden","true");C.setAttribute("aria-expanded","false");O.classList.add("is-visible")};
+const store=(a,m)=>{const c={necessary:true,analytics:!!a,marketing:!!m,updatedAt:new Date().toISOString()};localStorage.setItem(K,JSON.stringify(c));apply(c);close()};
+const sync=()=>{const c=read();AN.checked=!!(c&&c.analytics);M.checked=!!(c&&c.marketing)};
+const open=(settings=false)=>{sync();L.classList.add("is-visible");L.setAttribute("aria-hidden","false");O.classList.remove("is-visible");if(settings){S.classList.add("is-open");S.setAttribute("aria-hidden","false");C.setAttribute("aria-expanded","true")}setTimeout(()=>C.focus(),80)};
+C.onclick=()=>{const x=!S.classList.contains("is-open");S.classList.toggle("is-open",x);S.setAttribute("aria-hidden",String(!x));C.setAttribute("aria-expanded",String(x))};
+A.onclick=()=>store(true,true);R.onclick=()=>store(false,false);V.onclick=()=>store(AN.checked,M.checked);O.onclick=()=>open(true);
+const old=read();
+if(old){apply(old);}
+
+/*
+  Cookie megjelenési logika:
+  - teljesen új belépés / kézi reload az indexen -> megjelenik
+  - index -> adatvedelem.html -> index visszatérés -> nem jelenik meg újra
+*/
+let returningFromPrivacy = false;
+try {
+  returningFromPrivacy = sessionStorage.getItem("cc_returning_from_privacy") === "1";
+  if (returningFromPrivacy) {
+    sessionStorage.removeItem("cc_returning_from_privacy");
+  }
+} catch (_) {}
+
+if (!returningFromPrivacy) {
+  setTimeout(()=>open(false),900);
+} else {
+  O.classList.add("is-visible");
+}
+})();
+</script>
+
+<div class="cc-page-transition" id="ccPrivacyTransition" aria-hidden="true">
+  <div class="cc-page-transition-label">Adat<span>védelem.</span></div>
+</div>
+
+<script id="cc-privacy-transition-script">
+(() => {
+  const transition = document.getElementById("ccPrivacyTransition");
+  if (!transition) return;
+
+  const privacyLinks = [...document.querySelectorAll('a[href="adatvedelem.html"]')];
+
+  privacyLinks.forEach(link => {
+    link.addEventListener("click", event => {
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
+      ) return;
+
+      event.preventDefault();
+      const target = link.href;
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        window.location.href = target;
+        return;
+      }
+
+      transition.classList.add("is-running");
+      transition.setAttribute("aria-hidden", "false");
+
+      window.setTimeout(() => {
+        transition.classList.add("is-committing");
+        try {
+          sessionStorage.setItem("cc_privacy_transition", "1");
+          sessionStorage.setItem("cc_returning_from_privacy", "1");
+        } catch (_) {}
+        window.setTimeout(() => { window.location.href = target; }, 180);
+      }, 500);
+    });
+  });
+
+  /* Vissza navigáláskor ne maradjon rajta a transition réteg. */
+  window.addEventListener("pageshow", () => {
+    transition.classList.remove("is-running", "is-committing");
+    transition.setAttribute("aria-hidden", "true");
+  });
+})();
+</script>
+
+
+
+
+
+
+
+<script id="cc-language-complete-script">
+(() => {
+  const T = {"Étlap": "Menu", "Rólunk": "About", "Vélemények": "Reviews", "Helyszín": "Location", "Rendelj most": "Order now", "Budapest legropogósabb sarka": "Budapest's crispiest corner", "Szaftos": "Juicy", "smash burgerek": "smash burgers", ", tűzforró": ", piping-hot", "nápolyi pizzák": "Neapolitan pizzas", "és olyan szószok,": "and sauces so good,", "amikről még holnap is beszélni fogsz.": "you'll still be talking about them tomorrow.", "Nézd meg az étlapot": "See the menu", "NÁPOLYI PIZZA": "NEAPOLITAN PIZZA", "FRISSEN SÜTVE": "FRESHLY BAKED", "SAJTTAL MINDEN JOBB": "EVERYTHING'S BETTER WITH CHEESE", "A TI": "YOUR", "KEDVENCEITEK ↘": "FAVORITES ↘", "A legtöbbet rendelt fogások": "Most ordered dishes", "Közönség": "Crowd", "kedvencek": "favorites", "Három burger vagy három pizza. Semmi túlzsúfolás — csak a biztos befutók.": "Three burgers or three pizzas. No clutter — just the guaranteed hits.", "BURGEREK": "BURGERS", "PIZZÁK": "PIZZAS", "Csípős": "Spicy", "Dupla Smash Burger": "Double Smash Burger", "2× marha, cheddar,": "2× beef, cheddar,", "hagymalekvár, crush szósz": "onion jam, Crush sauce", "Pepperoni Chili-Méz Pizza": "Pepperoni Chili-Honey Pizza", "pepperoni, chili méz": "pepperoni, chili honey", "Ropogós Csirkeburger": "Crispy Chicken Burger", "Ropogós csirke, coleslaw,": "crispy chicken, coleslaw,", "savanyú uborka, BBQ": "pickles, BBQ", "Gombás-Rukkolás Pizza": "Mushroom & Arugula Pizza", "Erdei gomba, mozzarella,": "wild mushrooms, mozzarella,", "fokhagymakrém, rukkola": "garlic cream, arugula", "Füstös": "Smoky", "Baconös Smash Burger": "Bacon Smash Burger", "Marha, füstölt cheddar,": "beef, smoked cheddar,", "parmezán, friss bazsalikom": "parmesan, fresh basil", "Klasszik": "Classic", "Nagy étlap, kis káosz": "Big menu, little chaos", "Válassz egy kategóriát": "Choose a category", "Egyszerre csak azt mutatjuk, amit tényleg nézni akarsz.": "We only show what you actually want to see.", "Burgerek": "Burgers", "8 tétel": "8 items", "Pizzák": "Pizzas", "Sideok": "Sides", "5 tétel": "5 items", "Szószok": "Sauces", "4 tétel": "4 items", "Desszert": "Desserts", "Italok": "Drinks", "6 tétel": "6 items", "Gyors jelölések": "Quick filters", "Összes": "All", "Közönségkedvenc": "Crowd favorite", "Extrázható": "Customizable", "Smash burgerek": "Smash burgers", "Marha, cheddar, uborka, hagyma, crush szósz": "Beef, cheddar, pickles, onion, Crush sauce", "2× marha, cheddar, hagymalekvár, crush szósz": "2× beef, cheddar, onion jam, Crush sauce", "Ropogós csirke, coleslaw, uborka, BBQ": "Crispy chicken, coleslaw, pickles, BBQ", "Marha, füstölt cheddar, bacon, jalapeño": "Beef, smoked cheddar, bacon, jalapeño", "Új": "New", "Dupla marha, cheddar, extra savanyú uborka, kapros mayo": "Double beef, cheddar, extra pickles, dill mayo", "Prémium": "Premium", "Marha, provolone, gomba, szarvasgombás mayo": "Beef, provolone, mushrooms, truffle mayo", "Marha, pepper jack, jalapeño, chili crunch, hot sauce": "Beef, pepper jack, jalapeño, chili crunch, hot sauce", "Növényi pogácsa, cheddar, saláta, uborka, crush szósz": "Plant-based patty, cheddar, lettuce, pickles, Crush sauce", "Nápolyi pizzák": "Neapolitan pizzas", "San Marzano, fior di latte, parmezán, bazsalikom": "San Marzano, fior di latte, parmesan, basil", "Mozzarella, pepperoni, chili méz": "Mozzarella, pepperoni, chili honey", "Erdei gomba, fokhagymakrém, rukkola": "Wild mushrooms, garlic cream, arugula", "Zöld": "Green", "Pisztáciapesztó, cukkini, feta, citrom": "Pistachio pesto, zucchini, feta, lemon", "Népszerű": "Popular", "San Marzano, mozzarella, csípős szalámi, pecorino": "San Marzano, mozzarella, spicy salami, pecorino", "Krémes": "Creamy", "Mortadella, ricotta, pisztácia, citromhéj": "Mortadella, ricotta, pistachio, lemon zest", "4 sajt": "4 cheese", "Fior di latte, gorgonzola, taleggio, parmezán": "Fior di latte, gorgonzola, taleggio, parmesan", "Sonka, mozzarella, gomba, olíva, oregano": "Ham, mozzarella, mushrooms, olives, oregano", "Fries & sideok": "Fries & sides", "Ropogós burgonya, házi fűszersó": "Crispy fries, house seasoning", "Loaded": "Loaded", "Cheddar, bacon, jalapeño, újhagyma": "Cheddar, bacon, jalapeño, spring onion", "Sajtos": "Cheesy", "Parmezán, fokhagyma, petrezselyem": "Parmesan, garlic, parsley", "Ropogós hagymakarika, füstös dip": "Crispy onion rings, smoky dip", "Friss": "Fresh", "Káposzta, répa, lime, könnyű mayo": "Cabbage, carrot, lime, light mayo", "Házi": "House", "Crush szósz": "Crush sauce", "Krémes, savanykás, enyhén füstös": "Creamy, tangy, lightly smoky", "Chili, méz, ecet — pizza mellé veszélyes": "Chili, honey, vinegar — dangerously good with pizza", "Sült fokhagyma, citrom, mayo": "Roasted garlic, lemon, mayo", "Füstös-paradicsomos, melaszos BBQ": "Smoky tomato BBQ with molasses", "Édes": "Sweet", "Meleg brownie, vaníliakrém, sós karamell": "Warm brownie, vanilla cream, salted caramel", "Kávé, mascarpone, kakaó, ropogós morzsa": "Coffee, mascarpone, cocoa, crunchy crumble", "Citromkrém, habcsók, vajas morzsa": "Lemon curd, meringue, buttery crumble", "Limitált": "Limited", "Vanília soft serve, heti változó topping": "Vanilla soft serve, weekly rotating topping", "Házi limonádé": "House lemonade", "Citrom–menta vagy málna–lime, 0,4 l": "Lemon–mint or raspberry–lime, 0.4 l", "Hideg": "Cold", "Fűszeres": "Spiced", "Gyömbéres, enyhén csípős, 0,33 l": "Ginger, lightly spicy, 0.33 l", "Koffein": "Caffeine", "Hidegen áztatott kávé, 0,3 l": "Cold-steeped coffee, 0.3 l", "Szénsavas ásványvíz, 0,5 l": "Sparkling mineral water, 0.5 l", "Barack–citrom vagy hibiszkusz, 0,4 l": "Peach–lemon or hibiscus, 0.4 l", "Allergiád vagy ételérzékenységed van?": "Have an allergy or food intolerance?", "Rendelés előtt szólj a csapatnak — minden fogásunkról részletes allergéninformációt adunk.": "Tell our team before ordering — we can provide detailed allergen information for every dish.", "A jó kaja nem kér bocsánatot.": "Good food doesn't apologize.", "A mi receptünk": "Our recipe", "Hangos ízek.": "Loud flavors.", "Őszinte kaja.": "Honest food.", "Nem fine diningot játszunk. Kézzel formázunk, helyben sütünk, és csak olyat adunk ki, amit mi is azonnal felfalnánk. A tésztánk 48 órát pihen, a húspogácsánk pedig rendelésre kapja meg a ropogós kérgét.": "We're not pretending to be fine dining. We shape by hand, cook on site, and only serve food we'd devour ourselves. Our dough rests for 48 hours, and every beef patty gets its crispy crust to order.", "Pihentetett tészta": "48-hour rested dough", "Friss alapanyag": "Fresh ingredients", "Unalmas falat": "Boring bites", "Nem csak mi mondjuk": "Don't just take our word for it", "Vendégeink értékelései alapján": "Based on our guests' reviews", "„A burger széle tényleg roppan, a chili mézes pizza pedig veszélyesen jó.”": "“The burger really has that crispy edge, and the chili-honey pizza is dangerously good.”", "— Luca · Google értékelés": "— Luca · Google review", "„Végre egy hely, ahol a pizza és a burger közül nem kell rosszul választani.”": "“Finally, a place where you can't make a bad choice between pizza and burgers.”", "— Márk · visszatérő vendég": "— Márk · returning guest", "„Gyors, hangos, szaftos. Pont olyan, amilyennek egy péntek estének lennie kell.”": "“Fast, loud, juicy. Exactly what a Friday night should feel like.”", "„A Smash burger brutál szaftos, a krumpli pedig még hazafelé is ropogott.”": "“The smash burger is insanely juicy, and the fries were still crispy on the way home.”", "— Bence · Google értékelés": "— Bence · Google review", "„A tészta könnyű, a széle levegős, a feltét pedig pont annyi, amennyi kell.”": "“The dough is light, the crust airy, and the toppings are exactly the right amount.”", "— Eszter · helyi vendég": "— Eszter · local guest", "„A személyzet laza és kedves, a kaja meg tíz perc alatt eltűnt az asztalról.”": "“The staff are relaxed and friendly, and the food disappeared from the table in ten minutes.”", "— Dani · Google értékelés": "— Dani · Google review", "„A chili-méz kombó elsőre furán hangzott. Most már minden pizzára ezt akarom.”": "“Chili and honey sounded strange at first. Now I want it on every pizza.”", "„Rég ettem ennyire jó smash burgert. Semmi túlgondolás, csak nagyon eltalált ízek.”": "“I haven't had a smash burger this good in ages. Nothing overthought — just flavors that hit.”", "— Ákos · visszatérő vendég": "— Ákos · returning guest", "„Jó zene, jó hangulat, hatalmas adag. A loaded fries külön függőséget okoz.”": "“Good music, great atmosphere, huge portions. The loaded fries are especially addictive.”", "— Fanni · Google értékelés": "— Fanni · Google review", "Találkozzunk": "Visit us", "Itt sütjük": "This is where we bake", "a boldogságot.": "happiness.", "Ma nyitva 23:00-ig": "Open today until 23:00", "Hétfő–csütörtök": "Monday–Thursday", "Péntek–szombat": "Friday–Saturday", "Vasárnap": "Sunday", "Útvonaltervezés": "Get directions", "Ahogy neked kényelmes": "However you like it", "Éhes": "Hungry", "lettél?": "already?", "Elvitelre kérem": "Takeaway", "Telefonos rendelés · 15–20 perc": "Phone order · 15–20 min", "Kiszállítás Wolton": "Delivery with Wolt", "Kövesd élőben a futárod": "Track your courier live", "Kiszállítás Foodorán": "Delivery with Foodora", "Rendelj házhoz néhány kattintással": "Order delivery in a few clicks", "Asztalt foglalok": "Book a table", "Adatvédelem": "Privacy", "Rendelj ↗": "Order ↗", "online · kajás wingman": "online · your foodie wingman", "Kérdezz a": "Ask about the", "menüről, nyitvatartásról vagy rendelésről": "menu, opening hours or ordering", "— röviden, emberien. 🍔": "— short and human. 🍔", "Szia! 👋 Én vagyok a CrushBot. Miben segítsek: burger, pizza, nyitvatartás vagy rendelés?": "Hey! 👋 I'm CrushBot. How can I help: burgers, pizza, opening hours or ordering?", "🔥 Mit ajánlasz?": "🔥 What do you recommend?", "⏰ Nyitvatartás": "⏰ Opening hours", "🛵 Rendelés": "🛵 Order", "Te döntöd el, mi kerülhet a tányérra.": "You decide what gets onto your plate.", "Sütik?": "Cookies?", "Csak amit kérsz.": "Only what you choose.", "A weboldal működéséhez szükséges sütiket használjuk. Az": "We use cookies required for the website to work. We only allow", "analitikai": "analytics", "és": "and", "marketing": "marketing", "sütikhez csak akkor adunk engedélyt, ha te is kéred. A választásodat később bármikor módosíthatod. Részletek az": "cookies if you choose them. You can change your choice at any time. Details in our", "Adatvédelmi tájékoztatóban": "Privacy Policy", "Szükséges sütik": "Necessary cookies", "Az oldal alapvető működéséhez kellenek, ezért nem kapcsolhatók ki.": "Required for the site's basic operation, so they cannot be disabled.", "Analitikai sütik": "Analytics cookies", "Segíthetnek megérteni, hogyan használják a látogatók az oldalt.": "They help us understand how visitors use the site.", "Marketing sütik": "Marketing cookies", "Személyre szabott kommunikációhoz vagy kampányméréshez használhatók.": "Used for personalized communication or campaign measurement.", "Beállítások mentése": "Save settings", "Beállítások": "Settings", "Csak szükséges": "Necessary only", "Mindet elfogadom": "Accept all", "Süti beállítások": "Cookie settings", "Adat": "Privacy", "védelem.": "."};
+  const A = {"Nyelvválasztó": "Language selector", "Frissen készült smash burger": "Freshly made smash burger", "Közönségkedvenc kategóriák": "Crowd favorite categories", "Étlap kategóriák": "Menu categories", "Étlap jelölések": "Menu labels", "Választható gyors jelölések": "Selectable quick filters", "4,9 pont az 5-ből, vendégeink értékelései alapján": "4.9 out of 5, based on our guests' reviews", "5 csillag": "5 stars", "Vélemények lapozása": "Review pagination", "Vélemény oldalak": "Review pages", "Előző vélemények": "Previous reviews", "Következő vélemények": "Next reviews", "Közösségi linkek és rendelés": "Social links and ordering", "Instagram megnyitása": "Open Instagram", "TikTok megnyitása": "Open TikTok", "Wolt megnyitása": "Open Wolt", "CrushBot megnyitása": "Open CrushBot", "Chat bezárása": "Close chat", "Gyors kérdések": "Quick questions", "Üzenet a CrushBotnak": "Message CrushBot", "Üzenet küldése": "Send message", "Szükséges sütik": "Necessary cookies", "Süti beállítások megnyitása": "Open cookie settings", "CrushBot gépel": "CrushBot is typing"};
+  const reverseT = Object.fromEntries(Object.entries(T).map(([hu,en]) => [en,hu]));
+  const reverseA = Object.fromEntries(Object.entries(A).map(([hu,en]) => [en,hu]));
+  const buttons = [...document.querySelectorAll(".cc-lang-btn")];
+
+  const textNodes = [];
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (!node.parentElement || ["SCRIPT","STYLE"].includes(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+      return node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+  const originalText = new Map(textNodes.map(n => [n, n.nodeValue]));
+  const attrNames = ["aria-label","placeholder","title","data-chat"];
+  const attrOriginals = [];
+  document.querySelectorAll("*").forEach(el => {
+    attrNames.forEach(name => {
+      if (el.hasAttribute(name)) attrOriginals.push([el,name,el.getAttribute(name)]);
+    });
+  });
+
+  function translateNodeValue(value, lang) {
+    if (lang === "hu") return value;
+    const lead = value.match(/^\s*/)?.[0] || "";
+    const tail = value.match(/\s*$/)?.[0] || "";
+    const core = value.trim();
+    return lead + (T[core] ?? core) + tail;
+  }
+
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    textNodes.forEach(node => {
+      const base = originalText.get(node);
+      node.nodeValue = lang === "en" ? translateNodeValue(base, "en") : base;
+    });
+    attrOriginals.forEach(([el,name,base]) => {
+      el.setAttribute(name, lang === "en" ? (A[base] ?? T[base] ?? base) : base);
+    });
+
+    // Dynamic / compound interface values.
+    const input = document.querySelector("#chatInput");
+    if (input) input.placeholder = lang === "en" ? "Type something…" : "Írj valamit…";
+
+    buttons.forEach(btn => {
+      const active = btn.dataset.lang === lang;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", String(active));
+    });
+    try { localStorage.setItem("cc_language", lang); } catch (_) {}
+    window.ccLanguage = lang;
+  }
+
+  // Capture phase prevents the old partial handlers from interfering.
+  buttons.forEach(btn => btn.addEventListener("click", e => {
+    e.stopImmediatePropagation();
+    setLang(btn.dataset.lang);
+  }, true));
+
+  let saved = "hu";
+  try { saved = localStorage.getItem("cc_language") || "hu"; } catch (_) {}
+  setLang(saved === "en" ? "en" : "hu");
+
+  // Expose for dynamic UI pieces.
+  window.ccSetLanguage = setLang;
+})();
+</script>
 
 </body>
 

@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="hu">
 <head>
+
+<script id="cc-privacy-entry-detect">
+(() => {
+  try {
+    if (sessionStorage.getItem("cc_privacy_transition") === "1") {
+      document.documentElement.classList.add("cc-from-index");
+    }
+  } catch (_) {}
+})();
+</script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Crush & Crust — Adatkezelési tájékoztató." />
@@ -204,9 +215,215 @@
       *{scroll-behavior:auto!important;transition-duration:.01ms!important}
     }
   </style>
+
+
+<style id="cc-privacy-entry-transition">
+/* =========================================================
+   INDEX -> ADATVÉDELEM: folyamatos érkezési animáció
+   Az oldal az index transition utolsó, sötét frame-jéből indul.
+   ========================================================= */
+html.cc-from-index body {
+  overflow: hidden;
+}
+
+.cc-privacy-entry {
+  position: fixed;
+  z-index: 60000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  pointer-events: none;
+}
+
+.cc-privacy-entry-title {
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(1.7rem,5vw,4.4rem);
+  line-height: 1;
+  letter-spacing: -.05em;
+  text-transform: uppercase;
+  color: var(--cream);
+  white-space: nowrap;
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.cc-privacy-entry-title span {
+  color: var(--yellow);
+}
+
+html.cc-from-index .nav,
+html.cc-from-index .hero,
+html.cc-from-index .layout,
+html.cc-from-index footer {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+html.cc-from-index.cc-entry-reveal .cc-privacy-entry {
+  animation: ccPrivacyCurtainOut .82s .18s cubic-bezier(.76,0,.24,1) forwards;
+}
+
+html.cc-from-index.cc-entry-reveal .cc-privacy-entry-title {
+  animation: ccPrivacyTitleOut .52s .08s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+html.cc-from-index.cc-entry-reveal .nav {
+  animation: ccPrivacyContentIn .55s .46s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+html.cc-from-index.cc-entry-reveal .hero {
+  animation: ccPrivacyContentIn .7s .54s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+html.cc-from-index.cc-entry-reveal .layout,
+html.cc-from-index.cc-entry-reveal footer {
+  animation: ccPrivacyContentIn .72s .68s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+@keyframes ccPrivacyCurtainOut {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-102%); }
+}
+
+@keyframes ccPrivacyTitleOut {
+  0% { opacity:1; transform:translateY(0) scale(1); }
+  100% { opacity:0; transform:translateY(-26px) scale(.94); }
+}
+
+@keyframes ccPrivacyContentIn {
+  from { opacity:0; transform:translateY(18px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.cc-from-index body { overflow:auto; }
+  .cc-privacy-entry { display:none; }
+  html.cc-from-index .nav,
+  html.cc-from-index .hero,
+  html.cc-from-index .layout,
+  html.cc-from-index footer {
+    opacity:1 !important;
+    transform:none !important;
+    animation:none !important;
+  }
+}
+</style>
+
+
+
+<style id="cc-privacy-seamless-handoff-v2">
+/*
+  Az érkező oldal első frame-je 1:1 ugyanaz:
+  sötét háttér + középen stabil ADATVÉDELEM.
+  Nincs külön title-out animáció, ami a váltásnál "megakadást" okozna.
+*/
+html.cc-from-index .cc-privacy-entry-title {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) rotate(0) !important;
+  animation: none !important;
+}
+
+html.cc-from-index.cc-entry-reveal .cc-privacy-entry-title {
+  animation: none !important;
+}
+
+/*
+  A felirat a curtain része marad, így együtt távoznak.
+  Ettől nincs két külön mozgási görbe a navigáció két oldalán.
+*/
+html.cc-from-index.cc-entry-reveal .cc-privacy-entry {
+  animation: ccPrivacyCurtainOutSmooth .78s .12s cubic-bezier(.76,0,.24,1) forwards !important;
+}
+
+@keyframes ccPrivacyCurtainOutSmooth {
+  0%   { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(0,-102%,0); }
+}
+
+/* GPU compositing a finomabb átadásért. */
+.cc-page-transition,
+.cc-page-transition-label,
+.cc-privacy-entry,
+.cc-privacy-entry-title {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+</style>
+
+
+
+<style id="cc-privacy-no-seam-v3">
+/* A céloldalon nincs második ADATVÉDELEM felirat.
+   Csak ugyanaz a sötét cover fogad, majd azonnal felfelé távozik. */
+html.cc-from-index .cc-privacy-entry-title {
+  display: none !important;
+}
+html.cc-from-index .cc-privacy-entry {
+  background: var(--ink) !important;
+  transform: translate3d(0,0,0);
+  will-change: transform;
+}
+html.cc-from-index.cc-entry-reveal .cc-privacy-entry {
+  animation: ccPrivacyCurtainCleanExit .62s cubic-bezier(.76,0,.24,1) forwards !important;
+}
+@keyframes ccPrivacyCurtainCleanExit {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(0,-102%,0); }
+}
+
+/* A tartalom már a cover alatt készen áll; nem várunk sokat rá. */
+html.cc-from-index.cc-entry-reveal .nav {
+  animation: ccPrivacyContentIn .5s .12s cubic-bezier(.22,1,.36,1) forwards !important;
+}
+html.cc-from-index.cc-entry-reveal .hero {
+  animation: ccPrivacyContentIn .62s .16s cubic-bezier(.22,1,.36,1) forwards !important;
+}
+html.cc-from-index.cc-entry-reveal .layout,
+html.cc-from-index.cc-entry-reveal footer {
+  animation: ccPrivacyContentIn .68s .24s cubic-bezier(.22,1,.36,1) forwards !important;
+}
+</style>
+
+
+
+<style id="cc-scrollbar-layout-stability-fix">
+/* =========================================================
+   SCROLLBAR / LAYOUT SHIFT FIX
+   A jobb oldali scrollbar helye végig fenntartva marad,
+   ezért transition közben sem ugrik oldalra a teljes layout.
+   ========================================================= */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Régebbi böngészőkhöz: a függőleges scrollbar mindig foglaljon helyet. */
+@supports not (scrollbar-gutter: stable) {
+  html {
+    overflow-y: scroll;
+  }
+}
+
+/*
+  Az adatvédelmi belépő transition alatt korábban a body overflow:hidden
+  miatt eltűnhetett a scrollbar. Nem tiltjuk le a body görgetését:
+  a fixed cover úgyis teljesen takarja az oldalt.
+*/
+html.cc-from-index body {
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+</style>
+
 </head>
 
 <body>
+
+<div class="cc-privacy-entry" id="ccPrivacyEntry" aria-hidden="true">
+  <div class="cc-privacy-entry-title">Adat<span>védelem.</span></div>
+</div>
+
   <div class="noise"></div>
 
   <nav class="nav" aria-label="Fő navigáció">
@@ -401,5 +618,27 @@
     <span>© 2026 · Burger × Pizza × Good times</span>
     <a href="index.html">Vissza a főoldalra ↑</a>
   </footer>
+
+
+<script id="cc-privacy-entry-run">
+(() => {
+  const root = document.documentElement;
+  if (!root.classList.contains("cc-from-index")) return;
+
+  try { sessionStorage.removeItem("cc_privacy_transition"); } catch (_) {}
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => root.classList.add("cc-entry-reveal"));
+  });
+
+  window.setTimeout(() => {
+    root.classList.remove("cc-from-index", "cc-entry-reveal");
+    const entry = document.getElementById("ccPrivacyEntry");
+    if (entry) entry.remove();
+    document.body.style.overflow = "";
+  }, 1550);
+})();
+</script>
+
 </body>
 </html>
