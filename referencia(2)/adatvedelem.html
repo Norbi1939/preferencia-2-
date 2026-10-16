@@ -416,6 +416,66 @@ html.cc-from-index body {
 }
 </style>
 
+<style id="cc-home-exit-style">
+.cc-home-transition {
+  position: fixed;
+  z-index: 50000;
+  inset: 0;
+  pointer-events: none;
+  visibility: hidden;
+  overflow: hidden;
+}
+.cc-home-transition::before,
+.cc-home-transition::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateY(102%);
+}
+.cc-home-transition::before {
+  background: var(--red);
+  transition: transform .58s cubic-bezier(.76,0,.24,1);
+}
+.cc-home-transition::after {
+  background: var(--ink);
+  transition: transform .58s .12s cubic-bezier(.76,0,.24,1);
+}
+.cc-home-transition.is-running {
+  visibility: visible;
+}
+.cc-home-transition.is-running::before,
+.cc-home-transition.is-running::after {
+  transform: translateY(0);
+}
+.cc-home-transition-label {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  color: var(--cream);
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(1.7rem,5vw,4.4rem);
+  letter-spacing: -.05em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translate(-50%,-35%) rotate(-2deg);
+  white-space: nowrap;
+  transition:
+    opacity .3s .28s ease,
+    transform .48s .24s cubic-bezier(.22,1,.36,1);
+}
+.cc-home-transition.is-running .cc-home-transition-label {
+  opacity: 1;
+  transform: translate(-50%,-50%) rotate(0);
+}
+.cc-home-transition-label span { color: var(--yellow); }
+
+
+.cc-home-transition.is-running { pointer-events: auto; }
+.cc-home-transition-label { transition: opacity .18s ease, transform .48s .12s cubic-bezier(.22,1,.36,1); }
+.cc-home-transition.is-committing .cc-home-transition-label { opacity: 0; transition: opacity .16s ease; }
+
+</style>
 </head>
 
 <body>
@@ -640,5 +700,44 @@ html.cc-from-index body {
 })();
 </script>
 
+
+<div class="cc-home-transition" id="ccHomeTransition" aria-hidden="true">
+  <div class="cc-home-transition-label">Fő<span>oldal.</span></div>
+</div>
+<script id="cc-home-exit-script">
+(() => {
+  const cover = document.getElementById("ccHomeTransition");
+  let leaving = false;
+  document.querySelectorAll('a[href="index.html"]').forEach(link => {
+    link.addEventListener("click", event => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey ||
+          event.shiftKey || event.altKey || link.hasAttribute("download") ||
+          (link.target && link.target !== "_self")) return;
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        try { sessionStorage.setItem("cc_returning_from_privacy", "1"); } catch (_) {}
+        return;
+      }
+      event.preventDefault();
+      if (leaving) return;
+      leaving = true;
+      cover.classList.add("is-running");
+      cover.setAttribute("aria-hidden", "false");
+      setTimeout(() => cover.classList.add("is-committing"), 500);
+      setTimeout(() => {
+        try {
+          sessionStorage.setItem("cc_home_transition", String(Date.now()));
+          sessionStorage.setItem("cc_returning_from_privacy", "1");
+        } catch (_) {}
+        location.href = link.href;
+      }, 720);
+    });
+  });
+  window.addEventListener("pageshow", () => {
+    leaving = false;
+    cover.classList.remove("is-running", "is-committing");
+    cover.setAttribute("aria-hidden", "true");
+  });
+})();
+</script>
 </body>
 </html>

@@ -8216,13 +8216,527 @@ body:has(.chat-shell.open) .cc-lang-toggle{
 }
 </style>
 
+<style id="cc-mobile-responsive-finish">
+/* =========================================================
+   MOBILE RESPONSIVE FINISH
+   Kizárólag a mobilos elrendezést és használhatóságot javítja.
+   A színeket, animációkat és a desktop nézetet nem módosítja.
+   ========================================================= */
+@media (max-width:900px){
+  html{
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+    scroll-padding-top:78px;
+  }
+
+  body{
+    width:100%;
+    min-width:0;
+  }
+
+  section,
+  header,
+  main,
+  footer,
+  .hero,
+  .hero-content,
+  .hero-visual,
+  .section-head,
+  .cards,
+  .story,
+  .visit,
+  .full-menu,
+  .menu-content,
+  .menu-content-inner,
+  .featured-showcase{
+    min-width:0;
+    max-width:100%;
+  }
+
+  section[id]{
+    scroll-margin-top:78px;
+  }
+
+  .nav{
+    width:100%;
+    padding-top:calc(14px + env(safe-area-inset-top));
+    padding-right:max(18px,env(safe-area-inset-right));
+    padding-bottom:14px;
+    padding-left:max(18px,env(safe-area-inset-left));
+  }
+
+  .nav.scrolled{
+    padding-top:calc(12px + env(safe-area-inset-top));
+    padding-right:max(18px,env(safe-area-inset-right));
+    padding-bottom:12px;
+    padding-left:max(18px,env(safe-area-inset-left));
+  }
+
+  .logo{
+    min-width:0;
+    max-width:calc(100% - 132px);
+    overflow-wrap:anywhere;
+  }
+
+  .links{
+    flex:0 0 auto;
+    gap:0;
+  }
+
+  .order{
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 16px !important;
+    touch-action:manipulation;
+  }
+
+  .hero{
+    min-height:0;
+    padding-top:calc(112px + env(safe-area-inset-top));
+    padding-right:max(4vw,env(safe-area-inset-right));
+    padding-left:max(4vw,env(safe-area-inset-left));
+  }
+
+  .hero h1,
+  .title,
+  .visit h2,
+  .cta h2,
+  .menu-summary strong,
+  .featured-head .title{
+    max-width:100%;
+    overflow-wrap:break-word;
+  }
+
+  .hero h1{
+    font-size:clamp(3.35rem,13.5vw,6.25rem);
+  }
+
+  .hero h1 span,
+  .hero h1 span:last-child{
+    max-width:100%;
+  }
+
+  .hero-copy{
+    max-width:100%;
+  }
+
+  .hero-copy br{
+    display:none;
+  }
+
+  .hero-actions{
+    max-width:100%;
+    flex-wrap:wrap;
+  }
+
+  .hero-actions .btn{
+    min-height:48px;
+    max-width:100%;
+    touch-action:manipulation;
+  }
+
+  .hero-visual{
+    width:100%;
+    height:clamp(430px,76vw,620px);
+    min-height:430px;
+  }
+
+  .hero-img,
+  .story-img,
+  .card-photo{
+    max-width:100%;
+  }
+
+  .section-head,
+  .menu-summary,
+  .menu-category-head,
+  .menu-item,
+  .hours div,
+  footer{
+    min-width:0;
+  }
+
+  .section-note,
+  .story-copy > p,
+  .menu-summary-note,
+  .menu-item-main,
+  .menu-item-main strong,
+  .menu-item small,
+  .review blockquote,
+  .visit-address,
+  .order-choice > span:first-child{
+    min-width:0;
+    overflow-wrap:anywhere;
+  }
+
+  .menu-filterbar,
+  .filters,
+  .tabs{
+    max-width:100%;
+  }
+
+  .menu-filter,
+  .menu-help-tag,
+  .tab,
+  .order-choice,
+  .review-nav{
+    touch-action:manipulation;
+  }
+
+  .menu-board,
+  .menu-items,
+  .review-slider,
+  .review-grid{
+    min-width:0;
+    max-width:100%;
+  }
+
+  .menu-item-price{
+    flex:0 0 auto;
+  }
+
+  .story-visual{
+    width:100%;
+    max-width:100%;
+  }
+
+  .quote{
+    max-width:min(275px,82vw);
+  }
+
+  .stats{
+    max-width:100%;
+    flex-wrap:wrap;
+  }
+
+  .visit-card,
+  .order-card,
+  .cta-box{
+    max-width:100%;
+  }
+
+  .chat-shell{
+    max-width:calc(100vw - 24px);
+    max-height:calc(100dvh - 24px);
+  }
+}
+
+@media (max-width:620px){
+  .nav{
+    gap:10px;
+  }
+
+  .logo{
+    max-width:calc(100% - 116px);
+    font-size:clamp(.98rem,5vw,1.25rem);
+  }
+
+  .order{
+    padding-right:13px !important;
+    padding-left:13px !important;
+    font-size:.7rem !important;
+    letter-spacing:.08em !important;
+  }
+
+  .hero{
+    padding-top:calc(102px + env(safe-area-inset-top));
+    padding-right:18px;
+    padding-bottom:48px;
+    padding-left:18px;
+  }
+
+  .hero h1{
+    gap:8px;
+    font-size:clamp(3rem,15.6vw,5.1rem);
+    letter-spacing:-.055em;
+  }
+
+  .hero-copy{
+    margin-top:26px;
+    padding-left:20px;
+    font-size:1rem;
+  }
+
+  .hero-actions{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .hero-actions .btn{
+    width:100%;
+    min-width:0;
+  }
+
+  .hero-visual{
+    height:clamp(390px,112vw,520px);
+    min-height:390px;
+    margin-top:38px;
+  }
+
+  section{
+    padding-right:18px;
+    padding-left:18px;
+  }
+
+  .title,
+  .visit h2,
+  .cta h2{
+    font-size:clamp(2.65rem,13vw,4.5rem);
+  }
+
+  .section-head{
+    margin-bottom:42px;
+  }
+
+  .story-visual{
+    height:clamp(420px,125vw,560px);
+  }
+
+  .quote{
+    right:0;
+    max-width:84%;
+    padding:18px;
+    font-size:1.12rem;
+  }
+
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px 16px;
+  }
+
+  .stat{
+    min-width:0;
+  }
+
+  .menu-summary{
+    grid-template-columns:minmax(0,1fr) auto;
+  }
+
+  .menu-summary-copy{
+    min-width:0;
+  }
+
+  .menu-filterbar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .menu-filter{
+    min-width:0;
+  }
+
+  .menu-item{
+    grid-template-columns:minmax(0,1fr) auto;
+  }
+
+  .menu-item-price{
+    white-space:nowrap;
+  }
+
+  .featured-showcase,
+  .visit-card,
+  .order-card{
+    width:100%;
+  }
+
+  .featured-showcase .tabs{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .featured-showcase .tab{
+    width:100% !important;
+    max-width:100% !important;
+  }
+
+  .hours div{
+    align-items:flex-start;
+  }
+
+  .order-choice{
+    min-width:0;
+    padding:17px 16px;
+  }
+
+  .cta{
+    padding-right:14px;
+    padding-left:14px;
+  }
+
+  .cta-box{
+    min-height:360px;
+    padding:38px 18px;
+    border-radius:38px 78px 38px 70px;
+  }
+
+  footer{
+    padding-right:18px;
+    padding-left:18px;
+  }
+
+  .cc-lang-toggle{
+    top:96px !important;
+  }
+
+  .chat-launcher{
+    right:max(14px,env(safe-area-inset-right));
+    bottom:calc(14px + env(safe-area-inset-bottom) + var(--chat-footer-offset,0px));
+    width:72px;
+    height:72px;
+  }
+
+  .chat-shell{
+    right:12px;
+    bottom:12px;
+    width:calc(100vw - 24px);
+    height:min(680px,calc(100dvh - 24px));
+  }
+}
+
+@media (max-width:380px){
+  .nav{
+    padding-right:12px;
+    padding-left:12px;
+  }
+
+  .logo{
+    max-width:calc(100% - 102px);
+    font-size:.94rem;
+  }
+
+  .order{
+    min-height:42px;
+    padding-right:10px !important;
+    padding-left:10px !important;
+    font-size:.62rem !important;
+  }
+
+  .hero{
+    padding-right:14px;
+    padding-left:14px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.65rem,15vw,3.55rem);
+  }
+
+  section{
+    padding-right:14px;
+    padding-left:14px;
+  }
+
+  .menu-summary,
+  .visit-card,
+  .order-card{
+    padding-right:18px;
+    padding-left:18px;
+  }
+
+  .menu-filterbar{
+    grid-template-columns:1fr;
+  }
+
+  .menu-item{
+    grid-template-columns:1fr;
+  }
+
+  .menu-item-price{
+    justify-self:start;
+  }
+
+  .review-grid{
+    gap:5px;
+  }
+
+  .review{
+    padding-right:8px;
+    padding-left:8px;
+  }
+
+  .hours div{
+    display:grid;
+    gap:5px;
+  }
+}
+
+/* Mobilos navigáció és érintésre optimalizált felület. */
+.mobile-nav-toggle { display:none; }
+@media (max-width:900px) {
+  .nav { z-index:1000; }
+  .mobile-nav-toggle {
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    gap:5px; width:46px; height:46px; flex:0 0 46px;
+    margin-left:auto; border:1px solid var(--line); border-radius:14px;
+    background:var(--ink); color:var(--cream); touch-action:manipulation;
+  }
+  .mobile-nav-toggle span { width:20px; height:2px; border-radius:2px; background:currentColor; transition:transform .2s,opacity .2s; }
+  .nav.menu-open .mobile-nav-toggle span:first-child { transform:translateY(7px) rotate(45deg); }
+  .nav.menu-open .mobile-nav-toggle span:nth-child(2) { opacity:0; }
+  .nav.menu-open .mobile-nav-toggle span:last-child { transform:translateY(-7px) rotate(-45deg); }
+  .nav .links { flex:0 0 auto; }
+  .nav .links a:not(.order) { display:none; }
+  .nav.menu-open { background:rgba(16,16,15,.97); }
+  .nav.menu-open .links {
+    position:absolute; left:0; right:0; top:100%;
+    display:flex; flex-direction:column; align-items:stretch; gap:0;
+    padding:8px max(18px,env(safe-area-inset-right)) 18px max(18px,env(safe-area-inset-left));
+    background:rgba(16,16,15,.97); border-bottom:1px solid var(--line);
+    box-shadow:0 18px 35px rgba(0,0,0,.3);
+  }
+  .nav.menu-open .links a:not(.order) {
+    display:flex; align-items:center; min-height:48px; padding:12px 4px;
+    border-bottom:1px solid var(--line); font-size:.9rem;
+  }
+  .nav.menu-open .links .order { display:flex; min-height:48px; margin-top:12px; }
+  .nav.menu-open .links a::after { display:none; }
+  .nav .logo { max-width:none; overflow-wrap:normal; font-size:clamp(.95rem,3.5vw,1.3rem); white-space:nowrap; }
+  .nav .links:not(.menu-open) .order { font-size:.72rem !important; }
+  .cc-lang-toggle { z-index:950 !important; }
+  .hero h1 { overflow-wrap:anywhere; }
+  .chat-shell { min-height:0; overflow:hidden; }
+  .chat-input { font-size:16px; }
+  .chat-form { padding-bottom:max(13px,env(safe-area-inset-bottom)); }
+  .chat-launcher { z-index:800; }
+}
+@media (max-width:620px) {
+  .nav { gap:8px; }
+  .nav .logo { font-size:clamp(.85rem,3.75vw,1.05rem); }
+  .nav .links .order { padding-inline:10px !important; min-height:44px; white-space:nowrap; }
+  .hero { padding-top:calc(146px + env(safe-area-inset-top)); }
+  .hero-visual { min-height:0; height:clamp(270px,88vw,430px); }
+  .story-visual { height:clamp(310px,105vw,480px); }
+  .chat-shell { bottom:8px; height:min(620px,calc(100dvh - 16px)); max-height:calc(100dvh - 16px); }
+  .menu-filterbar { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .menu-filter { min-height:68px; }
+}
+@media (max-width:380px) {
+  .nav .logo { font-size:.8rem; }
+  .nav .links .order { font-size:.6rem !important; padding-inline:8px !important; }
+  .mobile-nav-toggle { width:42px; height:42px; flex-basis:42px; }
+  .menu-filterbar { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .hero h1 { font-size:clamp(2.4rem,14vw,3.3rem); }
+}
+@media (max-width:330px) {
+  .nav .links .order { display:none; }
+  .nav.menu-open .links .order { display:flex; }
+}
+@media (hover:none), (pointer:coarse) {
+  .cursor { display:none !important; }
+  a,button { -webkit-tap-highlight-color:transparent; }
+}
+</style>
+
 </head>
   <body>
     <div class="cursor"></div>
     <div class="noise"></div>
     <nav class="nav">
       <a class="logo hoverable" href="#top">CRUSH<span>&</span>CRUST</a>
-      <div class="links">
+      <button class="mobile-nav-toggle" type="button" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="siteLinks"><span></span><span></span><span></span></button>
+      <div class="links" id="siteLinks">
         <a class="hoverable" href="#menu">Étlap</a
         ><a class="hoverable" href="#story">Rólunk</a
         ><a class="hoverable" href="#reviews">Vélemények</a
@@ -9963,6 +10477,29 @@ if (!returningFromPrivacy) {
 })();
 </script>
 
+<script id="mobile-navigation-script">
+(() => {
+  const nav = document.querySelector('.nav');
+  const toggle = nav?.querySelector('.mobile-nav-toggle');
+  const links = nav?.querySelector('.links');
+  if (!nav || !toggle || !links) return;
+  function closeMenu() {
+    nav.classList.remove('menu-open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Menü megnyitása');
+  }
+  toggle.addEventListener('click', () => {
+    const open = !nav.classList.contains('menu-open');
+    nav.classList.toggle('menu-open',open);
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.setAttribute('aria-label',open ? 'Menü bezárása' : 'Menü megnyitása');
+  });
+  links.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  document.addEventListener('click', e => { if (!nav.contains(e.target)) closeMenu(); });
+  window.addEventListener('resize', () => { if (innerWidth > 900) closeMenu(); });
+})();
+</script>
 </body>
 
 </html>
