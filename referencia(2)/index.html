@@ -1,6 +1,40 @@
 <!doctype html>
 <html lang="hu">
   <head>
+<script id="cc-home-entry-detect">
+(() => {
+  try {
+    const stamp = Number(sessionStorage.getItem("cc_home_transition"));
+    sessionStorage.removeItem("cc_home_transition");
+    if (stamp && Date.now() - stamp >= 0 && Date.now() - stamp < 15000 &&
+        !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("cc-home-arriving");
+    }
+  } catch (_) {}
+})();
+</script>
+<style id="cc-home-entry-style">
+html.cc-home-arriving::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  background: #20211d;
+  transform: translate3d(0,0,0);
+  pointer-events: auto;
+  will-change: transform;
+}
+html.cc-home-arriving.cc-home-reveal::after {
+  animation: ccHomeReveal .62s cubic-bezier(.76,0,.24,1) both;
+}
+@keyframes ccHomeReveal {
+  to { transform: translate3d(0,-102%,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.cc-home-arriving::after { display: none; }
+}
+</style>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -7473,7 +7507,7 @@
 }
 .cc-page-transition.is-committing .cc-page-transition-label {
   opacity: 0 !important;
-  transform: translate(-50%,-58%) scale(.96) !important;
+  transform: translate(-50%,-50%) rotate(0) scale(1) !important;
 }
 </style>
 
@@ -9151,7 +9185,7 @@ body:has(.chat-shell.open) .cc-lang-toggle{
           <h2>Éhes<br />lettél?</h2>
           <div class="order-choices">
             <a class="order-choice hoverable" href="tel:+3615550123"><span><strong>Elvitelre kérem</strong><small>Telefonos rendelés · 15–20 perc</small></span><span>↗</span></a>
-            <a class="order-choice hoverable wolt-food-btn" href="https://wolt.com/hu/hun" target="_blank" rel="noopener"><span><strong>Kiszállítás Wolton</strong><small>Kövesd élőben a futárod</small></span><span>↗</span></a>
+            <a class="order-choice hoverable" href="https://wolt.com/hu/hun" target="_blank" rel="noopener"><span><strong>Kiszállítás Wolton</strong><small>Kövesd élőben a futárod</small></span><span>↗</span></a>
             <a class="order-choice hoverable" href="https://www.foodora.hu/" target="_blank" rel="noopener"><span><strong>Kiszállítás Foodorán</strong><small>Rendelj házhoz néhány kattintással</small></span><span>↗</span></a>
             <a class="order-choice hoverable" href="tel:+3615550123"><span><strong>Asztalt foglalok</strong><small>+36 1 555 0123</small></span><span>↗</span></a>
           </div>
@@ -10498,6 +10532,27 @@ if (!returningFromPrivacy) {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
   document.addEventListener('click', e => { if (!nav.contains(e.target)) closeMenu(); });
   window.addEventListener('resize', () => { if (innerWidth > 900) closeMenu(); });
+})();
+</script>
+
+<script id="cc-home-entry-script">
+(() => {
+  const root = document.documentElement;
+  const clean = () => root.classList.remove("cc-home-arriving", "cc-home-reveal");
+  if (root.classList.contains("cc-home-arriving")) {
+    // Reveal after parsing and two painted frames; never wait for every image.
+    const reveal = () => requestAnimationFrame(() => requestAnimationFrame(() => {
+      root.addEventListener("animationend", event => {
+        if (event.animationName === "ccHomeReveal") clean();
+      });
+      root.classList.add("cc-home-reveal");
+      setTimeout(clean, 1100);
+    }));
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", reveal, { once: true });
+    } else reveal();
+  }
+  window.addEventListener("pageshow", event => { if (event.persisted) clean(); });
 })();
 </script>
 </body>

@@ -476,6 +476,22 @@ html.cc-from-index body {
 .cc-home-transition.is-committing .cc-home-transition-label { opacity: 0; transition: opacity .16s ease; }
 
 </style>
+<style id="cc-home-exit-smooth">
+.cc-home-transition::before,
+.cc-home-transition::after { will-change: transform; }
+.cc-home-transition-label {
+  transition: opacity .22s .18s ease,
+    transform .38s .12s cubic-bezier(.22,1,.36,1) !important;
+}
+.cc-home-transition.is-running .cc-home-transition-label {
+  opacity: 1 !important;
+  transform: translate(-50%,-50%) rotate(0) scale(1) !important;
+}
+.cc-home-transition.is-committing .cc-home-transition-label {
+  opacity: 0 !important;
+  transform: translate(-50%,-50%) rotate(0) scale(1) !important;
+}
+</style>
 </head>
 
 <body>
@@ -729,7 +745,7 @@ html.cc-from-index body {
           sessionStorage.setItem("cc_returning_from_privacy", "1");
         } catch (_) {}
         location.href = link.href;
-      }, 720);
+      }, 680);
     });
   });
   window.addEventListener("pageshow", () => {
