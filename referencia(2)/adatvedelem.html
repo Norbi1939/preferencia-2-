@@ -492,6 +492,81 @@ html.cc-from-index body {
   transform: translate(-50%,-50%) rotate(0) scale(1) !important;
 }
 </style>
+
+<style id="cc-privacy-mobile">
+@media (max-width:850px) {
+  html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+  .layout, .content, .toc, .hero-inner { min-width:0; }
+  .content { width:100%; max-width:100%; overflow-wrap:anywhere; }
+  .layout { grid-template-columns:minmax(0,1fr); }
+  .nav a, .toc a, footer a { touch-action:manipulation; }
+  .toc a { min-height:44px; display:flex; align-items:center; }
+}
+@media (max-width:560px) {
+  .nav {
+    padding:18px 20px; gap:14px; min-height:0;
+    flex-direction:column; align-items:flex-start;
+  }
+  .nav .logo { font-size:1.16rem; line-height:1.4; }
+  .nav .back {
+    display:inline-flex; min-height:44px; padding:10px 15px;
+    border:1px solid rgba(200,214,122,.5); border-radius:999px;
+    background:rgba(200,214,122,.08); color:var(--yellow);
+    font-size:.7rem; letter-spacing:.04em;
+  }
+  .hero { padding:48px 20px 42px; }
+  .hero h1 { font-size:clamp(1.5rem,7.5vw,2.6rem); line-height:1.15; }
+  .hero h1 span { max-width:100%; padding:.08em .12em .12em; }
+  .eyebrow { font-size:.67rem; letter-spacing:.12em; margin-bottom:18px; }
+  .eyebrow::before { flex:0 0 26px; }
+  .lead { font-size:1rem; line-height:1.75; margin-top:22px; }
+  .updated {
+    max-width:100%; display:block; width:fit-content; border-radius:14px;
+    font-size:.67rem; letter-spacing:.04em; line-height:1.7; padding:10px 12px;
+  }
+  .layout { width:calc(100% - 40px); padding:32px 0 52px; gap:32px; }
+  .toc-inner { padding:20px; border-radius:18px; }
+  .toc a { font-size:.9rem; line-height:1.5; padding:11px 0; }
+  .notice { padding:19px 17px; margin-bottom:32px; font-size:.94rem; }
+  h2 { font-size:clamp(1.35rem,6vw,2rem); line-height:1.2; margin-bottom:18px; }
+  h3 { font-size:1rem; line-height:1.45; }
+  .legal-section { padding-bottom:32px; margin-bottom:32px; scroll-margin-top:20px; }
+  .content p, .content li { font-size:.96rem; line-height:1.8; }
+  .content ul { padding-left:20px; }
+  .placeholder { max-width:100%; overflow-wrap:anywhere; }
+  .contact-box { padding:20px 16px; border-radius:16px; }
+  footer { padding:28px 20px calc(28px + env(safe-area-inset-bottom)); gap:16px; }
+  footer .logo { font-size:1.16rem; }
+  footer > span { line-height:1.7; }
+  footer > a:last-child {
+    display:inline-flex; align-items:center; min-height:44px;
+    border:1px solid var(--line); border-radius:12px; padding:10px 14px;
+  }
+  .cc-privacy-entry-title { font-size:clamp(1rem,7vw,2rem); }
+  .cc-home-transition-label { font-size:clamp(1.5rem,9vw,3rem) !important; }
+}
+</style>
+
+<style id="cc-privacy-entry-safe-default">
+/* Közvetlen megnyitáskor nincs takaróréteg. */
+html:not(.cc-from-index) .cc-privacy-entry { display:none !important; }
+/* JavaScript-hiba esetén is felfedjük az oldalt. */
+html.cc-from-index .cc-privacy-entry {
+  animation:ccPrivacyCoverFailSafe 0s 2s forwards !important;
+}
+html.cc-from-index.cc-entry-reveal .cc-privacy-entry {
+  animation:ccPrivacyCurtainCleanExit .62s cubic-bezier(.76,0,.24,1) forwards !important;
+}
+html.cc-from-index .nav,
+html.cc-from-index .hero,
+html.cc-from-index .layout,
+html.cc-from-index footer {
+  opacity:1 !important; transform:none !important; animation:none !important;
+}
+@keyframes ccPrivacyCoverFailSafe {
+  to { visibility:hidden; opacity:0; pointer-events:none; }
+}
+</style>
 </head>
 
 <body>
@@ -699,20 +774,20 @@ html.cc-from-index body {
 <script id="cc-privacy-entry-run">
 (() => {
   const root = document.documentElement;
-  if (!root.classList.contains("cc-from-index")) return;
-
-  try { sessionStorage.removeItem("cc_privacy_transition"); } catch (_) {}
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => root.classList.add("cc-entry-reveal"));
-  });
-
-  window.setTimeout(() => {
+  const clean = () => {
     root.classList.remove("cc-from-index", "cc-entry-reveal");
-    const entry = document.getElementById("ccPrivacyEntry");
-    if (entry) entry.remove();
+    document.getElementById("ccPrivacyEntry")?.remove();
     document.body.style.overflow = "";
-  }, 1550);
+  };
+  window.addEventListener("pageshow", event => { if (event.persisted) clean(); });
+  if (!root.classList.contains("cc-from-index")) { clean(); return; }
+  try { sessionStorage.removeItem("cc_privacy_transition"); } catch (_) {}
+  // A tartalom soha nem vár hálózati kérésre vagy webfontra.
+  window.setTimeout(clean, 1800);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    root.classList.add("cc-entry-reveal");
+    window.setTimeout(clean, 850);
+  }));
 })();
 </script>
 
