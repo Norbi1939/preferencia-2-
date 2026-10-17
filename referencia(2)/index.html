@@ -1041,7 +1041,7 @@ html.cc-home-arriving.cc-home-reveal::after {
       .order-choice:hover { transform: translateX(7px); background: var(--yellow); color: var(--ink); }
       .order-choice strong { display: block; }
       .order-choice small { display: block; opacity: .72; margin-top: 4px; }
-      .order-choice > span:last-child { font-size: 1.4rem; }
+      .order-choice > span:only-child { min-width:0; }
       .cta {
         padding: 55px 5vw 95px;
       }
@@ -5279,7 +5279,7 @@ html.cc-home-arriving.cc-home-reveal::after {
 </style>
 <style>
 
-/* ===== Gyors jelölések → ételkártya kiemelés ===== */
+/* ===== Gyors jelölések  ételkártya kiemelés ===== */
 .menu-item {
   transition:
     opacity .28s ease,
@@ -6832,7 +6832,7 @@ html.cc-home-arriving.cc-home-reveal::after {
   transition: transform .5s cubic-bezier(.22,1,.36,1);
 }
 .privacy-link::after {
-  content: "↗";
+  content: "";
   position: static !important;
   width: auto !important;
   height: auto !important;
@@ -7026,7 +7026,7 @@ html.cc-home-arriving.cc-home-reveal::after {
 }
 
 .cc-cookie-copy a[href="adatvedelem.html"]::after {
-  content: "↗";
+  content: "";
   display: inline-block;
   width: 0;
   margin-left: 0;
@@ -7138,7 +7138,7 @@ html.cc-home-arriving.cc-home-reveal::after {
 
 /* A nyíl alapból egy kis sárga körben jelenik meg. */
 .cc-cookie-copy a[href="adatvedelem.html"]::after {
-  content: "↗" !important;
+  content: "" !important;
   position: relative !important;
   display: inline-grid !important;
   place-items: center;
@@ -8763,6 +8763,7 @@ body:has(.chat-shell.open) .cc-lang-toggle{
 }
 </style>
 
+<meta name="theme-color" content="#20211d">
 </head>
   <body>
     <div class="cursor"></div>
@@ -8805,10 +8806,10 @@ body:has(.chat-shell.open) .cc-lang-toggle{
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary hoverable" href="#menu"
-              >Nézd meg az étlapot <span>↗</span></a
+              >Nézd meg az étlapot </a
             ><a class="btn btn-link hoverable" href="#order"
               ><span class="story-label">Rendelj most</span
-              ><span class="story-arrow" aria-hidden="true">↘</span></a
+              ></a
             >
           </div>
         </div>
@@ -8839,7 +8840,7 @@ body:has(.chat-shell.open) .cc-lang-toggle{
         <div class="featured-showcase">
           <span class="featured-shape featured-shape-a" aria-hidden="true"></span>
           <span class="featured-shape featured-shape-b" aria-hidden="true"></span>
-          <span class="featured-sticker" aria-hidden="true">A TI<br>KEDVENCEITEK ↘</span>
+          <span class="featured-sticker" aria-hidden="true">A TI<br>KEDVENCEITEK </span>
           <div class="section-head reveal featured-head">
             <div>
               <div class="kicker menu-kicker">A legtöbbet rendelt fogások</div>
@@ -9162,8 +9163,8 @@ body:has(.chat-shell.open) .cc-lang-toggle{
             <div class="review-page-status"><strong class="review-current">01</strong><span>/</span><span class="review-total">03</span></div>
             <div class="review-dots" aria-label="Vélemény oldalak"></div>
             <div class="review-controls">
-              <button class="review-nav review-prev hoverable" type="button" aria-label="Előző vélemények">←</button>
-              <button class="review-nav review-next hoverable" type="button" aria-label="Következő vélemények">→</button>
+              <button class="review-nav review-prev hoverable" type="button" aria-label="Előző vélemények">Előző</button>
+              <button class="review-nav review-next hoverable" type="button" aria-label="Következő vélemények">Következő</button>
             </div>
           </div>
         </div>
@@ -9179,16 +9180,16 @@ body:has(.chat-shell.open) .cc-lang-toggle{
             <div><span>Péntek–szombat</span><strong>11:30–23:00</strong></div>
             <div><span>Vasárnap</span><strong>11:30–22:00</strong></div>
           </div>
-          <a class="btn btn-primary hoverable" href="https://www.google.com/maps/search/?api=1&query=1075+Budapest+Madach+Imre+ut+7" target="_blank" rel="noopener">Útvonaltervezés <span>↗</span></a>
+          <a class="btn btn-primary hoverable" href="https://www.google.com/maps/search/?api=1&query=1075+Budapest+Madach+Imre+ut+7" target="_blank" rel="noopener">Útvonaltervezés </a>
         </div>
         <div class="order-card reveal" id="order">
           <div class="kicker">Ahogy neked kényelmes</div>
           <h2>Éhes<br />lettél?</h2>
           <div class="order-choices">
-            <a class="order-choice hoverable" href="tel:+3615550123"><span><strong>Elvitelre kérem</strong><small>Telefonos rendelés · 15–20 perc</small></span><span>↗</span></a>
-            <a class="order-choice hoverable" href="https://wolt.com/hu/hun" target="_blank" rel="noopener"><span><strong>Kiszállítás Wolton</strong><small>Kövesd élőben a futárod</small></span><span>↗</span></a>
-            <a class="order-choice hoverable" href="https://www.foodora.hu/" target="_blank" rel="noopener"><span><strong>Kiszállítás Foodorán</strong><small>Rendelj házhoz néhány kattintással</small></span><span>↗</span></a>
-            <a class="order-choice hoverable" href="tel:+3615550123"><span><strong>Asztalt foglalok</strong><small>+36 1 555 0123</small></span><span>↗</span></a>
+            <a class="order-choice hoverable" href="tel:+3615550123"><span><strong>Elvitelre kérem</strong><small>Telefonos rendelés · 15–20 perc</small></span></a>
+            <a class="order-choice hoverable" href="https://wolt.com/hu/hun" target="_blank" rel="noopener"><span><strong>Kiszállítás Wolton</strong><small>Kövesd élőben a futárod</small></span></a>
+            <a class="order-choice hoverable" href="https://www.foodora.hu/" target="_blank" rel="noopener"><span><strong>Kiszállítás Foodorán</strong><small>Rendelj házhoz néhány kattintással</small></span></a>
+            <a class="order-choice hoverable" href="tel:+3615550123"><span><strong>Asztalt foglalok</strong><small>+36 1 555 0123</small></span></a>
           </div>
         </div>
       </section>
@@ -9200,15 +9201,15 @@ body:has(.chat-shell.open) .cc-lang-toggle{
       <div class="socials cc-socials-v4" aria-label="Közösségi linkek és rendelés">
         <a class="hoverable food-social food-pizza cc-social-v4 cc-social-instagram" href="https://www.instagram.com/_snt_nrb_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram megnyitása">
           <span class="cc-social-badge" aria-hidden="true">IG</span>
-          <span class="cc-social-copy" aria-hidden="true"><span>Instagram</span><span>Instagram ↗</span></span>
+          <span class="cc-social-copy" aria-hidden="true"><span>Instagram</span><span>Instagram </span></span>
         </a>
         <a class="hoverable food-social food-burger cc-social-v4 cc-social-tiktok" href="https://www.tiktok.com/@norbi852" target="_blank" rel="noopener noreferrer" aria-label="TikTok megnyitása">
           <span class="cc-social-badge" aria-hidden="true">TK</span>
-          <span class="cc-social-copy" aria-hidden="true"><span>TikTok</span><span>TikTok ↗</span></span>
+          <span class="cc-social-copy" aria-hidden="true"><span>TikTok</span><span>TikTok </span></span>
         </a>
         <a class="hoverable food-social food-wolt cc-social-v4 cc-social-wolt" href="https://wolt.com/hu/hun" target="_blank" rel="noopener noreferrer" aria-label="Wolt megnyitása">
           <span class="cc-social-badge" aria-hidden="true">W</span>
-          <span class="cc-social-copy" aria-hidden="true"><span>Wolt</span><span>Rendelj ↗</span></span>
+          <span class="cc-social-copy" aria-hidden="true"><span>Wolt</span><span>Rendelj </span></span>
         </a>
       </div>
     </footer>
@@ -9247,7 +9248,7 @@ body:has(.chat-shell.open) .cc-lang-toggle{
 
       <form class="chat-form" id="chatForm">
         <input class="chat-input" id="chatInput" type="text" autocomplete="off" placeholder="Írj valamit…" aria-label="Üzenet a CrushBotnak" />
-        <button class="chat-send hoverable" type="submit" aria-label="Üzenet küldése">↗</button>
+        <button class="chat-send hoverable" type="submit" aria-label="Üzenet küldése">Küldés</button>
       </form>
     </aside>
 
@@ -10444,7 +10445,7 @@ if (!returningFromPrivacy) {
 
 <script id="cc-language-complete-script">
 (() => {
-  const T = {"Étlap": "Menu", "Rólunk": "About", "Vélemények": "Reviews", "Helyszín": "Location", "Rendelj most": "Order now", "Budapest legropogósabb sarka": "Budapest's crispiest corner", "Szaftos": "Juicy", "smash burgerek": "smash burgers", ", tűzforró": ", piping-hot", "nápolyi pizzák": "Neapolitan pizzas", "és olyan szószok,": "and sauces so good,", "amikről még holnap is beszélni fogsz.": "you'll still be talking about them tomorrow.", "Nézd meg az étlapot": "See the menu", "NÁPOLYI PIZZA": "NEAPOLITAN PIZZA", "FRISSEN SÜTVE": "FRESHLY BAKED", "SAJTTAL MINDEN JOBB": "EVERYTHING'S BETTER WITH CHEESE", "A TI": "YOUR", "KEDVENCEITEK ↘": "FAVORITES ↘", "A legtöbbet rendelt fogások": "Most ordered dishes", "Közönség": "Crowd", "kedvencek": "favorites", "Három burger vagy három pizza. Semmi túlzsúfolás — csak a biztos befutók.": "Three burgers or three pizzas. No clutter — just the guaranteed hits.", "BURGEREK": "BURGERS", "PIZZÁK": "PIZZAS", "Csípős": "Spicy", "Dupla Smash Burger": "Double Smash Burger", "2× marha, cheddar,": "2× beef, cheddar,", "hagymalekvár, crush szósz": "onion jam, Crush sauce", "Pepperoni Chili-Méz Pizza": "Pepperoni Chili-Honey Pizza", "pepperoni, chili méz": "pepperoni, chili honey", "Ropogós Csirkeburger": "Crispy Chicken Burger", "Ropogós csirke, coleslaw,": "crispy chicken, coleslaw,", "savanyú uborka, BBQ": "pickles, BBQ", "Gombás-Rukkolás Pizza": "Mushroom & Arugula Pizza", "Erdei gomba, mozzarella,": "wild mushrooms, mozzarella,", "fokhagymakrém, rukkola": "garlic cream, arugula", "Füstös": "Smoky", "Baconös Smash Burger": "Bacon Smash Burger", "Marha, füstölt cheddar,": "beef, smoked cheddar,", "parmezán, friss bazsalikom": "parmesan, fresh basil", "Klasszik": "Classic", "Nagy étlap, kis káosz": "Big menu, little chaos", "Válassz egy kategóriát": "Choose a category", "Egyszerre csak azt mutatjuk, amit tényleg nézni akarsz.": "We only show what you actually want to see.", "Burgerek": "Burgers", "8 tétel": "8 items", "Pizzák": "Pizzas", "Sideok": "Sides", "5 tétel": "5 items", "Szószok": "Sauces", "4 tétel": "4 items", "Desszert": "Desserts", "Italok": "Drinks", "6 tétel": "6 items", "Gyors jelölések": "Quick filters", "Összes": "All", "Közönségkedvenc": "Crowd favorite", "Extrázható": "Customizable", "Smash burgerek": "Smash burgers", "Marha, cheddar, uborka, hagyma, crush szósz": "Beef, cheddar, pickles, onion, Crush sauce", "2× marha, cheddar, hagymalekvár, crush szósz": "2× beef, cheddar, onion jam, Crush sauce", "Ropogós csirke, coleslaw, uborka, BBQ": "Crispy chicken, coleslaw, pickles, BBQ", "Marha, füstölt cheddar, bacon, jalapeño": "Beef, smoked cheddar, bacon, jalapeño", "Új": "New", "Dupla marha, cheddar, extra savanyú uborka, kapros mayo": "Double beef, cheddar, extra pickles, dill mayo", "Prémium": "Premium", "Marha, provolone, gomba, szarvasgombás mayo": "Beef, provolone, mushrooms, truffle mayo", "Marha, pepper jack, jalapeño, chili crunch, hot sauce": "Beef, pepper jack, jalapeño, chili crunch, hot sauce", "Növényi pogácsa, cheddar, saláta, uborka, crush szósz": "Plant-based patty, cheddar, lettuce, pickles, Crush sauce", "Nápolyi pizzák": "Neapolitan pizzas", "San Marzano, fior di latte, parmezán, bazsalikom": "San Marzano, fior di latte, parmesan, basil", "Mozzarella, pepperoni, chili méz": "Mozzarella, pepperoni, chili honey", "Erdei gomba, fokhagymakrém, rukkola": "Wild mushrooms, garlic cream, arugula", "Zöld": "Green", "Pisztáciapesztó, cukkini, feta, citrom": "Pistachio pesto, zucchini, feta, lemon", "Népszerű": "Popular", "San Marzano, mozzarella, csípős szalámi, pecorino": "San Marzano, mozzarella, spicy salami, pecorino", "Krémes": "Creamy", "Mortadella, ricotta, pisztácia, citromhéj": "Mortadella, ricotta, pistachio, lemon zest", "4 sajt": "4 cheese", "Fior di latte, gorgonzola, taleggio, parmezán": "Fior di latte, gorgonzola, taleggio, parmesan", "Sonka, mozzarella, gomba, olíva, oregano": "Ham, mozzarella, mushrooms, olives, oregano", "Fries & sideok": "Fries & sides", "Ropogós burgonya, házi fűszersó": "Crispy fries, house seasoning", "Loaded": "Loaded", "Cheddar, bacon, jalapeño, újhagyma": "Cheddar, bacon, jalapeño, spring onion", "Sajtos": "Cheesy", "Parmezán, fokhagyma, petrezselyem": "Parmesan, garlic, parsley", "Ropogós hagymakarika, füstös dip": "Crispy onion rings, smoky dip", "Friss": "Fresh", "Káposzta, répa, lime, könnyű mayo": "Cabbage, carrot, lime, light mayo", "Házi": "House", "Crush szósz": "Crush sauce", "Krémes, savanykás, enyhén füstös": "Creamy, tangy, lightly smoky", "Chili, méz, ecet — pizza mellé veszélyes": "Chili, honey, vinegar — dangerously good with pizza", "Sült fokhagyma, citrom, mayo": "Roasted garlic, lemon, mayo", "Füstös-paradicsomos, melaszos BBQ": "Smoky tomato BBQ with molasses", "Édes": "Sweet", "Meleg brownie, vaníliakrém, sós karamell": "Warm brownie, vanilla cream, salted caramel", "Kávé, mascarpone, kakaó, ropogós morzsa": "Coffee, mascarpone, cocoa, crunchy crumble", "Citromkrém, habcsók, vajas morzsa": "Lemon curd, meringue, buttery crumble", "Limitált": "Limited", "Vanília soft serve, heti változó topping": "Vanilla soft serve, weekly rotating topping", "Házi limonádé": "House lemonade", "Citrom–menta vagy málna–lime, 0,4 l": "Lemon–mint or raspberry–lime, 0.4 l", "Hideg": "Cold", "Fűszeres": "Spiced", "Gyömbéres, enyhén csípős, 0,33 l": "Ginger, lightly spicy, 0.33 l", "Koffein": "Caffeine", "Hidegen áztatott kávé, 0,3 l": "Cold-steeped coffee, 0.3 l", "Szénsavas ásványvíz, 0,5 l": "Sparkling mineral water, 0.5 l", "Barack–citrom vagy hibiszkusz, 0,4 l": "Peach–lemon or hibiscus, 0.4 l", "Allergiád vagy ételérzékenységed van?": "Have an allergy or food intolerance?", "Rendelés előtt szólj a csapatnak — minden fogásunkról részletes allergéninformációt adunk.": "Tell our team before ordering — we can provide detailed allergen information for every dish.", "A jó kaja nem kér bocsánatot.": "Good food doesn't apologize.", "A mi receptünk": "Our recipe", "Hangos ízek.": "Loud flavors.", "Őszinte kaja.": "Honest food.", "Nem fine diningot játszunk. Kézzel formázunk, helyben sütünk, és csak olyat adunk ki, amit mi is azonnal felfalnánk. A tésztánk 48 órát pihen, a húspogácsánk pedig rendelésre kapja meg a ropogós kérgét.": "We're not pretending to be fine dining. We shape by hand, cook on site, and only serve food we'd devour ourselves. Our dough rests for 48 hours, and every beef patty gets its crispy crust to order.", "Pihentetett tészta": "48-hour rested dough", "Friss alapanyag": "Fresh ingredients", "Unalmas falat": "Boring bites", "Nem csak mi mondjuk": "Don't just take our word for it", "Vendégeink értékelései alapján": "Based on our guests' reviews", "„A burger széle tényleg roppan, a chili mézes pizza pedig veszélyesen jó.”": "“The burger really has that crispy edge, and the chili-honey pizza is dangerously good.”", "— Luca · Google értékelés": "— Luca · Google review", "„Végre egy hely, ahol a pizza és a burger közül nem kell rosszul választani.”": "“Finally, a place where you can't make a bad choice between pizza and burgers.”", "— Márk · visszatérő vendég": "— Márk · returning guest", "„Gyors, hangos, szaftos. Pont olyan, amilyennek egy péntek estének lennie kell.”": "“Fast, loud, juicy. Exactly what a Friday night should feel like.”", "„A Smash burger brutál szaftos, a krumpli pedig még hazafelé is ropogott.”": "“The smash burger is insanely juicy, and the fries were still crispy on the way home.”", "— Bence · Google értékelés": "— Bence · Google review", "„A tészta könnyű, a széle levegős, a feltét pedig pont annyi, amennyi kell.”": "“The dough is light, the crust airy, and the toppings are exactly the right amount.”", "— Eszter · helyi vendég": "— Eszter · local guest", "„A személyzet laza és kedves, a kaja meg tíz perc alatt eltűnt az asztalról.”": "“The staff are relaxed and friendly, and the food disappeared from the table in ten minutes.”", "— Dani · Google értékelés": "— Dani · Google review", "„A chili-méz kombó elsőre furán hangzott. Most már minden pizzára ezt akarom.”": "“Chili and honey sounded strange at first. Now I want it on every pizza.”", "„Rég ettem ennyire jó smash burgert. Semmi túlgondolás, csak nagyon eltalált ízek.”": "“I haven't had a smash burger this good in ages. Nothing overthought — just flavors that hit.”", "— Ákos · visszatérő vendég": "— Ákos · returning guest", "„Jó zene, jó hangulat, hatalmas adag. A loaded fries külön függőséget okoz.”": "“Good music, great atmosphere, huge portions. The loaded fries are especially addictive.”", "— Fanni · Google értékelés": "— Fanni · Google review", "Találkozzunk": "Visit us", "Itt sütjük": "This is where we bake", "a boldogságot.": "happiness.", "Ma nyitva 23:00-ig": "Open today until 23:00", "Hétfő–csütörtök": "Monday–Thursday", "Péntek–szombat": "Friday–Saturday", "Vasárnap": "Sunday", "Útvonaltervezés": "Get directions", "Ahogy neked kényelmes": "However you like it", "Éhes": "Hungry", "lettél?": "already?", "Elvitelre kérem": "Takeaway", "Telefonos rendelés · 15–20 perc": "Phone order · 15–20 min", "Kiszállítás Wolton": "Delivery with Wolt", "Kövesd élőben a futárod": "Track your courier live", "Kiszállítás Foodorán": "Delivery with Foodora", "Rendelj házhoz néhány kattintással": "Order delivery in a few clicks", "Asztalt foglalok": "Book a table", "Adatvédelem": "Privacy", "Rendelj ↗": "Order ↗", "online · kajás wingman": "online · your foodie wingman", "Kérdezz a": "Ask about the", "menüről, nyitvatartásról vagy rendelésről": "menu, opening hours or ordering", "— röviden, emberien. 🍔": "— short and human. 🍔", "Szia! 👋 Én vagyok a CrushBot. Miben segítsek: burger, pizza, nyitvatartás vagy rendelés?": "Hey! 👋 I'm CrushBot. How can I help: burgers, pizza, opening hours or ordering?", "🔥 Mit ajánlasz?": "🔥 What do you recommend?", "⏰ Nyitvatartás": "⏰ Opening hours", "🛵 Rendelés": "🛵 Order", "Te döntöd el, mi kerülhet a tányérra.": "You decide what gets onto your plate.", "Sütik?": "Cookies?", "Csak amit kérsz.": "Only what you choose.", "A weboldal működéséhez szükséges sütiket használjuk. Az": "We use cookies required for the website to work. We only allow", "analitikai": "analytics", "és": "and", "marketing": "marketing", "sütikhez csak akkor adunk engedélyt, ha te is kéred. A választásodat később bármikor módosíthatod. Részletek az": "cookies if you choose them. You can change your choice at any time. Details in our", "Adatvédelmi tájékoztatóban": "Privacy Policy", "Szükséges sütik": "Necessary cookies", "Az oldal alapvető működéséhez kellenek, ezért nem kapcsolhatók ki.": "Required for the site's basic operation, so they cannot be disabled.", "Analitikai sütik": "Analytics cookies", "Segíthetnek megérteni, hogyan használják a látogatók az oldalt.": "They help us understand how visitors use the site.", "Marketing sütik": "Marketing cookies", "Személyre szabott kommunikációhoz vagy kampányméréshez használhatók.": "Used for personalized communication or campaign measurement.", "Beállítások mentése": "Save settings", "Beállítások": "Settings", "Csak szükséges": "Necessary only", "Mindet elfogadom": "Accept all", "Süti beállítások": "Cookie settings", "Adat": "Privacy", "védelem.": "."};
+  const T = {"Étlap": "Menu", "Rólunk": "About", "Vélemények": "Reviews", "Helyszín": "Location", "Rendelj most": "Order now", "Budapest legropogósabb sarka": "Budapest's crispiest corner", "Szaftos": "Juicy", "smash burgerek": "smash burgers", ", tűzforró": ", piping-hot", "nápolyi pizzák": "Neapolitan pizzas", "és olyan szószok,": "and sauces so good,", "amikről még holnap is beszélni fogsz.": "you'll still be talking about them tomorrow.", "Nézd meg az étlapot": "See the menu", "NÁPOLYI PIZZA": "NEAPOLITAN PIZZA", "FRISSEN SÜTVE": "FRESHLY BAKED", "SAJTTAL MINDEN JOBB": "EVERYTHING'S BETTER WITH CHEESE", "A TI": "YOUR", "KEDVENCEITEK ": "FAVORITES ", "A legtöbbet rendelt fogások": "Most ordered dishes", "Közönség": "Crowd", "kedvencek": "favorites", "Három burger vagy három pizza. Semmi túlzsúfolás — csak a biztos befutók.": "Three burgers or three pizzas. No clutter — just the guaranteed hits.", "BURGEREK": "BURGERS", "PIZZÁK": "PIZZAS", "Csípős": "Spicy", "Dupla Smash Burger": "Double Smash Burger", "2× marha, cheddar,": "2× beef, cheddar,", "hagymalekvár, crush szósz": "onion jam, Crush sauce", "Pepperoni Chili-Méz Pizza": "Pepperoni Chili-Honey Pizza", "pepperoni, chili méz": "pepperoni, chili honey", "Ropogós Csirkeburger": "Crispy Chicken Burger", "Ropogós csirke, coleslaw,": "crispy chicken, coleslaw,", "savanyú uborka, BBQ": "pickles, BBQ", "Gombás-Rukkolás Pizza": "Mushroom & Arugula Pizza", "Erdei gomba, mozzarella,": "wild mushrooms, mozzarella,", "fokhagymakrém, rukkola": "garlic cream, arugula", "Füstös": "Smoky", "Baconös Smash Burger": "Bacon Smash Burger", "Marha, füstölt cheddar,": "beef, smoked cheddar,", "parmezán, friss bazsalikom": "parmesan, fresh basil", "Klasszik": "Classic", "Nagy étlap, kis káosz": "Big menu, little chaos", "Válassz egy kategóriát": "Choose a category", "Egyszerre csak azt mutatjuk, amit tényleg nézni akarsz.": "We only show what you actually want to see.", "Burgerek": "Burgers", "8 tétel": "8 items", "Pizzák": "Pizzas", "Sideok": "Sides", "5 tétel": "5 items", "Szószok": "Sauces", "4 tétel": "4 items", "Desszert": "Desserts", "Italok": "Drinks", "6 tétel": "6 items", "Gyors jelölések": "Quick filters", "Összes": "All", "Közönségkedvenc": "Crowd favorite", "Extrázható": "Customizable", "Smash burgerek": "Smash burgers", "Marha, cheddar, uborka, hagyma, crush szósz": "Beef, cheddar, pickles, onion, Crush sauce", "2× marha, cheddar, hagymalekvár, crush szósz": "2× beef, cheddar, onion jam, Crush sauce", "Ropogós csirke, coleslaw, uborka, BBQ": "Crispy chicken, coleslaw, pickles, BBQ", "Marha, füstölt cheddar, bacon, jalapeño": "Beef, smoked cheddar, bacon, jalapeño", "Új": "New", "Dupla marha, cheddar, extra savanyú uborka, kapros mayo": "Double beef, cheddar, extra pickles, dill mayo", "Prémium": "Premium", "Marha, provolone, gomba, szarvasgombás mayo": "Beef, provolone, mushrooms, truffle mayo", "Marha, pepper jack, jalapeño, chili crunch, hot sauce": "Beef, pepper jack, jalapeño, chili crunch, hot sauce", "Növényi pogácsa, cheddar, saláta, uborka, crush szósz": "Plant-based patty, cheddar, lettuce, pickles, Crush sauce", "Nápolyi pizzák": "Neapolitan pizzas", "San Marzano, fior di latte, parmezán, bazsalikom": "San Marzano, fior di latte, parmesan, basil", "Mozzarella, pepperoni, chili méz": "Mozzarella, pepperoni, chili honey", "Erdei gomba, fokhagymakrém, rukkola": "Wild mushrooms, garlic cream, arugula", "Zöld": "Green", "Pisztáciapesztó, cukkini, feta, citrom": "Pistachio pesto, zucchini, feta, lemon", "Népszerű": "Popular", "San Marzano, mozzarella, csípős szalámi, pecorino": "San Marzano, mozzarella, spicy salami, pecorino", "Krémes": "Creamy", "Mortadella, ricotta, pisztácia, citromhéj": "Mortadella, ricotta, pistachio, lemon zest", "4 sajt": "4 cheese", "Fior di latte, gorgonzola, taleggio, parmezán": "Fior di latte, gorgonzola, taleggio, parmesan", "Sonka, mozzarella, gomba, olíva, oregano": "Ham, mozzarella, mushrooms, olives, oregano", "Fries & sideok": "Fries & sides", "Ropogós burgonya, házi fűszersó": "Crispy fries, house seasoning", "Loaded": "Loaded", "Cheddar, bacon, jalapeño, újhagyma": "Cheddar, bacon, jalapeño, spring onion", "Sajtos": "Cheesy", "Parmezán, fokhagyma, petrezselyem": "Parmesan, garlic, parsley", "Ropogós hagymakarika, füstös dip": "Crispy onion rings, smoky dip", "Friss": "Fresh", "Káposzta, répa, lime, könnyű mayo": "Cabbage, carrot, lime, light mayo", "Házi": "House", "Crush szósz": "Crush sauce", "Krémes, savanykás, enyhén füstös": "Creamy, tangy, lightly smoky", "Chili, méz, ecet — pizza mellé veszélyes": "Chili, honey, vinegar — dangerously good with pizza", "Sült fokhagyma, citrom, mayo": "Roasted garlic, lemon, mayo", "Füstös-paradicsomos, melaszos BBQ": "Smoky tomato BBQ with molasses", "Édes": "Sweet", "Meleg brownie, vaníliakrém, sós karamell": "Warm brownie, vanilla cream, salted caramel", "Kávé, mascarpone, kakaó, ropogós morzsa": "Coffee, mascarpone, cocoa, crunchy crumble", "Citromkrém, habcsók, vajas morzsa": "Lemon curd, meringue, buttery crumble", "Limitált": "Limited", "Vanília soft serve, heti változó topping": "Vanilla soft serve, weekly rotating topping", "Házi limonádé": "House lemonade", "Citrom–menta vagy málna–lime, 0,4 l": "Lemon–mint or raspberry–lime, 0.4 l", "Hideg": "Cold", "Fűszeres": "Spiced", "Gyömbéres, enyhén csípős, 0,33 l": "Ginger, lightly spicy, 0.33 l", "Koffein": "Caffeine", "Hidegen áztatott kávé, 0,3 l": "Cold-steeped coffee, 0.3 l", "Szénsavas ásványvíz, 0,5 l": "Sparkling mineral water, 0.5 l", "Barack–citrom vagy hibiszkusz, 0,4 l": "Peach–lemon or hibiscus, 0.4 l", "Allergiád vagy ételérzékenységed van?": "Have an allergy or food intolerance?", "Rendelés előtt szólj a csapatnak — minden fogásunkról részletes allergéninformációt adunk.": "Tell our team before ordering — we can provide detailed allergen information for every dish.", "A jó kaja nem kér bocsánatot.": "Good food doesn't apologize.", "A mi receptünk": "Our recipe", "Hangos ízek.": "Loud flavors.", "Őszinte kaja.": "Honest food.", "Nem fine diningot játszunk. Kézzel formázunk, helyben sütünk, és csak olyat adunk ki, amit mi is azonnal felfalnánk. A tésztánk 48 órát pihen, a húspogácsánk pedig rendelésre kapja meg a ropogós kérgét.": "We're not pretending to be fine dining. We shape by hand, cook on site, and only serve food we'd devour ourselves. Our dough rests for 48 hours, and every beef patty gets its crispy crust to order.", "Pihentetett tészta": "48-hour rested dough", "Friss alapanyag": "Fresh ingredients", "Unalmas falat": "Boring bites", "Nem csak mi mondjuk": "Don't just take our word for it", "Vendégeink értékelései alapján": "Based on our guests' reviews", "„A burger széle tényleg roppan, a chili mézes pizza pedig veszélyesen jó.”": "“The burger really has that crispy edge, and the chili-honey pizza is dangerously good.”", "— Luca · Google értékelés": "— Luca · Google review", "„Végre egy hely, ahol a pizza és a burger közül nem kell rosszul választani.”": "“Finally, a place where you can't make a bad choice between pizza and burgers.”", "— Márk · visszatérő vendég": "— Márk · returning guest", "„Gyors, hangos, szaftos. Pont olyan, amilyennek egy péntek estének lennie kell.”": "“Fast, loud, juicy. Exactly what a Friday night should feel like.”", "„A Smash burger brutál szaftos, a krumpli pedig még hazafelé is ropogott.”": "“The smash burger is insanely juicy, and the fries were still crispy on the way home.”", "— Bence · Google értékelés": "— Bence · Google review", "„A tészta könnyű, a széle levegős, a feltét pedig pont annyi, amennyi kell.”": "“The dough is light, the crust airy, and the toppings are exactly the right amount.”", "— Eszter · helyi vendég": "— Eszter · local guest", "„A személyzet laza és kedves, a kaja meg tíz perc alatt eltűnt az asztalról.”": "“The staff are relaxed and friendly, and the food disappeared from the table in ten minutes.”", "— Dani · Google értékelés": "— Dani · Google review", "„A chili-méz kombó elsőre furán hangzott. Most már minden pizzára ezt akarom.”": "“Chili and honey sounded strange at first. Now I want it on every pizza.”", "„Rég ettem ennyire jó smash burgert. Semmi túlgondolás, csak nagyon eltalált ízek.”": "“I haven't had a smash burger this good in ages. Nothing overthought — just flavors that hit.”", "— Ákos · visszatérő vendég": "— Ákos · returning guest", "„Jó zene, jó hangulat, hatalmas adag. A loaded fries külön függőséget okoz.”": "“Good music, great atmosphere, huge portions. The loaded fries are especially addictive.”", "— Fanni · Google értékelés": "— Fanni · Google review", "Találkozzunk": "Visit us", "Itt sütjük": "This is where we bake", "a boldogságot.": "happiness.", "Ma nyitva 23:00-ig": "Open today until 23:00", "Hétfő–csütörtök": "Monday–Thursday", "Péntek–szombat": "Friday–Saturday", "Vasárnap": "Sunday", "Útvonaltervezés": "Get directions", "Ahogy neked kényelmes": "However you like it", "Éhes": "Hungry", "lettél?": "already?", "Elvitelre kérem": "Takeaway", "Telefonos rendelés · 15–20 perc": "Phone order · 15–20 min", "Kiszállítás Wolton": "Delivery with Wolt", "Kövesd élőben a futárod": "Track your courier live", "Kiszállítás Foodorán": "Delivery with Foodora", "Rendelj házhoz néhány kattintással": "Order delivery in a few clicks", "Asztalt foglalok": "Book a table", "Adatvédelem": "Privacy", "Rendelj ": "Order ", "online · kajás wingman": "online · your foodie wingman", "Kérdezz a": "Ask about the", "menüről, nyitvatartásról vagy rendelésről": "menu, opening hours or ordering", "— röviden, emberien. 🍔": "— short and human. 🍔", "Szia! 👋 Én vagyok a CrushBot. Miben segítsek: burger, pizza, nyitvatartás vagy rendelés?": "Hey! 👋 I'm CrushBot. How can I help: burgers, pizza, opening hours or ordering?", "🔥 Mit ajánlasz?": "🔥 What do you recommend?", "⏰ Nyitvatartás": "⏰ Opening hours", "🛵 Rendelés": "🛵 Order", "Te döntöd el, mi kerülhet a tányérra.": "You decide what gets onto your plate.", "Sütik?": "Cookies?", "Csak amit kérsz.": "Only what you choose.", "A weboldal működéséhez szükséges sütiket használjuk. Az": "We use cookies required for the website to work. We only allow", "analitikai": "analytics", "és": "and", "marketing": "marketing", "sütikhez csak akkor adunk engedélyt, ha te is kéred. A választásodat később bármikor módosíthatod. Részletek az": "cookies if you choose them. You can change your choice at any time. Details in our", "Adatvédelmi tájékoztatóban": "Privacy Policy", "Szükséges sütik": "Necessary cookies", "Az oldal alapvető működéséhez kellenek, ezért nem kapcsolhatók ki.": "Required for the site's basic operation, so they cannot be disabled.", "Analitikai sütik": "Analytics cookies", "Segíthetnek megérteni, hogyan használják a látogatók az oldalt.": "They help us understand how visitors use the site.", "Marketing sütik": "Marketing cookies", "Személyre szabott kommunikációhoz vagy kampányméréshez használhatók.": "Used for personalized communication or campaign measurement.", "Beállítások mentése": "Save settings", "Beállítások": "Settings", "Csak szükséges": "Necessary only", "Mindet elfogadom": "Accept all", "Süti beállítások": "Cookie settings", "Adat": "Privacy", "védelem.": "."};
   const A = {"Nyelvválasztó": "Language selector", "Frissen készült smash burger": "Freshly made smash burger", "Közönségkedvenc kategóriák": "Crowd favorite categories", "Étlap kategóriák": "Menu categories", "Étlap jelölések": "Menu labels", "Választható gyors jelölések": "Selectable quick filters", "4,9 pont az 5-ből, vendégeink értékelései alapján": "4.9 out of 5, based on our guests' reviews", "5 csillag": "5 stars", "Vélemények lapozása": "Review pagination", "Vélemény oldalak": "Review pages", "Előző vélemények": "Previous reviews", "Következő vélemények": "Next reviews", "Közösségi linkek és rendelés": "Social links and ordering", "Instagram megnyitása": "Open Instagram", "TikTok megnyitása": "Open TikTok", "Wolt megnyitása": "Open Wolt", "CrushBot megnyitása": "Open CrushBot", "Chat bezárása": "Close chat", "Gyors kérdések": "Quick questions", "Üzenet a CrushBotnak": "Message CrushBot", "Üzenet küldése": "Send message", "Szükséges sütik": "Necessary cookies", "Süti beállítások megnyitása": "Open cookie settings", "CrushBot gépel": "CrushBot is typing"};
   const reverseT = Object.fromEntries(Object.entries(T).map(([hu,en]) => [en,hu]));
   const reverseA = Object.fromEntries(Object.entries(A).map(([hu,en]) => [en,hu]));
@@ -10806,7 +10807,7 @@ if (!returningFromPrivacy) {
   }
   body > footer .privacy-link::before { display:none; }
   body > footer .privacy-link::after {
-    content:"↗"; opacity:1; transform:none !important;
+    content:""; opacity:1; transform:none !important;
     font-size:1.1rem; line-height:1;
   }
   body > footer .privacy-link:active {
@@ -10968,6 +10969,180 @@ if (!returningFromPrivacy) {
   .nav, .nav.scrolled {
     padding-right:max(12px,env(safe-area-inset-right)) !important;
     padding-left:max(12px,env(safe-area-inset-left)) !important;
+  }
+}
+</style>
+
+<style id="cc-social-mobile-no-hover">
+/* Érintőképernyőn görgetéskor ne maradjon aktív a hover kiemelés. */
+@media (max-width:900px), (hover:none) {
+  body > footer .cc-socials-v4 a.cc-social-v4 {
+    background:var(--cc-bg) !important;
+    color:var(--ink) !important;
+    border-color:var(--cc-border,var(--cream)) !important;
+    box-shadow:5px 5px 0 var(--cc-shadow) !important;
+    transform:none !important;
+    transition:none !important;
+    animation:none !important;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-user-select:none;
+    user-select:none;
+    touch-action:manipulation;
+  }
+  body > footer .cc-socials-v4 a.cc-social-wolt { --cc-border:var(--yellow); }
+  body > footer .cc-socials-v4 a.cc-social-v4 .cc-social-badge {
+    transform:translateY(-50%) rotate(-7deg) !important;
+    transition:none !important;
+    animation:none !important;
+  }
+}
+</style>
+<style id="cc-mobile-order-no-highlight">
+@media (max-width:900px), (hover:none) {
+  .order-choices > a.order-choice,
+  .order-choices > a.order-choice:hover,
+  .order-choices > a.order-choice:active,
+  .order-choices > a.order-choice:focus {
+    background:var(--ink) !important;
+    color:var(--cream) !important;
+    transform:none !important;
+    box-shadow:none !important;
+    filter:none !important;
+    animation:none !important;
+    transition:none !important;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-user-select:none;
+    user-select:none;
+    touch-action:manipulation;
+  }
+  .order-choices > a.order-choice * {
+    animation:none !important;
+    transition:none !important;
+    transform:none !important;
+  }
+}
+</style>
+
+<style id="cc-footer-mobile-static">
+@media (max-width:900px), (hover:none) {
+  body > footer .socials.cc-socials-v4 > a.cc-social-v4,
+  body > footer .socials.cc-socials-v4 > a.cc-social-v4:is(:hover,:active,:focus,:focus-visible) {
+    background:var(--cc-bg) !important;
+    color:var(--ink) !important;
+    border-color:var(--cc-border,var(--cream)) !important;
+    box-shadow:5px 5px 0 var(--cc-shadow) !important;
+    transform:none !important; filter:none !important;
+    outline:none !important;
+    animation:none !important; transition:none !important;
+    -webkit-tap-highlight-color:transparent;
+    user-select:none; -webkit-user-select:none;
+  }
+  body > footer .socials.cc-socials-v4 > a.cc-social-wolt { --cc-border:var(--yellow); }
+  body > footer .socials.cc-socials-v4 > a.cc-social-v4 .cc-social-badge,
+  body > footer .socials.cc-socials-v4 > a.cc-social-v4:is(:hover,:active,:focus,:focus-visible) .cc-social-badge {
+    transform:translateY(-50%) rotate(-7deg) !important;
+    animation:none !important; transition:none !important;
+  }
+  body > footer .socials.cc-socials-v4 > a.cc-social-v4 .cc-social-copy > span:first-child {
+    transform:none !important; opacity:1 !important;
+    animation:none !important; transition:none !important;
+  }
+  body > footer .socials.cc-socials-v4 > a.cc-social-v4 .cc-social-copy > span:last-child {
+    display:none !important;
+  }
+}
+</style>
+
+<style id="cc-cookie-mobile-static-buttons">
+@media (max-width:900px), (hover:none) {
+  #ccCookieLayer .cc-cookie-btn,
+  #ccCookieLayer .cc-cookie-btn:is(:hover,:active,:focus,:focus-visible) {
+    transform:none !important;
+    animation:none !important;
+    transition:none !important;
+    -webkit-tap-highlight-color:transparent;
+  }
+  #ccCookieLayer #ccCookieReject,
+  #ccCookieLayer #ccCookieReject:is(:hover,:active,:focus,:focus-visible) {
+    color:var(--cream) !important;
+    background:#373832 !important;
+    border-color:rgba(243,238,223,.22) !important;
+    box-shadow:0 4px 0 #171815 !important;
+  }
+  #ccCookieLayer #ccCookieReject::before,
+  #ccCookieLayer #ccCookieReject::after {
+    display:none !important; content:none !important;
+    animation:none !important; transition:none !important;
+  }
+  #ccCookieLayer .cc-cookie-btn--accept,
+  #ccCookieLayer .cc-cookie-btn--accept:is(:hover,:active,:focus,:focus-visible) {
+    background:var(--yellow) !important; color:var(--ink) !important;
+    box-shadow:0 5px 0 #7f8950 !important;
+  }
+  #ccCookieLayer .cc-cookie-btn--settings,
+  #ccCookieLayer .cc-cookie-btn--settings:is(:hover,:active,:focus,:focus-visible) {
+    background:transparent !important; color:var(--cream) !important;
+    box-shadow:none !important; border-color:rgba(243,238,223,.32) !important;
+  }
+}
+</style>
+<style id="cc-text-controls-no-arrows">
+.chat-send { width:auto; min-width:64px; padding-inline:12px; }
+.review-nav { width:auto; padding-inline:14px; font-size:.8rem; }
+</style>
+
+<style id="cc-menu-close-background-immediate">
+@media (max-width:900px) {
+  .nav.menu-open.cc-menu-closing:not(.scrolled) {
+    background:transparent !important;
+    border-bottom-color:transparent !important;
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    transition:none !important;
+  }
+  .nav.menu-open.cc-menu-closing > .links {
+    background:transparent !important;
+    border-bottom-color:transparent !important;
+    box-shadow:none !important;
+  }
+}
+</style>
+
+<style id="cc-mobile-hero-buttons-and-page-background">
+html { background-color:#20211d; }
+@media (max-width:900px), (hover:none) {
+  html, body {
+    background-color:var(--ink);
+    overscroll-behavior-y:none;
+    min-height:100%;
+  }
+  .hero .hero-actions > a.btn,
+  .hero .hero-actions > a.btn:is(:hover,:active,:focus,:focus-visible) {
+    transform:none !important;
+    animation:none !important;
+    transition:none !important;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .hero .hero-actions > a.btn-primary,
+  .hero .hero-actions > a.btn-primary:is(:hover,:active,:focus,:focus-visible) {
+    background:var(--yellow) !important;
+    color:var(--ink) !important;
+    box-shadow:0 7px 0 #91a817 !important;
+  }
+  .hero .hero-actions > a.btn-link,
+  .hero .hero-actions > a.btn-link:is(:hover,:active,:focus,:focus-visible) {
+    background:transparent !important;
+    color:var(--cream) !important;
+    border-color:rgba(255,248,232,.4) !important;
+    box-shadow:none !important;
+  }
+  .hero .hero-actions > a.btn-link::before,
+  .hero .hero-actions > a.btn-link::after {
+    display:none !important;
+    content:none !important;
+    animation:none !important;
+    transition:none !important;
   }
 }
 </style>
