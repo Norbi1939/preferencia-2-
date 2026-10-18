@@ -1633,7 +1633,7 @@ html.cc-home-arriving.cc-home-reveal::after {
           drop-shadow(-1px 0 0 rgba(32, 33, 29, .95))
           drop-shadow(0 1px 0 rgba(32, 33, 29, .95))
           drop-shadow(0 -1px 0 rgba(243, 238, 223, .95));}
-      .cursor.pressed {}
+      
       .cursor {
         width: 16px;
         height: 14px;
@@ -3944,11 +3944,9 @@ html.cc-home-arriving.cc-home-reveal::after {
       .menu-help-tag[data-tag="spicy"]:not(:where(:not(*)))::before,
       .menu-help-tag[data-tag="spicy"]:not(:where(:not(*)))::after {
         animation: none !important;}}@media (min-width:901px) {
-      .menu-help-tag[data-tag="spicy"]:not(:hover)::before,
-      .menu-help-tag[data-tag="spicy"]:not(:hover)::after {}}
+      }
 @media (max-width:900px) {
-      .menu-help-tag[data-tag="spicy"]:not(:where(:not(*)))::before,
-      .menu-help-tag[data-tag="spicy"]:not(:where(:not(*)))::after {}}@media (min-width:901px) {
+      }@media (min-width:901px) {
       .menu-help-tag[data-tag="spicy"]:hover .flame-fx,
       .menu-help-tag[data-tag="spicy"][aria-pressed="true"]:hover .flame-fx {
         opacity: 1;
@@ -4096,7 +4094,7 @@ html.cc-home-arriving.cc-home-reveal::after {
         animation: crowdWave 1.45s ease-out infinite;}
       .people-fx .cheer-1 { animation-delay: -.96s;}
       .people-fx .cheer-2 { animation-delay: -.48s;}
-      .people-fx .cheer-3 {}
+      
       @keyframes crowdPop {
         0%, 100% { translate: 0 2px; scale: .82; rotate: -4deg; opacity: .7; }
         35%      { translate: 0 -7px; scale: 1.12; rotate: 3deg; opacity: 1; }
@@ -4703,7 +4701,6 @@ html.cc-home-arriving.cc-home-reveal::after {
   transform: translateY(2px) scale(.975) !important;
   filter: saturate(.72) brightness(.88);}
 .menu-board.quick-tags-active .menu-item.quick-tag-hit {
-
   opacity: 1 !important;
   transform: translateY(-4px) scale(1.025) !important;
   filter: saturate(1.08) brightness(1.04);}
@@ -7464,7 +7461,7 @@ body:has(.chat-shell.open) .cc-lang-toggle{
     grid-template-columns:minmax(0,1fr) auto;}
   .menu-summary-copy{
     min-width:0;}
-  .menu-filterbar{}
+  
   .menu-filter{
     min-width:0;}
   .menu-item{

@@ -30,7 +30,6 @@
       --line:rgba(243,238,223,.15);
       --ease:cubic-bezier(.2,.8,.2,1);
     }
-
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
@@ -42,12 +41,10 @@
     }
     a{color:inherit}
     ::selection{background:var(--yellow);color:var(--ink)}
-
     .noise{
       position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.022;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
     }
-
     .nav{
       min-height:86px;padding:18px 5vw;
       display:flex;align-items:center;justify-content:space-between;gap:24px;
@@ -66,7 +63,6 @@
       color:var(--muted);transition:.25s ease;
     }
     .back:hover{color:var(--yellow);transform:translateX(-3px)}
-
     .hero{
       position:relative;overflow:hidden;
       padding:100px 5vw 72px;
@@ -112,7 +108,6 @@
       color:var(--yellow);font-size:.76rem;font-weight:700;
       letter-spacing:.08em;text-transform:uppercase;
     }
-
     .layout{
       width:min(1180px,90vw);margin:0 auto;
       display:grid;grid-template-columns:250px minmax(0,1fr);
@@ -137,7 +132,6 @@
     }
     .toc a:last-child{border:0}
     .toc a:hover{color:var(--cream);padding-left:5px}
-
     .content{max-width:790px}
     .notice{
       margin-bottom:48px;padding:24px 26px;
@@ -147,7 +141,6 @@
       color:var(--muted);
     }
     .notice strong{color:var(--cream)}
-
     .legal-section{
       padding:0 0 52px;margin-bottom:52px;
       border-bottom:1px solid var(--line);
@@ -181,13 +174,11 @@
       color:#efaa96;border:1px dashed rgba(217,120,92,.55);
       font-weight:700;
     }
-
     .contact-box{
       margin-top:24px;padding:25px;
       border:1px solid rgba(200,214,122,.34);
       border-radius:20px;background:rgba(243,238,223,.035);
     }
-
     footer{
       padding:32px 5vw;border-top:1px solid var(--line);
       display:flex;justify-content:space-between;align-items:center;
@@ -195,7 +186,6 @@
     }
     footer a{text-decoration:none}
     footer a:hover{color:var(--yellow)}
-
     @media(max-width:850px){
       .layout{grid-template-columns:1fr;gap:35px;padding-top:50px}
       .toc-inner{position:static}
@@ -214,18 +204,14 @@
     @media(prefers-reduced-motion:reduce){
       *{scroll-behavior:auto!important;transition-duration:.01ms!important}
     }
-  </style>
+
+</style>
 
 
 <style id="cc-privacy-entry-transition">
-/* =========================================================
-   INDEX -> ADATVÉDELEM: folyamatos érkezési animáció
-   Az oldal az index transition utolsó, sötét frame-jéből indul.
-   ========================================================= */
 html.cc-from-index body {
   overflow: hidden;
 }
-
 .cc-privacy-entry {
   position: fixed;
   z-index: 60000;
@@ -235,7 +221,6 @@ html.cc-from-index body {
   background: var(--ink);
   pointer-events: none;
 }
-
 .cc-privacy-entry-title {
   font-family: "Archivo Black", sans-serif;
   font-size: clamp(1.7rem,5vw,4.4rem);
@@ -247,11 +232,9 @@ html.cc-from-index body {
   transform: translateY(0) scale(1);
   opacity: 1;
 }
-
 .cc-privacy-entry-title span {
   color: var(--yellow);
 }
-
 html.cc-from-index .nav,
 html.cc-from-index .hero,
 html.cc-from-index .layout,
@@ -259,43 +242,34 @@ html.cc-from-index footer {
   opacity: 0;
   transform: translateY(18px);
 }
-
 html.cc-from-index.cc-entry-reveal .cc-privacy-entry {
   animation: ccPrivacyCurtainOut .82s .18s cubic-bezier(.76,0,.24,1) forwards;
 }
-
 html.cc-from-index.cc-entry-reveal .cc-privacy-entry-title {
   animation: ccPrivacyTitleOut .52s .08s cubic-bezier(.22,1,.36,1) forwards;
 }
-
 html.cc-from-index.cc-entry-reveal .nav {
   animation: ccPrivacyContentIn .55s .46s cubic-bezier(.22,1,.36,1) forwards;
 }
-
 html.cc-from-index.cc-entry-reveal .hero {
   animation: ccPrivacyContentIn .7s .54s cubic-bezier(.22,1,.36,1) forwards;
 }
-
 html.cc-from-index.cc-entry-reveal .layout,
 html.cc-from-index.cc-entry-reveal footer {
   animation: ccPrivacyContentIn .72s .68s cubic-bezier(.22,1,.36,1) forwards;
 }
-
 @keyframes ccPrivacyCurtainOut {
   0% { transform: translateY(0); }
   100% { transform: translateY(-102%); }
 }
-
 @keyframes ccPrivacyTitleOut {
   0% { opacity:1; transform:translateY(0) scale(1); }
   100% { opacity:0; transform:translateY(-26px) scale(.94); }
 }
-
 @keyframes ccPrivacyContentIn {
   from { opacity:0; transform:translateY(18px); }
   to { opacity:1; transform:translateY(0); }
 }
-
 @media (prefers-reduced-motion: reduce) {
   html.cc-from-index body { overflow:auto; }
   .cc-privacy-entry { display:none; }
@@ -313,35 +287,21 @@ html.cc-from-index.cc-entry-reveal footer {
 
 
 <style id="cc-privacy-seamless-handoff-v2">
-/*
-  Az érkező oldal első frame-je 1:1 ugyanaz:
-  sötét háttér + középen stabil ADATVÉDELEM.
-  Nincs külön title-out animáció, ami a váltásnál "megakadást" okozna.
-*/
 html.cc-from-index .cc-privacy-entry-title {
   opacity: 1 !important;
   transform: translateY(0) scale(1) rotate(0) !important;
   animation: none !important;
 }
-
 html.cc-from-index.cc-entry-reveal .cc-privacy-entry-title {
   animation: none !important;
 }
-
-/*
-  A felirat a curtain része marad, így együtt távoznak.
-  Ettől nincs két külön mozgási görbe a navigáció két oldalán.
-*/
 html.cc-from-index.cc-entry-reveal .cc-privacy-entry {
   animation: ccPrivacyCurtainOutSmooth .78s .12s cubic-bezier(.76,0,.24,1) forwards !important;
 }
-
 @keyframes ccPrivacyCurtainOutSmooth {
   0%   { transform: translate3d(0,0,0); }
   100% { transform: translate3d(0,-102%,0); }
 }
-
-/* GPU compositing a finomabb átadásért. */
 .cc-page-transition,
 .cc-page-transition-label,
 .cc-privacy-entry,
@@ -355,8 +315,6 @@ html.cc-from-index.cc-entry-reveal .cc-privacy-entry {
 
 
 <style id="cc-privacy-no-seam-v3">
-/* A céloldalon nincs második ADATVÉDELEM felirat.
-   Csak ugyanaz a sötét cover fogad, majd azonnal felfelé távozik. */
 html.cc-from-index .cc-privacy-entry-title {
   display: none !important;
 }
@@ -372,8 +330,6 @@ html.cc-from-index.cc-entry-reveal .cc-privacy-entry {
   from { transform: translate3d(0,0,0); }
   to   { transform: translate3d(0,-102%,0); }
 }
-
-/* A tartalom már a cover alatt készen áll; nem várunk sokat rá. */
 html.cc-from-index.cc-entry-reveal .nav {
   animation: ccPrivacyContentIn .5s .12s cubic-bezier(.22,1,.36,1) forwards !important;
 }
@@ -389,27 +345,14 @@ html.cc-from-index.cc-entry-reveal footer {
 
 
 <style id="cc-scrollbar-layout-stability-fix">
-/* =========================================================
-   SCROLLBAR / LAYOUT SHIFT FIX
-   A jobb oldali scrollbar helye végig fenntartva marad,
-   ezért transition közben sem ugrik oldalra a teljes layout.
-   ========================================================= */
 html {
   scrollbar-gutter: stable;
 }
-
-/* Régebbi böngészőkhöz: a függőleges scrollbar mindig foglaljon helyet. */
 @supports not (scrollbar-gutter: stable) {
   html {
     overflow-y: scroll;
   }
 }
-
-/*
-  Az adatvédelmi belépő transition alatt korábban a body overflow:hidden
-  miatt eltűnhetett a scrollbar. Nem tiltjuk le a body görgetését:
-  a fixed cover úgyis teljesen takarja az oldalt.
-*/
 html.cc-from-index body {
   overflow-x: hidden !important;
   overflow-y: visible !important;
@@ -469,8 +412,6 @@ html.cc-from-index body {
   transform: translate(-50%,-50%) rotate(0);
 }
 .cc-home-transition-label span { color: var(--yellow); }
-
-
 .cc-home-transition.is-running { pointer-events: auto; }
 .cc-home-transition-label { transition: opacity .18s ease, transform .48s .12s cubic-bezier(.22,1,.36,1); }
 .cc-home-transition.is-committing .cc-home-transition-label { opacity: 0; transition: opacity .16s ease; }
@@ -548,9 +489,7 @@ html.cc-from-index body {
 </style>
 
 <style id="cc-privacy-entry-safe-default">
-/* Közvetlen megnyitáskor nincs takaróréteg. */
 html:not(.cc-from-index) .cc-privacy-entry { display:none !important; }
-/* JavaScript-hiba esetén is felfedjük az oldalt. */
 html.cc-from-index .cc-privacy-entry {
   animation:ccPrivacyCoverFailSafe 0s 2s forwards !important;
 }
