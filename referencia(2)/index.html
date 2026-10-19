@@ -7610,6 +7610,16 @@ body:has(.chat-shell.open) .cc-lang-toggle{
 </style>
 
 <meta name="theme-color" content="#20211d">
+<style id="cc-visit-contact-details">
+#contact .cc-contact-details { display:grid; gap:10px; margin:0 0 24px; }
+#contact .cc-contact-detail { min-width:0; padding:14px 16px; border:1px solid rgba(23,23,19,.18); border-radius:16px; }
+#contact .cc-contact-label { display:block; margin-bottom:5px; font-size:.72rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+#contact .cc-contact-value { display:block; font-size:1rem; font-weight:700; line-height:1.5; overflow-wrap:anywhere; }
+@media (max-width:600px) {
+  #contact .cc-contact-detail { padding:12px 14px; border-radius:14px; }
+  #contact .cc-contact-value { font-size:.95rem; }
+}
+</style>
 </head>
   <body>
     <div class="cursor"></div>
@@ -8020,6 +8030,10 @@ body:has(.chat-shell.open) .cc-lang-toggle{
           <div class="kicker">Találkozzunk</div>
           <h2>Itt sütjük<br />a boldogságot.</h2>
           <p class="visit-address">1075 Budapest<br />Madách Imre út 7.</p>
+          <div class="cc-contact-details" aria-label="Elérhetőségek">
+            <div class="cc-contact-detail"><span class="cc-contact-label">Telefonszám</span><span class="cc-contact-value">[kitoltendő]</span></div>
+            <div class="cc-contact-detail"><span class="cc-contact-label">E-mail-cím</span><span class="cc-contact-value">[kitoltendő]</span></div>
+          </div>
           <span class="open-now">Ma nyitva 23:00-ig</span>
           <div class="hours">
             <div><span>Hétfő–csütörtök</span><strong>11:30–22:30</strong></div>
