@@ -876,5 +876,63 @@ html.cc-from-index footer {
  update();
 })();
 </script>
+
+<style id="cc-page-scroll-boundaries">
+html, body {
+  max-width:100%;
+  overflow-x:clip !important;
+  overscroll-behavior-x:none !important;
+}
+</style>
+<script id="cc-page-scroll-boundaries-script">
+(() => {
+  // A lendulettel folytatodo gorgetes se rugozhasson tul alul.
+  // A felso lehuzas csak a lap tetejen marad engedelyezve.
+  const syncOverscroll = () => {
+    const root = document.scrollingElement || document.documentElement;
+    const value = root.scrollTop <= 0 ? 'auto' : 'none';
+    document.documentElement.style.setProperty('overscroll-behavior-y', value, 'important');
+    document.body.style.setProperty('overscroll-behavior-y', value, 'important');
+  };
+  syncOverscroll();
+  window.addEventListener('scroll', syncOverscroll, { passive:true });
+  window.addEventListener('pageshow', syncOverscroll);
+  let x = 0, y = 0;
+  document.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1) return;
+    x = e.touches[0].clientX;
+    y = e.touches[0].clientY;
+  }, { passive:true });
+  document.addEventListener('touchmove', e => {
+    if (e.touches.length !== 1) return;
+    const dx = e.touches[0].clientX - x;
+    const dy = e.touches[0].clientY - y;
+    x = e.touches[0].clientX;
+    y = e.touches[0].clientY;
+    const horizontal = Math.abs(dx) > Math.abs(dy);
+    // A belso gorgetheto listak, a chat es a menu tovabbra is mukodnek.
+    for (let el = e.target instanceof Element ? e.target : null;
+         el && el !== document.body && el !== document.documentElement;
+         el = el.parentElement) {
+      const css = getComputedStyle(el);
+      if (horizontal && /(auto|scroll)/.test(css.overflowX) &&
+          el.scrollWidth > el.clientWidth &&
+          ((dx < 0 && el.scrollLeft + el.clientWidth < el.scrollWidth - 1) ||
+           (dx > 0 && el.scrollLeft > 0))) return;
+      if (!horizontal && /(auto|scroll)/.test(css.overflowY) &&
+          el.scrollHeight > el.clientHeight &&
+          ((dy < 0 && el.scrollTop + el.clientHeight < el.scrollHeight - 1) ||
+           (dy > 0 && el.scrollTop > 0))) return;
+    }
+    const root = document.scrollingElement || document.documentElement;
+    const bottom = Math.max(0, root.scrollHeight - root.clientHeight);
+    const reachesBottom = dy < 0 && root.scrollTop - dy >= bottom - 1;
+    if (horizontal || reachesBottom) {
+      if (e.cancelable) e.preventDefault();
+      if (!horizontal && reachesBottom) root.scrollTop = bottom;
+    }
+  }, { passive:false });
+})();
+</script>
 </body>
 </html>

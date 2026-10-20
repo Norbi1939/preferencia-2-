@@ -9316,24 +9316,42 @@ A.onclick=()=>store(true,true);R.onclick=()=>store(false,false);V.onclick=()=>st
 const old=read();
 if(old){apply(old);}
 
-/*
-  Cookie megjelenési logika:
-  - teljesen új belépés / kézi reload az indexen -> megjelenik
-  - index -> adatvedelem.html -> index visszatérés -> nem jelenik meg újra
-*/
-let returningFromPrivacy = false;
-try {
-  returningFromPrivacy = sessionStorage.getItem("cc_returning_from_privacy") === "1";
-  if (returningFromPrivacy) {
-    sessionStorage.removeItem("cc_returning_from_privacy");
+/* Uj megnyitaskor megjelenik; csak az adatvedelmi visszateres kivetel. */
+const isPrivacyReturn = () => {
+  const navigation = performance.getEntriesByType('navigation')[0];
+  const reloaded = navigation && navigation.type === 'reload';
+  let flagged = false;
+  try {
+    flagged = sessionStorage.getItem('cc_returning_from_privacy') === '1';
+    sessionStorage.removeItem('cc_returning_from_privacy');
+  } catch (_) {}
+  let fromPrivacy = false;
+  try {
+    const ref = new URL(document.referrer);
+    fromPrivacy = ref.origin === location.origin && /\/adatv[eé]delem\.html$/.test(decodeURI(ref.pathname));
+  } catch (_) {}
+  return !reloaded && (flagged || fromPrivacy);
+};
+let promptTimer = null;
+const schedulePrompt = () => {
+  clearTimeout(promptTimer);
+  promptTimer = setTimeout(() => {
+    promptTimer = null;
+    open(false);
+  }, 900);
+};
+if (isPrivacyReturn()) close();
+else schedulePrompt();
+window.addEventListener('pagehide', () => {
+  clearTimeout(promptTimer);
+  close();
+});
+window.addEventListener('pageshow', event => {
+  if (event.persisted) {
+    if (isPrivacyReturn()) close();
+    else schedulePrompt();
   }
-} catch (_) {}
-
-if (!returningFromPrivacy) {
-  setTimeout(()=>open(false),900);
-} else {
-  O.classList.add("is-visible");
-}
+});
 })();
 </script>
 
@@ -10073,7 +10091,7 @@ html { background-color:#20211d;}
 @media (max-width:900px) {
   html, body {
     background-color:var(--ink);
-    overscroll-behavior-y:none;
+    overscroll-behavior-y:auto;
     min-height:100%;}@media (min-width:901px) {
   .hero .hero-actions > a.btn,
   .hero .hero-actions > a.btn:is(:hover,:active,:focus,:focus-visible) {
@@ -10194,6 +10212,156 @@ html { background-color:#20211d;}
       requestAnimationFrame(() => requestAnimationFrame(centerOrder));
     });
   });
+})();
+</script>
+<style id="cc-mobile-header-pulldown-fix">
+/* Csak a mobilos fejlec es a felso tulhuzasi terulet javitasa.
+   A normal oldalgorgetest es a menu JavaScript-animaciojat nem modositja. */
+@media (max-width: 900px) {
+  html,
+  body {
+    background-color: #20211d !important;
+    /* A natív lefelé túlhúzást / gumis visszahúzást szabadon hagyjuk. */
+    overscroll-behavior-y: auto !important;
+  }
+
+  /* A fejléc a lap része: túlhúzáskor együtt mozog a tartalommal,
+     lefelé görgetve pedig a képernyő tetején marad. */
+  /* iOS Safari: az overflow-x:hidden nem fér össze megbízhatóan a sticky fejléccel. */
+  body,
+  html.cc-from-index body {
+    overflow-x: clip !important;
+  }
+
+  .nav,
+  .nav.scrolled,
+  .nav.menu-open,
+  .nav.menu-open.cc-menu-closing:not(.scrolled),
+  .nav.menu-open.cc-menu-closing.scrolled {
+    position: sticky !important;
+    top: 0;
+    /* Az eredeti, fix fejléc elrendezését megőrizzük a tartalom eltolása nélkül. */
+    margin-bottom: calc(-72px - env(safe-area-inset-top));
+    height: calc(72px + env(safe-area-inset-top)) !important;
+    min-height: calc(72px + env(safe-area-inset-top)) !important;
+    padding: calc(12px + env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 12px max(14px, env(safe-area-inset-left)) !important;
+    background: #20211d !important;
+    border-bottom: 1px solid rgba(243, 238, 223, .12) !important;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .12);
+    align-items: center;
+  }
+
+  .nav .logo {
+    color: var(--cream);
+    line-height: 1.1;
+    flex-shrink: 1;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .nav > .mobile-nav-toggle {
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .nav > .cc-mobile-order {
+    height: 44px;
+    min-height: 44px;
+    margin: 0;
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+
+  .hero {
+    padding-top: calc(112px + env(safe-area-inset-top)) !important;
+  }
+
+  .cc-lang-toggle {
+    top: calc(82px + env(safe-area-inset-top)) !important;
+  }
+}
+@media (max-width: 380px) {
+  .nav,
+  .nav.scrolled,
+  .nav.menu-open {
+    padding-right: max(10px, env(safe-area-inset-right)) !important;
+    padding-left: max(10px, env(safe-area-inset-left)) !important;
+  }
+}
+</style>
+
+<style id="cc-page-scroll-boundaries">
+html, body {
+  max-width:100%;
+  overflow-x:clip !important;
+  overscroll-behavior-x:none !important;
+}
+@media (max-width:900px) {
+  .nav > .cc-lang-toggle {
+    position:absolute !important;
+    top:calc(100% + 10px) !important;
+    right:0 !important;
+  }
+}
+</style>
+<script id="cc-page-scroll-boundaries-script">
+(() => {
+  const nav = document.querySelector('.nav');
+  const lang = document.querySelector('.cc-lang-toggle');
+  const mobile = matchMedia('(max-width:900px)');
+  if (nav && lang) {
+    const anchor = document.createComment('language selector original position');
+    lang.before(anchor);
+    const place = () => mobile.matches ? nav.append(lang) : anchor.after(lang);
+    place();
+    mobile.addEventListener('change', place);
+  }
+  // A lendulettel folytatodo gorgetes se rugozhasson tul alul.
+  // A felso lehuzas csak a lap tetejen marad engedelyezve.
+  const syncOverscroll = () => {
+    const root = document.scrollingElement || document.documentElement;
+    const value = root.scrollTop <= 0 ? 'auto' : 'none';
+    document.documentElement.style.setProperty('overscroll-behavior-y', value, 'important');
+    document.body.style.setProperty('overscroll-behavior-y', value, 'important');
+  };
+  syncOverscroll();
+  window.addEventListener('scroll', syncOverscroll, { passive:true });
+  window.addEventListener('pageshow', syncOverscroll);
+  let x = 0, y = 0;
+  document.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1) return;
+    x = e.touches[0].clientX;
+    y = e.touches[0].clientY;
+  }, { passive:true });
+  document.addEventListener('touchmove', e => {
+    if (e.touches.length !== 1) return;
+    const dx = e.touches[0].clientX - x;
+    const dy = e.touches[0].clientY - y;
+    x = e.touches[0].clientX;
+    y = e.touches[0].clientY;
+    const horizontal = Math.abs(dx) > Math.abs(dy);
+    // A belso gorgetheto listak, a chat es a menu tovabbra is mukodnek.
+    for (let el = e.target instanceof Element ? e.target : null;
+         el && el !== document.body && el !== document.documentElement;
+         el = el.parentElement) {
+      const css = getComputedStyle(el);
+      if (horizontal && /(auto|scroll)/.test(css.overflowX) &&
+          el.scrollWidth > el.clientWidth &&
+          ((dx < 0 && el.scrollLeft + el.clientWidth < el.scrollWidth - 1) ||
+           (dx > 0 && el.scrollLeft > 0))) return;
+      if (!horizontal && /(auto|scroll)/.test(css.overflowY) &&
+          el.scrollHeight > el.clientHeight &&
+          ((dy < 0 && el.scrollTop + el.clientHeight < el.scrollHeight - 1) ||
+           (dy > 0 && el.scrollTop > 0))) return;
+    }
+    const root = document.scrollingElement || document.documentElement;
+    const bottom = Math.max(0, root.scrollHeight - root.clientHeight);
+    const reachesBottom = dy < 0 && root.scrollTop - dy >= bottom - 1;
+    if (horizontal || reachesBottom) {
+      if (e.cancelable) e.preventDefault();
+      if (!horizontal && reachesBottom) root.scrollTop = bottom;
+    }
+  }, { passive:false });
 })();
 </script>
 </body>
